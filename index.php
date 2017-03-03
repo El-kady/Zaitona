@@ -1,15 +1,16 @@
 <?php
 
-define('ROOT', __DIR__ . DIRECTORY_SEPARATOR);
-define('APP', ROOT . 'application' . DIRECTORY_SEPARATOR);
+define('DS',DIRECTORY_SEPARATOR);
+define('ROOT', __DIR__ . DS);
+define('APP', ROOT . 'application' . DS);
 
-require APP . 'Config/Database.php';
+require APP . 'Config/app.php';
 require APP . 'autoload.php';
 
 $autoload = new Autoload();
 $autoload->register();
 
-use Zaitona\Bootstrap\App;
+use Bootstrap\App;
 
 $app = new App();
 

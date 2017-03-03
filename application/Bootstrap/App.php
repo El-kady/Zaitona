@@ -1,28 +1,33 @@
 <?php
-namespace Zaitona\Bootstrap;
+namespace Bootstrap;
+
+use Helpers\Service\Service;
 
 class App
 {
+    private $url_modules = array('backend', 'frontend');
+    private $url_module = 'frontend';
+
     private $url_controller = null;
     private $url_action = null;
     private $url_params = array();
 
     function __construct()
     {
+
+        $this->loadServices();
+
+        //routing system
+
         $this->splitUrl();
-
-        // check for controller: no controller given ? then load start-page
+        $namespace = sprintf("\\Modules\\%s\\Controllers\\", ucfirst($this->url_module));
         if (!$this->url_controller) {
-
-            $page = new \Zaitona\Controllers\HomeController();
+            $controller = $namespace . 'HomeController';
+            $page = new $controller();
             $page->index();
+        } elseif (file_exists(APP . ucfirst($this->url_module) . DS . 'Controllers' . DS . ucfirst($this->url_controller) . 'Controller.php')) {
 
-        } elseif (file_exists(APP . 'Controllers/' . ucfirst($this->url_controller) . 'Controller.php')) {
-            // here we did check for controller: does such a controller exist ?
-
-            // if so, then load this file and create this controller
-            // like \Mini\Controller\CarController
-            $controller = "\\Zaitona\\Controllers\\" . ucfirst($this->url_controller) . 'Controller';
+            $controller = "\\Controllers\\" . ucfirst($this->url_controller) . 'Controller';
             $this->url_controller = new $controller();
 
             // check for method: does such a method exist in the controller ?
@@ -49,6 +54,22 @@ class App
         }
     }
 
+    private function loadServices()
+    {
+
+        $db_config = $this->loadFile(APP . 'Config' . DS . 'database.php');
+
+        Service::defDatabase('\Helpers\Database\EasyPDO', array(sprintf('mysql:host=%s;dbname=%s', $db_config['host'], $db_config['database']), $db_config['username'], $db_config['password']));
+
+    }
+
+    private function loadFile($file)
+    {
+        if (file_exists($file)) {
+            return include $file;
+        }
+    }
+
     private function splitUrl()
     {
         if (isset($_GET['url'])) {
@@ -59,20 +80,33 @@ class App
             $url = explode('/', $url);
 
             // Put URL parts into according properties
-            $this->url_controller = isset($url[0]) ? $url[0] : null;
-            $this->url_action = isset($url[1]) ? $url[1] : null;
 
-            // Remove controller and action from the split URL
-            unset($url[0], $url[1]);
+            if (isset($url[0]) && in_array($url[0], $this->url_modules)) {
+                $this->url_module = isset($url[0]) ? $url[0] : null;
+                $this->url_controller = isset($url[1]) ? $url[1] : null;
+                $this->url_action = isset($url[2]) ? $url[2] : null;
+
+                unset($url[0], $url[1], $url[2]);
+            } else {
+                $this->url_controller = isset($url[0]) ? $url[0] : null;
+                $this->url_action = isset($url[1]) ? $url[1] : null;
+
+                unset($url[0], $url[1]);
+            }
+
 
             // Rebase array keys and store the URL params
             $this->url_params = array_values($url);
 
             // for debugging. uncomment this if you have problems with the URL
-            echo 'Controller: ' . $this->url_controller . '<br>';
-            echo 'Action: ' . $this->url_action . '<br>';
-            echo 'Parameters: ' . print_r($this->url_params, true) . '<br>';
+            //echo 'Module: ' . $this->url_module . '<br>';
+            //echo 'Controller: ' . $this->url_controller . '<br>';
+            //echo 'Action: ' . $this->url_action . '<br>';
+            //echo 'Parameters: ' . print_r($this->url_params, true) . '<br>';
+
         }
     }
 
+
 }
+
