@@ -1,7 +1,7 @@
 <?php
 namespace Bootstrap;
 
-use Helpers\Service\Service;
+use Core\Service\Service;
 
 class App
 {
@@ -15,19 +15,20 @@ class App
     function __construct()
     {
 
+        //routing system
+        $this->splitUrl();
+
         $this->loadServices();
 
-        //routing system
-
-        $this->splitUrl();
         $namespace = sprintf("\\Modules\\%s\\Controllers\\", ucfirst($this->url_module));
+
         if (!$this->url_controller) {
             $controller = $namespace . 'HomeController';
             $page = new $controller();
             $page->index();
-        } elseif (file_exists(APP . ucfirst($this->url_module) . DS . 'Controllers' . DS . ucfirst($this->url_controller) . 'Controller.php')) {
+        } elseif (file_exists(PATH_APP . 'Modules' . DS . ucfirst($this->url_module) . DS . 'Controllers' . DS . ucfirst($this->url_controller) . 'Controller.php')) {
 
-            $controller = "\\Controllers\\" . ucfirst($this->url_controller) . 'Controller';
+            $controller = $namespace . ucfirst($this->url_controller) . 'Controller';
             $this->url_controller = new $controller();
 
             // check for method: does such a method exist in the controller ?
@@ -46,20 +47,39 @@ class App
                     // no action defined: call the default index() method of a selected controller
                     $this->url_controller->index();
                 } else {
-                    header('location: ' . URL . 'error');
+                    Service::getRedirect()->to("/error");
                 }
             }
         } else {
-            header('location: ' . URL . 'error');
+            Service::getRedirect()->to("/error");
         }
     }
 
     private function loadServices()
     {
+        $config = $this->loadFile(PATH_APP . 'Config' . DS . 'app.php');
+        $config['PATH_MODULE'] = PATH_APP . 'Modules' . DS . ucfirst($this->url_module);
 
-        $db_config = $this->loadFile(APP . 'Config' . DS . 'database.php');
+        Service::defDatabase(
+            '\Core\Database\EasyPDO',
+            array(
+                sprintf('%s:host=%s;dbname=%s', $config['DB_TYPE'], $config['DB_HOST'], $config['DB_NAME']),
+                $config['DB_USER'],
+                $config['DB_PASS']
+            )
+        );
 
-        Service::defDatabase('\Helpers\Database\EasyPDO', array(sprintf('mysql:host=%s;dbname=%s', $db_config['host'], $db_config['database']), $db_config['username'], $db_config['password']));
+        Service::defConfig('\Core\Helpers\ConfigLoader', array($config));
+
+        Service::defText('\Core\System\Text', array(Service::getConfig()->get("site_lang")));
+
+        Service::defSession('\Core\Auth\Session');
+        Service::defAuth('\Core\Auth\Auth');
+
+        Service::defRequest('\Core\Request\Request');
+        Service::defRedirect('\Core\Request\Redirect');
+
+        Service::defView('\Core\System\View', array($this->requestInfo()));
 
     }
 
@@ -68,6 +88,17 @@ class App
         if (file_exists($file)) {
             return include $file;
         }
+        return false;
+    }
+
+    public function requestInfo()
+    {
+        return array(
+            "module" => ucfirst($this->url_module),
+            "controller" => ucfirst($this->url_controller),
+            "action" => $this->url_action,
+            "params" => $this->url_params
+        );
     }
 
     private function splitUrl()

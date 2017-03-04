@@ -25,8 +25,8 @@ class Autoload
     {
         $class = str_replace('Zaitona\\', '', $class);
         $file = strtr($class, '\\', DIRECTORY_SEPARATOR) . $ext;
-        if (file_exists(APP . $file)) {
-            return APP . $file;
+        if (file_exists(PATH_APP . $file)) {
+            return PATH_APP . $file;
         }
         return false;
     }

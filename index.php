@@ -2,10 +2,9 @@
 
 define('DS',DIRECTORY_SEPARATOR);
 define('ROOT', __DIR__ . DS);
-define('APP', ROOT . 'application' . DS);
+define('PATH_APP', ROOT . 'application' . DS);
 
-require APP . 'Config/app.php';
-require APP . 'autoload.php';
+require PATH_APP . 'autoload.php';
 
 $autoload = new Autoload();
 $autoload->register();

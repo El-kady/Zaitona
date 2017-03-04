@@ -1,0 +1,10 @@
+.login-controller {
+    background-color: #DADADA;
+}
+.login-controller > .grid {
+    height: 100%;
+}
+
+.login-controller .column {
+    max-width: 450px;
+}

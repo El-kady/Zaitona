@@ -2,13 +2,17 @@
 
 namespace Modules\Frontend\Controllers;
 
-use \Helpers\Service\Service;
+use \Core\Service\Service;
+use \Core\System\BaseController;
 
-class HomeController
+class HomeController extends BaseController
 {
 
     public function index()
     {
+
+        var_dump(Service::getConfig()->get("site_name"));
+
         foreach (Service::getDatabase()->fetchAll("SELECT * FROM `users` ") as $user) {
             echo $user['id']."<br>";
         }
