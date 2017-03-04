@@ -7,6 +7,8 @@ use Core\Auth\Session;
 
 class View
 {
+    private $page_title;
+
     private $module;
     private $controller;
     private $action;
@@ -64,6 +66,17 @@ class View
 
         Service::getSession()->set('feedback_positive', null);
         Service::getSession()->set('feedback_negative', null);
+    }
+
+    public function setTitle($title = "")
+    {
+        $this->page_title = $title;
+        return $this;
+    }
+
+    private function text($key)
+    {
+        return Service::getText()->get($key);
     }
 
     private function get($property, $default = "")

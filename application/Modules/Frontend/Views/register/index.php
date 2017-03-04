@@ -1,13 +1,12 @@
 <div class="ui text container">
-
     <div class="ui middle aligned center aligned grid">
         <div class="column">
             <h2 class="ui teal image header">
                 <div class="content">
-                    <?php echo $this->text("LOGIN_TITLE") ?>
+                    <?php echo $this->text("REGISTER_TITLE") ?>
                 </div>
             </h2>
-            <form method="post" action="<?php echo $this->route(["action" => "login"]); ?>" class="ui large form">
+            <form method="post" action="<?php echo $this->route(["action" => "register"]); ?>" class="ui large form">
                 <div class="ui stacked segment">
                     <div class="field">
                         <div class="ui left icon input">
@@ -21,17 +20,19 @@
                             <input type="password" name="password" placeholder="<?php echo $this->text("PASSWORD"); ?>">
                         </div>
                     </div>
-                    <button class="ui fluid large teal submit button"><?php echo $this->text("LOGIN"); ?></button>
+                    <button class="ui fluid large teal submit button"><?php echo $this->text("REGISTER"); ?></button>
                 </div>
             </form>
 
             <?php $this->renderFeedbackMessages(); ?>
 
             <div class="ui message">
-                <?php echo $this->text("LOGIN_HINT"); ?> <a
-                    href="<?php echo $this->route(["controller" => "register"]); ?>"> <?php echo $this->text("REGISTER"); ?></a>
+                <?php echo $this->text("REGISTER_HINT"); ?> <a href="<?php echo $this->route(["controller" => "login"]); ?>"> <?php echo $this->text("LOGIN"); ?></a>
             </div>
         </div>
     </div>
 </div>
+
+
+
 

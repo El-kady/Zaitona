@@ -40,7 +40,7 @@ class EasyPDO extends \PDO
     private function _prepare($sql, $bind = array())
     {
         $stmt = $this->prepare($sql);
-var_dump($sql);
+
         if (!$stmt) {
             $errorInfo = $this->errorInfo();
             throw new \PDOException("Database error [{$errorInfo[0]}]: {$errorInfo[2]}, driver error code is $errorInfo[1]");

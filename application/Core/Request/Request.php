@@ -4,10 +4,10 @@ namespace Core\Request;
 class Request
 {
 
-    public function post($key, $clean = false)
+    public function post($key, $clean = true)
     {
         if (isset($_POST[$key])) {
-            return ($clean) ? trim(strip_tags($_POST[$key])) : $_POST[$key];
+            return ($clean) ? $this->XSSFilter(trim(strip_tags($_POST[$key]))) : $_POST[$key];
         }
     }
 
@@ -30,7 +30,7 @@ class Request
         }
     }
 
-    public function XSSFilter(&$value)
+    public function XSSFilter($value)
     {
         if (is_string($value)) {
             $value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');

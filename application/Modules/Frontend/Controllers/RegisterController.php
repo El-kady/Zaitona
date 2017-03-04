@@ -7,7 +7,7 @@ use \Core\System\BaseController;
 
 use \Modules\Frontend\Models\User;
 
-class LoginController extends BaseController
+class RegisterController extends BaseController
 {
     private $user;
 
@@ -19,20 +19,15 @@ class LoginController extends BaseController
 
     public function index()
     {
-        Service::getView()->setTitle(Service::getText()->get("LOGIN_TITLE"))->render("login/index");
+        Service::getView()->setTitle(Service::getText()->get("REGISTER_TITLE"))->render("register/index");
     }
 
-    public function login()
+    public function register()
     {
 
         $email = Service::getRequest()->post("email");
         $password = Service::getRequest()->post("password");
 
-        if ($this->user->login($email,$password)) {
-
-        }else{
-            Service::getRedirect()->to("/login");
-        }
 
     }
 

@@ -30,7 +30,6 @@ class ConfigLoader
                 }
             }
         }
-        var_dump("__construct");
     }
 
     public function get($key, $default = "")
