@@ -18,6 +18,12 @@ class BaseModel
             )
         );
     }
+    public function getAll()
+    {
+        return Service::getDatabase()->fetchAll(
+            sprintf("SELECT * FROM %s ",$this->table)
+        );
+    }
     public function insert($data){
         return Service::getDatabase()->insert($this->table,$data);
     }
