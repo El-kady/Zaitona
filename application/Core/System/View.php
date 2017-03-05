@@ -26,6 +26,11 @@ class View
         }
     }
 
+    public function assign($key,$value){
+        $this->{$key} = $value;
+        return $this;
+    }
+
     public function render($filename, $data = null)
     {
         if ($data) {

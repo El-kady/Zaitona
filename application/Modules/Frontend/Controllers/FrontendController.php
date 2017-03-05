@@ -9,11 +9,13 @@ use \Modules\Frontend\Models\Category;
 
 class FrontendController extends BaseController
 {
-	private $category;
+	protected $category;
 	public function __construct()
 	{
   		parent::__construct();
   		$this->category = new Category();
+  		$categories = $this->category->getAll();
+		Service::getView()->assign("categories",$categories);
 	}
 
 

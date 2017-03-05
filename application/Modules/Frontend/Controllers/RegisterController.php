@@ -7,7 +7,7 @@ use \Core\System\BaseController;
 
 use \Modules\Frontend\Models\User;
 
-class RegisterController extends BaseController
+class RegisterController extends FrontendController
 {
     private $user;
 
