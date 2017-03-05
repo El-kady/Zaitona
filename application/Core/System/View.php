@@ -117,4 +117,8 @@ class View
     {
         return sprintf("<link rel='stylesheet' href='%s/assets/%s'>\n", Service::getConfig()->get("URL"), $filename);
     }
+    public function loadJSFile($filename)
+    {
+        return sprintf("<script type='text/javascript' src='%s/assets/%s'></script>\n", Service::getConfig()->get("URL"), $filename);
+    }
 }
