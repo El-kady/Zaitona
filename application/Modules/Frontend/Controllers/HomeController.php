@@ -5,7 +5,7 @@ namespace Modules\Frontend\Controllers;
 use \Core\Service\Service;
 use \Core\System\BaseController;
 
-class HomeController extends BaseController
+class HomeController extends FrontendController
 {
 
     public function index()
