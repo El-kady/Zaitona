@@ -18,4 +18,7 @@ class BaseModel
             )
         );
     }
+    public function insert($data){
+        return Service::getDatabase()->insert($this->table,$data);
+    }
 }

@@ -27,8 +27,7 @@ class RegisterController extends BaseController
 
         $email = Service::getRequest()->post("email");
         $password = Service::getRequest()->post("password");
-
-
+        $this->user->insert(['email'=>$email,'password_hash'=>$password,"username" =>"fggfgfg","created_at" => "2017-03-10 00:00:00"]);
     }
 
 }

@@ -13,10 +13,10 @@ return array(
     'URL' => 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']),
 
     'DB_TYPE' => 'mysql',
-    'DB_HOST' => '127.0.0.1',
+    'DB_HOST' => 'localhost',
     'DB_NAME' => 'zaitona',
     'DB_USER' => 'root',
-    'DB_PASS' => '123456',
+    'DB_PASS' => '',
     'DB_PORT' => '3306',
     'DB_CHARSET' => 'utf8',
 
