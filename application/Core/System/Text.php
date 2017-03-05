@@ -14,6 +14,7 @@ class Text
 
     public function get($key, $data = null)
     {
+        $key = strtoupper($key);
         // if not $key
         if (!$key) {
             return null;

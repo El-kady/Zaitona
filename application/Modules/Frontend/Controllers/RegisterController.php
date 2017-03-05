@@ -24,10 +24,20 @@ class RegisterController extends BaseController
 
     public function register()
     {
+        $data = [
 
-        $email = Service::getRequest()->post("email");
-        $password = Service::getRequest()->post("password");
-        $this->user->insert(['email'=>$email,'password_hash'=>$password,"username" =>"fggfgfg","created_at" => "2017-03-10 00:00:00"]);
+            "name" =>  Service::getRequest()->post("name"),
+            "email" => Service::getRequest()->post("email"),
+            "password" => Service::getRequest()->post("password")
+        ];
+
+       
+        if($this->user->register($data)){
+
+        }else{
+            Service::getRedirect()->to("/register");
+        }
+
     }
 
 }

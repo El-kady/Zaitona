@@ -27,4 +27,27 @@ class User extends BaseModel
         }
         return false;
     }
+
+    public function register($data){
+
+        foreach ($data as $key => $value) {
+            if(empty($value)){
+                Service::getSession()->add('feedback_negative', sprintf(Service::getText()->get("FIELD_IS_REQUIRED"),Service::getText()->get($key)));
+            }
+        }
+
+        if (count(Service::getSession()->get('feedback_negative')) == 0)
+        {
+
+            $data["password"] = password_hash($data["password"],PASSWORD_DEFAULT);
+            $data["active"] = 1;
+
+            $this->insert($data);
+            return true;
+        }
+
+        return false;
+
+    }
+
 }

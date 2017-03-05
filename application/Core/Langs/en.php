@@ -9,9 +9,14 @@ return [
     "EMAIL" => "E-mail address",
     "PASSWORD" => "Password",
 
+    "NAME" => "Name",
+
+
     "REGISTER_HINT" => "Have an account?",
     "LOGIN_HINT" => "New to us?",
 
     "USERNAME_OR_PASSWORD_WRONG" => "The username or password is incorrect. Please try again.",
     "FILL_ALL_FIELDS" => "Please fill all fields then try again.",
+
+    "FIELD_IS_REQUIRED" => "%s is required"
 ];
