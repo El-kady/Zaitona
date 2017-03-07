@@ -17,7 +17,7 @@ class FrontendController extends BaseController
 	{
   		parent::__construct();
   		$this->category = new Category();
-  		$categories = $this->category->getAll();
+  		$categories = $this->category->getTree();
 		Service::getView()->assign("categories",$categories);
 		$this->course = new Course();
   		$courses = $this->course->getAll();

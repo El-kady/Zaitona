@@ -6,10 +6,18 @@ return [
     "REGISTER" => "Sign Up",
     "REGISTER_TITLE" => "Create a new account",
 
+    "HOME" => "Home",
+    "HOME_TITLE" => "You are at home",
+
     "EMAIL" => "E-mail address",
     "PASSWORD" => "Password",
 
     "NAME" => "Name",
+
+    "CATEGORIES" => "Categories",
+    "SUBCATEGORIES" => "Subcategories",
+    "COURSES" => "Courses",
+    "MATERIAL" => "Material",
 
 
     "REGISTER_HINT" => "Have an account?",

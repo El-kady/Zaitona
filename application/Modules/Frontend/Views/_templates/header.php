@@ -52,34 +52,38 @@
             <a class="toc item">
               <i class="sidebar icon"></i>
             </a>
-            <a class="active item">Home</a>
+            <a class="item" href="<?php echo $this->route(["controller" => "home"]); ?>"><?php echo $this->loadImg("img/olive.png"); ?></a>
+            <a class="active item" href="<?php echo $this->route(["controller" => "home"]); ?>"><?php echo $this->text("HOME"); ?></a>
             <div class="ui pointing dropdown link item">
-              <span class="text">Categories</span>
+              <span class="text"><?php echo $this->text("CATEGORIES"); ?></span>
               <i class="dropdown icon"></i>
               <div class="menu">
-                <div class="header">Categories</div>
+                <div class="header"><?php echo $this->text("CATEGORIES"); ?></div>
+                <div class="divider"></div>
                 <?php foreach ($this->categories as $category) : ?>
                 <div class="item">
                   <i class="dropdown icon"></i>
-                  <span class="text"><?php echo $category['title']; ?></span>
+                  <span href="#"><?php echo $category['title']; ?></span>
+                  <?php if (count($category['subcategories']) > 0) :?>
                   <div class="menu">
-                    <?php foreach ($this->courses as $course) : ?>
-                    <?php if ($course['category_id'] == $category['id']) : ?>
-                    <div class="item"><?php echo $course['title']; ?></div>
-                    <?php endif; ?>
+                    <div class="header"><?php echo $this->text("SUBCATEGORIES"); ?></div>
+                    <div class="divider"></div>
+                    <?php foreach ($category['subcategories'] as $subcategory) : ?>
+                    <div class="item" href="#"><?php echo $subcategory['title']; ?></div>
                     <?php endforeach; ?>
                   </div>
+                  <?php endif; ?>
                 </div>
                 <?php endforeach; ?>
               </div>
             </div>
               
             </a>
-            <a class="item">Company</a>
             <a class="item">Careers</a>
+            <a class="item">About Us</a>
             <div class="right item">
-              <a class="ui inverted button">Log in</a>
-              <a class="ui inverted button">Sign Up</a>
+              <a class="ui inverted button" href="<?php echo $this->route(["controller" => "login"]); ?>"><?php echo $this->text("LOGIN"); ?></a>
+              <a class="ui inverted button" href="<?php echo $this->route(["controller" => "register"]); ?>"><?php echo $this->text("REGISTER"); ?></a>
             </div>
           </div>
         </div>

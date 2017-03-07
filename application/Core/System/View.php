@@ -121,4 +121,8 @@ class View
     {
         return sprintf("<script type='text/javascript' src='%s/assets/%s'></script>\n", Service::getConfig()->get("URL"), $filename);
     }
+    public function loadImg($filename)
+    {
+        return sprintf("<img src='%s/assets/%s'/>\n", Service::getConfig()->get("URL"), $filename);
+    }
 }
