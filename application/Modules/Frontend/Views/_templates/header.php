@@ -53,34 +53,24 @@
               <i class="sidebar icon"></i>
             </a>
             <a class="active item">Home</a>
-            
             <div class="ui pointing dropdown link item">
               <span class="text">Categories</span>
               <i class="dropdown icon"></i>
               <div class="menu">
                 <div class="header">Categories</div>
+                <?php foreach ($this->categories as $category) : ?>
                 <div class="item">
                   <i class="dropdown icon"></i>
-                  <span class="text">Clothing</span>
+                  <span class="text"><?php echo $category['title']; ?></span>
                   <div class="menu">
-                    <div class="header">Mens</div>
-                    <div class="item">Shirts</div>
-                    <div class="item">Pants</div>
-                    <div class="item">Jeans</div>
-                    <div class="item">Shoes</div>
-                    <div class="divider"></div>
-                    <div class="header">Womens</div>
-                    <div class="item">Dresses</div>
-                    <div class="item">Shoes</div>
-                    <div class="item">Bags</div>
+                    <?php foreach ($this->courses as $course) : ?>
+                    <?php if ($course['category_id'] == $category['id']) : ?>
+                    <div class="item"><?php echo $course['title']; ?></div>
+                    <?php endif; ?>
+                    <?php endforeach; ?>
                   </div>
                 </div>
-                <div class="item">Home Goods</div>
-                <div class="item">Bedroom</div>
-                <div class="divider"></div>
-                <div class="header">Order</div>
-                <div class="item">Status</div>
-                <div class="item">Cancellations</div>
+                <?php endforeach; ?>
               </div>
             </div>
               
@@ -99,5 +89,3 @@
 
 
 </header>
-
-
