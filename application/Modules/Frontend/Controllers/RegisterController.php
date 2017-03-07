@@ -33,7 +33,7 @@ class RegisterController extends FrontendController
 
        
         if($this->user->register($data)){
-
+            Service::getRedirect()->to("/login");
         }else{
             Service::getRedirect()->to("/register");
         }

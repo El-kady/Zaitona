@@ -18,7 +18,7 @@
 
                     <div class="field">
                         <div class="ui left icon input">
-                            <i class="user icon"></i>
+                            <i class="mail icon"></i>
                             <input type="text" name="email" placeholder="<?php echo $this->text("EMAIL"); ?>">
                         </div>
                     </div>
