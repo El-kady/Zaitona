@@ -14,8 +14,10 @@ class User extends BaseModel
         if (!empty($email) && !empty($password)) {
             if ($user = $this->getRow($email, "email")) {
 
-                if (password_verify($password, $user['password_hash'])) {
-
+                if (md5($password) == $user['password']) {
+                    if($this->doLogin($user)){
+                        return true;
+                    }
                 } else {
                     Service::getSession()->add('feedback_negative', Service::getText()->get("USERNAME_OR_PASSWORD_WRONG"));
                 }
@@ -41,14 +43,18 @@ class User extends BaseModel
             Service::getSession()->add('feedback_negative', Service::getText()->get("EMAIL_ALREADY_EXISTS"));
         }
 
-        if (!empty($data["retype_password"]) && $data["retype_password"] != $data["password"]){
+        if (!empty($data["retype_password"]) && $data["retype_password"] != $data["password"]) {
             Service::getSession()->add('feedback_negative', Service::getText()->get("PASSWORDS_NOT_MATCH"));
         }
 
         if (count(Service::getSession()->get('feedback_negative')) == 0) {
-            $data["password"] = md5($data["password"]);
-            $data["active"] = 1;
-            if($this->insert($data)){
+            $record = [
+                "name" => $data["name"],
+                "email" => $data["email"],
+                "password" => md5($data["password"]),
+                "active" => 1
+            ];
+            if ($this->insert($record)) {
                 return true;
             }
 
@@ -57,5 +63,16 @@ class User extends BaseModel
         return false;
 
     }
+        public function doLogin($user){
 
+            session_regenerate_id(true);
+            $_SESSION = array();
+            Service::getSession()->set('user_id',$user["id"]);
+            Service::getSession()->set('name',$user["name"]);
+            Service::getSession()->set('email',$user["email"]);
+            Service::getSession()->set('account_type',$user["account_type"]);
+            Service::getSession()->set('user_logged_in',true);
+
+            return true;
+        }
 }
