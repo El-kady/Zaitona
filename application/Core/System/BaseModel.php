@@ -26,6 +26,16 @@ class BaseModel
         );
     }
 
+    public function getAllByCond($value,$field = "id")
+    {
+        return Service::getDatabase()->fetchAll(
+            sprintf("SELECT * FROM %s WHERE %s = :value",$this->table,$field),
+            array(
+                ":value" => $value
+            )
+        );
+    }
+
     public function insert($data){
         return Service::getDatabase()->insert($this->table,$data);
     }

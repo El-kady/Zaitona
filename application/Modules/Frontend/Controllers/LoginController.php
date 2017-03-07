@@ -29,7 +29,7 @@ class LoginController extends FrontendController
         $password = Service::getRequest()->post("password");
 
         if ($this->user->login($email,$password)) {
-
+            Service::getRedirect()->to("/home");
         }else{
             Service::getRedirect()->to("/login");
         }
