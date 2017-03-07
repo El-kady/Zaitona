@@ -26,15 +26,16 @@ class RegisterController extends FrontendController
     {
         $data = [
 
-            "name" =>  Service::getRequest()->post("name"),
+            "name" => Service::getRequest()->post("name"),
             "email" => Service::getRequest()->post("email"),
-            "password" => Service::getRequest()->post("password")
+            "password" => Service::getRequest()->post("password"),
+            "retype_password" => Service::getRequest()->post("retype_password")
         ];
 
-       
-        if($this->user->register($data)){
 
-        }else{
+        if ($this->user->register($data)) {
+            Service::getRedirect()->to("/login");
+        } else {
             Service::getRedirect()->to("/register");
         }
 

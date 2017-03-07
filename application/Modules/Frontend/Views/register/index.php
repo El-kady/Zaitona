@@ -18,7 +18,7 @@
 
                     <div class="field">
                         <div class="ui left icon input">
-                            <i class="user icon"></i>
+                            <i class="mail icon"></i>
                             <input type="text" name="email" placeholder="<?php echo $this->text("EMAIL"); ?>">
                         </div>
                     </div>
@@ -27,6 +27,13 @@
                         <div class="ui left icon input">
                             <i class="lock icon"></i>
                             <input type="password" name="password" placeholder="<?php echo $this->text("PASSWORD"); ?>">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="lock icon"></i>
+                            <input type="password" name="retype_password" placeholder="<?php echo $this->text("RETYPE_PASSWORD"); ?>">
                         </div>
                     </div>
 
