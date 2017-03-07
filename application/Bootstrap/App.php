@@ -95,8 +95,8 @@ class App
     {
         return array(
             "module" => ucfirst($this->url_module),
-            "controller" => ucfirst($this->url_controller),
-            "action" => $this->url_action,
+            "controller" => (!empty($this->url_controller)) ? ucfirst($this->url_controller) : "Home",
+            "action" => (!empty($this->url_action)) ? $this->url_action : "index",
             "params" => $this->url_params
         );
     }

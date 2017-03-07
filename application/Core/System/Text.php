@@ -30,10 +30,10 @@ class Text
             $this->texts = require(dirname(__DIR__).'/Langs/' . $this->lang . '.php');
         }
 
-        if (!array_key_exists($key, $this->texts)) {
-            return null;
+        if (array_key_exists($key, $this->texts)) {
+            return $this->texts[$key];
         }
 
-        return $this->texts[$key];
+        return $key;
     }
 }

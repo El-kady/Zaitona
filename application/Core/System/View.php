@@ -39,9 +39,9 @@ class View
             }
         }
 
-        require $this->views_path . '_templates/header.php';
-        require $this->views_path . $filename . '.php';
-        require $this->views_path . '_templates/footer.php';
+        $this->loadView('_templates/header.php');
+        $this->loadView($filename . '.php');
+        $this->loadView('_templates/footer.php');
     }
 
     public function renderWithoutHeaderAndFooter($filename, $data = null)
@@ -71,6 +71,11 @@ class View
 
         Service::getSession()->set('feedback_positive', null);
         Service::getSession()->set('feedback_negative', null);
+    }
+
+    public function loadView($file)
+    {
+        require $this->views_path . $file;
     }
 
     public function setTitle($title = "")

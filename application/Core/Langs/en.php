@@ -1,5 +1,11 @@
 <?php
 return [
+    "HOME_PAGE" => "Home Page",
+    "SETTINGS" => "Settings",
+    "CATEGORIES" => "Categories",
+
+    "ADD" => "Add",
+
     "LOGIN" => "Login",
     "LOGIN_TITLE" => "Log-in to your account",
 
