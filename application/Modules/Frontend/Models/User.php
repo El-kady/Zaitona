@@ -41,6 +41,10 @@ class User extends BaseModel
             Service::getSession()->add('feedback_negative', Service::getText()->get("EMAIL_ALREADY_EXISTS"));
         }
 
+        if (!empty($data["retype_password"]) && $data["retype_password"] != $data["password"]){
+            Service::getSession()->add('feedback_negative', Service::getText()->get("PASSWORDS_NOT_MATCH"));
+        }
+
         if (count(Service::getSession()->get('feedback_negative')) == 0) {
             $data["password"] = md5($data["password"]);
             $data["active"] = 1;

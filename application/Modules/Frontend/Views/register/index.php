@@ -30,6 +30,13 @@
                         </div>
                     </div>
 
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="lock icon"></i>
+                            <input type="password" name="retype_password" placeholder="<?php echo $this->text("RETYPE_PASSWORD"); ?>">
+                        </div>
+                    </div>
+
                     <button class="ui fluid large teal submit button"><?php echo $this->text("REGISTER"); ?></button>
                 </div>
             </form>

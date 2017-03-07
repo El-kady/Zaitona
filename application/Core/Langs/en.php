@@ -8,7 +8,7 @@ return [
 
     "EMAIL" => "E-mail address",
     "PASSWORD" => "Password",
-
+    "RETYPE_PASSWORD" => "Re-type Password",
     "NAME" => "Name",
 
 
@@ -20,5 +20,6 @@ return [
 
     "FIELD_IS_REQUIRED" => "%s is required",
 
-    "EMAIL_ALREADY_EXISTS"=>"Email Is Already Exists"
+    "EMAIL_ALREADY_EXISTS" => "Email Is Already Exists",
+    "PASSWORDS_NOT_MATCH" => "Passwords Don't Match"
 ];
