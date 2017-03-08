@@ -40,8 +40,10 @@
                                 <tr>
                                     <td>+ <strong><?php echo $cat["title"]; ?></strong></td>
                                     <td class="center aligned">
-                                        <a class="ui mini blue edit button" href="<?php echo $this->route(["action" => "edit","params" => [$cat["id"]]]); ?>"><i class="edit icon"></i> <?php echo $this->text("EDIT"); ?></a>
-                                        <a class="ui mini red button" href="<?php echo $this->route(["action" => "delete","params" => [$cat["id"]]]); ?>"><i class="trash icon"></i> <?php echo $this->text("DELETE"); ?></a>
+                                        <div class="ui buttons mini">
+                                            <a class="blue ui button" href="<?php echo $this->route(["action" => "edit","params" => [$cat["id"]]]); ?>"><i class="edit icon"></i> <?php echo $this->text("EDIT"); ?></a>
+                                            <a class="negative ui button" href="<?php echo $this->route(["action" => "delete","params" => [$cat["id"]]]); ?>"><i class="trash icon"></i> <?php echo $this->text("DELETE"); ?></a>
+                                        </div>
                                     </td>
                                 </tr>
                                 <?php if (isset($cat["children"]) && count($cat["children"])){ ?>
@@ -49,8 +51,10 @@
                                         <tr>
                                             <td>|-- <?php echo $sub["title"]; ?></td>
                                             <td class="center aligned">
-                                                <a class="ui mini blue edit button" href="<?php echo $this->route(["action" => "edit","params" => [$sub["id"]]]); ?>"><i class="edit icon"></i> <?php echo $this->text("EDIT"); ?></a>
-                                                <a class="ui mini red button" href="<?php echo $this->route(["action" => "delete","params" => [$sub["id"]]]); ?>"><i class="trash icon"></i> <?php echo $this->text("DELETE"); ?></a>
+                                                <div class="ui buttons mini">
+                                                    <a class="blue ui button" href="<?php echo $this->route(["action" => "edit","params" => [$sub["id"]]]); ?>"><i class="edit icon"></i> <?php echo $this->text("EDIT"); ?></a>
+                                                    <a class="negative ui button" href="<?php echo $this->route(["action" => "delete","params" => [$sub["id"]]]); ?>"><i class="trash icon"></i> <?php echo $this->text("DELETE"); ?></a>
+                                                </div>
                                             </td>
                                         </tr>
                                     <?php } ?>

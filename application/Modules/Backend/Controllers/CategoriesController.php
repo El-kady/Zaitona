@@ -18,13 +18,17 @@ class CategoriesController extends BackendController
     public function index()
     {
         $tree = $this->category->getTree();
-        Service::getView()->setTitle(Service::getText()->get("CATEGORIES"))->render("categories/index", ["tree" => $tree]);
+        Service::getView()
+            ->setTitle(Service::getText()->get("CATEGORIES"))
+            ->render("categories/index", ["tree" => $tree]);
     }
 
     public function add()
     {
         $parent_cats = $this->category->getAllByCond(0, "parent_id");
-        Service::getView()->setTitle(Service::getText()->get("ADD"))->render("categories/form", ["parent_cats" => $parent_cats]);
+        Service::getView()
+            ->setTitle(Service::getText()->get("ADD"))
+            ->render("categories/form", ["parent_cats" => $parent_cats]);
     }
 
     public function edit($id)
@@ -34,7 +38,7 @@ class CategoriesController extends BackendController
 
         $parent_cats = $this->category->getAllByCond(0, "parent_id");
         Service::getView()
-            ->setTitle(Service::getText()->get("ADD"))
+            ->setTitle(Service::getText()->get("EDIT"))
             ->render("categories/form", ["id" => $row["id"],"parent_cats" => $parent_cats]);
     }
 

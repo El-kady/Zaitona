@@ -3,6 +3,8 @@ return [
     "HOME_PAGE" => "Home Page",
     "SETTINGS" => "Settings",
     "CATEGORIES" => "Categories",
+    "SECTIONS" => "Sections",
+    "COURSES" => "Courses",
     "MY_ACCOUNT" => "My Account",
     "LOGOUT" => "Logout",
     "SITE_NAME" => "Site Name",
@@ -10,8 +12,10 @@ return [
 
     "CATEGORY" => "Category",
     "PARENT_ID" => "Parent",
+    "CATEGORY_ID" => "Category",
     "PARENT_CATEGORY" => "Parent Category",
     "PRIMARY_CATEGORY" => "Primary Category",
+    "CHOOSE_ONE" => "Choose One",
 
     "TITLE" => "Title",
     "ADD" => "Add",
@@ -59,5 +63,9 @@ return [
     "NO_ROWS" => "No data to display right now !",
 
 
-
+    "INTRODUCTION" => "Introduction",
+    "DESCRIPTION" => "Description",
+    "REQUIREMENT" => "Requirement",
+    "AUDIENCE" => "Audience",
+    "FEATURE_IMAGE" => "Feature Image",
 ];
