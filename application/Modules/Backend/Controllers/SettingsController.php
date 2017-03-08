@@ -11,4 +11,9 @@ class SettingsController extends BackendController
         Service::getView()->setTitle(Service::getConfig()->get("site_name"))->render("settings");
     }
 
+    public function save()
+    {
+
+    }
+
 }

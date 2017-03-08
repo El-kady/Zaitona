@@ -32,49 +32,8 @@ class Session
         $_SESSION[$key][] = $value;
     }
 
-
     public function destroy()
     {
         session_destroy();
-    }
-
-
-    public function updateSessionId($userId, $sessionId = null)
-    {
-        Service::getDatabase()->update(
-            "users",
-            array("session_id" => $sessionId),
-            array("user_id" => $userId)
-        );
-    }
-
-    /**
-     * checks for session concurrency
-     */
-    public function isConcurrentSessionExists()
-    {
-        $session_id = session_id();
-        $userId = Session::get('user_id');
-
-        if (isset($userId) && isset($session_id)) {
-
-            $user = Service::getDatabase()->fetchOne("SELECT session_id FROM users WHERE id = :id LIMIT 1",array(":id" => $userId));
-var_dump($user);
-            $userSessionId = !empty($result) ? $result->session_id : null;
-
-            return $session_id !== $userSessionId;
-        }
-
-        return false;
-    }
-
-    /**
-     * Checks if the user is logged in or not
-     *
-     * @return bool user's login status
-     */
-    public function userIsLoggedIn()
-    {
-        return ($this->get('user_logged_in') ? true : false);
     }
 }

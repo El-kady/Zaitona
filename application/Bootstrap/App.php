@@ -76,6 +76,7 @@ class App
         Service::defSession('\Core\Auth\Session');
         Service::defAuth('\Core\Auth\Auth');
 
+        Service::defForm('\Core\Helpers\Form');
         Service::defRequest('\Core\Request\Request');
         Service::defRedirect('\Core\Request\Redirect');
 

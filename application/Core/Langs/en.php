@@ -3,7 +3,15 @@ return [
     "HOME_PAGE" => "Home Page",
     "SETTINGS" => "Settings",
     "CATEGORIES" => "Categories",
+    "MY_ACCOUNT" => "My Account",
+    "LOGOUT" => "Logout",
+    "SITE_NAME" => "Site Name",
+    "SITE_LANG" => "Site Language",
 
+    "CATEGORY" => "Category",
+    "PARENT_CATEGORY" => "Parent Category",
+
+    "TITLE" => "Title",
     "ADD" => "Add",
 
     "LOGIN" => "Login",
@@ -20,7 +28,6 @@ return [
     "RETYPE_PASSWORD" => "Re-type Password",
     "NAME" => "Name",
 
-    "CATEGORIES" => "Categories",
     "SUBCATEGORIES" => "Subcategories",
     "COURSES" => "Courses",
     "MATERIAL" => "Material",
@@ -29,11 +36,18 @@ return [
     "REGISTER_HINT" => "Have an account?",
     "LOGIN_HINT" => "New to us?",
 
-    "USERNAME_OR_PASSWORD_WRONG" => "The username or password is incorrect. Please try again.",
+    "EMAIL_OR_PASSWORD_WRONG" => "The Email or password is incorrect. Please try again.",
     "FILL_ALL_FIELDS" => "Please fill all fields then try again.",
 
     "FIELD_IS_REQUIRED" => "%s is required",
 
     "EMAIL_ALREADY_EXISTS" => "Email Is Already Exists",
-    "PASSWORDS_NOT_MATCH" => "Passwords Don't Match"
+    "PASSWORDS_NOT_MATCH" => "Passwords Don't Match",
+    "EMAIL_NOT_VALID" => "Email address does not valid",
+
+
+
+
+
+
 ];

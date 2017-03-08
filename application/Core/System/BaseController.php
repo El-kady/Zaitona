@@ -14,6 +14,5 @@ class BaseController
 
         // check session concurrency
         Service::getAuth()->checkSessionConcurrency();
-
     }
 }

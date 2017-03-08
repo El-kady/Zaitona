@@ -13,15 +13,19 @@ class CategoriesController extends BackendController
 
     public function add()
     {
-
+        Service::getView()->setTitle(Service::getText()->get("ADD"))->render("categories/add");
     }
 
-    public function edit()
+    public function edit($id)
     {
 
     }
 
-    public function delete()
+    public function save($id){
+
+    }
+
+    public function delete($id)
     {
 
     }

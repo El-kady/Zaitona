@@ -21,7 +21,7 @@
     <header>
         <div class="bigcontainer">
             <div id="logo">
-                <a href="./">
+                <a href="<?php echo $this->route(["module" => "Frontend","controller" => "home","action" => ""]); ?>">
                     <?php echo $this->getConfig("site_name"); ?>
                 </a>
             </div>

@@ -18,18 +18,18 @@
                 </div>
 
                 <div class="ui form fluid vertical segment">
-                    <form name="form" action="<?php echo $this->route(["action" => "save"]); ?>" method="post">
+                    <?php echo $this->form()->open("register", $this->route(["action" => "save"]), ["class" => "ui large form"]); ?>
 
-                        <div class="two fields">
-                            <div class="field">
-                                <label>test</label>
-                                <input type="text" name="sensor_tags">
-                            </div>
+                    <div class="two fields">
+                        <div class="field">
+                            <label><?php echo $this->text("SITE_NAME"); ?></label>
+                            <input type="text" name="site_name" value="<?php echo $this->form()->valueOf("site_name"); ?>">
                         </div>
+                    </div>
 
-                        <input class="ui small blue submit button" type="submit" value="save">
-                    </form>
-                    <!--the form end-->
+                    <input class="ui small blue submit button" type="submit" value="save">
+
+                    <?php echo $this->form()->close(); ?>
                 </div>
 
 
