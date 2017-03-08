@@ -60,7 +60,7 @@
               <div class="menu">
                 <div class="header"><?php echo $this->text("CATEGORIES"); ?></div>
                 <div class="divider"></div>
-                <?php foreach ($this->categories as $category) : ?>
+                <?php foreach ($this->categories_tree as $category) : ?>
                 <div class="item">
                   <i class="dropdown icon"></i>
                   <span href="#"><?php echo $category['title']; ?></span>
@@ -69,7 +69,7 @@
                     <div class="header"><?php echo $this->text("SUBCATEGORIES"); ?></div>
                     <div class="divider"></div>
                     <?php foreach ($category['subcategories'] as $subcategory) : ?>
-                    <div class="item" href="#"><?php echo $subcategory['title']; ?></div>
+                    <div class="item" href="<?php echo $this->route(["controller" => "category" , "action" => "list"]); ?>"><?php echo $subcategory['title']; ?></div>
                     <?php endforeach; ?>
                   </div>
                   <?php endif; ?>

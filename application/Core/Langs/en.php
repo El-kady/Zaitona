@@ -15,10 +15,14 @@ return [
     "NAME" => "Name",
 
     "CATEGORIES" => "Categories",
+    "CATEGORIES_TITLE" => "Categories",
     "SUBCATEGORIES" => "Subcategories",
+    "SUBCATEGORIES_TITLE" => "Subcategories",
     "COURSES" => "Courses",
+    "COURSES_TITLE" => "Courses",
     "MATERIAL" => "Material",
-
+    "MATERIAL_TITLE" => "Material",
+    
 
     "REGISTER_HINT" => "Have an account?",
     "LOGIN_HINT" => "New to us?",
