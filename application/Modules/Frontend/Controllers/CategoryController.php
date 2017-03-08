@@ -24,13 +24,13 @@ class CategoryController extends FrontendController
         Service::getRedirect()->to("/home");
     }
 
-    public function list($id,$page = 0)
+    public function view($id,$page = 0)
     {
         $id = (int)$id;
         if($id > 0){
             $data['category'] = $this->category->getRow($id,'id');
             $data['courses'] = $this->course->getAllByCond($id,'category_id');
-            Service::getView()->setTitle(Service::getText()->get("CATEGORIES_TITLE"))->render("category/list",$data);            
+            Service::getView()->setTitle(Service::getText()->get("CATEGORIES_TITLE"))->render("category/view",$data);
         }else{
             Service::getRedirect()->to("/home");
         }

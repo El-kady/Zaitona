@@ -68,12 +68,12 @@
                                 <div class="item">
                                     <i class="dropdown icon"></i>
                                     <span href="#"><?php echo $category['title']; ?></span>
-                                    <?php if (count($category['subcategories']) > 0) : ?>
+                                    <?php if (isset($category['children']) && count($category['children']) > 0) : ?>
                                         <div class="menu">
                                             <div class="header"><?php echo $this->text("SUBCATEGORIES"); ?></div>
                                             <div class="divider"></div>
-                                            <?php foreach ($category['subcategories'] as $subcategory) : ?>
-                                                <a class="item" href="<?php echo $this->route(["controller" => "category" , "action" => "list" , "params" => ["id" => $subcategory['id']]]); ?>"><?php echo $subcategory['title']; ?></a>
+                                            <?php foreach ($category['children'] as $subcategory) : ?>
+                                                <a class="item" href="<?php echo $this->route(["controller" => "category" , "action" => "view" , "params" => ["id" => $subcategory['id']]]); ?>"><?php echo $subcategory['title']; ?></a>
                                             <?php endforeach; ?>
                                         </div>
                                     <?php endif; ?>
