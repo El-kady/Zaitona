@@ -20,4 +20,9 @@ class Redirect
     {
         header("location: " . Service::getConfig()->get('URL') . $path);
     }
+
+    public function absolute($url)
+    {
+        header("location: " . $url);
+    }
 }

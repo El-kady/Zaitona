@@ -9,10 +9,16 @@ return [
     "SITE_LANG" => "Site Language",
 
     "CATEGORY" => "Category",
+    "PARENT_ID" => "Parent",
     "PARENT_CATEGORY" => "Parent Category",
+    "PRIMARY_CATEGORY" => "Primary Category",
 
     "TITLE" => "Title",
     "ADD" => "Add",
+    "SAVE" => "Save",
+    "EDIT" => "Edit",
+    "DELETE" => "Delete",
+    "OPTIONS" => "Options",
 
     "LOGIN" => "Login",
     "LOGIN_TITLE" => "Log-in to your account",
@@ -46,7 +52,7 @@ return [
     "EMAIL_NOT_VALID" => "Email address does not valid",
 
 
-
+    "NO_ROWS" => "No data to display right now !",
 
 
 

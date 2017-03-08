@@ -19,22 +19,20 @@
 <div class="ui container">
     <!--header begin-->
     <header>
-        <div class="bigcontainer">
-            <div id="logo">
-                <a href="<?php echo $this->route(["module" => "Frontend","controller" => "home","action" => ""]); ?>">
-                    <?php echo $this->getConfig("site_name"); ?>
-                </a>
-            </div>
-            <div class="user">
-                <div class="ui inline labeled icon top right pointing dropdown">
-                    <img class="ui avatar image"
-                         src="<?php echo $this->getConfig("URL"); ?>/assets/backend/images/avatar-default.gif">
-                    欢迎，$用户名
-                    <i class="dropdown icon"></i>
-                    <div class="menu">
-                        <a class="item" href="#"><i class="reply mail icon"></i>返回首页</a>
-                        <a class="item" href="#"><i class="sign out icon"></i>注销登录</a>
-                    </div>
+        <div id="logo">
+            <a href="<?php echo $this->route(["module" => "Frontend","controller" => "home","action" => ""]); ?>">
+                <?php echo $this->getConfig("site_name"); ?>
+            </a>
+        </div>
+        <div class="user">
+            <div class="ui inline labeled icon top right pointing dropdown">
+                <img class="ui avatar image"
+                     src="<?php echo $this->getConfig("URL"); ?>/assets/backend/images/avatar-default.gif">
+                欢迎，$用户名
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    <a class="item" href="#"><i class="reply mail icon"></i>返回首页</a>
+                    <a class="item" href="#"><i class="sign out icon"></i>注销登录</a>
                 </div>
             </div>
         </div>

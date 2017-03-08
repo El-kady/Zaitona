@@ -36,11 +36,32 @@ class BaseModel
         );
     }
 
+    public function buildTree($items) {
+        $children = array(array());
+
+        foreach($items as &$item) $children[$item['parent_id']][] = &$item;
+        unset($item);
+
+        foreach($items as &$item) if (isset($children[$item['id']]))
+            $item['children'] = $children[$item['id']];
+
+        return $children[0];
+    }
+
+
     public function insert($data){
         return Service::getDatabase()->insert($this->table,$data);
     }
 
     public function update($data, $where="", $bind=array()){
         return Service::getDatabase()->update($this->table,$data, $where, $bind);
+    }
+
+    public function save($data, $where = "", $bind = array()){
+        return Service::getDatabase()->save($this->table,$data, $where, $bind);
+    }
+
+    public function delete($where = "", $bind = array()){
+        return Service::getDatabase()->delete($this->table, $where, $bind);
     }
 }

@@ -11,47 +11,64 @@
                         <h3 class="ui dividing header">
                             <i class="large browser icon"></i>
                             <div class="content">
-                                <?php echo $this->text("CATEGORIES");?>
+                                <?php echo $this->text("CATEGORIES"); ?>
                                 <!-- <div class="sub header"></div> -->
                             </div>
                         </h3>
                     </div>
                 </div>
 
-                <div class="ui vertical segment">
-                    <div class="ui small icon input right">
-                        <input type="text" placeholder="输入动作名搜索……">
-                        <i class="search icon"></i>
-                    </div>
-
-                    <a class="ui green small labeled icon add button" href="<?php echo $this->route(["action" => "add"]); ?>"><i class="add icon"></i> <?php echo $this->text("ADD");?></a>
-
-                </div>
-                <div class="ui form fluid vertical segment">
-                    <form name="form" action="/user/actions" method="post">
-                        <table class="ui basic table">
-                            <thead>
-                            <tr>
-                                <th>动作名</th>
-                                <th>类型</th>
-                                <th>是否使用</th>
-                                <th>操作</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>示例动作01</td>
-                                <td>电子邮件</td>
-                                <td><i class="icon close"></i></td>
-                                <td><a class="ui tiny blue edit button" href="./edit_action.html"><i class="edit icon"></i>编辑</a> <a class="ui tiny basic button"><i class="trash icon"></i>删除</a></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </form>
-                    <!--the form end-->
+                <div class="ui vertical">
+                    <a class="ui green small labeled icon add button"
+                       href="<?php echo $this->route(["action" => "add"]); ?>"><i
+                            class="add icon"></i> <?php echo $this->text("ADD"); ?></a>
                 </div>
 
+                <div class="ui fluid vertical segment">
+                    <table class="ui basic table">
+                        <thead>
+                            <tr>
+                                <th><?php echo $this->text("TITLE"); ?></th>
+                                <th class="center aligned" width="250"><?php echo $this->text("OPTIONS"); ?></th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
+                        <?php if (is_array($this->tree) && count($this->tree)){ ?>
+
+                            <?php foreach ((array) $this->tree as $cat) {?>
+                                <tr>
+                                    <td>+ <strong><?php echo $cat["title"]; ?></strong></td>
+                                    <td class="center aligned">
+                                        <a class="ui mini blue edit button" href="<?php echo $this->route(["action" => "edit","params" => [$cat["id"]]]); ?>"><i class="edit icon"></i> <?php echo $this->text("EDIT"); ?></a>
+                                        <a class="ui mini red button" href="<?php echo $this->route(["action" => "delete","params" => [$cat["id"]]]); ?>"><i class="trash icon"></i> <?php echo $this->text("DELETE"); ?></a>
+                                    </td>
+                                </tr>
+                                <?php if (isset($cat["children"]) && count($cat["children"])){ ?>
+                                    <?php foreach ($cat["children"] as $sub) {?>
+                                        <tr>
+                                            <td>|-- <?php echo $sub["title"]; ?></td>
+                                            <td class="center aligned">
+                                                <a class="ui mini blue edit button" href="<?php echo $this->route(["action" => "edit","params" => [$sub["id"]]]); ?>"><i class="edit icon"></i> <?php echo $this->text("EDIT"); ?></a>
+                                                <a class="ui mini red button" href="<?php echo $this->route(["action" => "delete","params" => [$sub["id"]]]); ?>"><i class="trash icon"></i> <?php echo $this->text("DELETE"); ?></a>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+                                <?php } ?>
+                            <?php } ?>
+
+                        <?php }else{ ?>
+                            <tr>
+                                <td class="center aligned" colspan="2">
+                                    <?php echo $this->text("NO_ROWS"); ?>
+                                </td>
+                            </tr>
+                        <?php } ?>
+
+                        </tbody>
+                    </table>
+
+                </div>
 
 
             </div>

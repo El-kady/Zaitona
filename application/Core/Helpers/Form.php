@@ -7,6 +7,7 @@ use \Core\Service\Service;
 class Form
 {
     private $name;
+    private $data;
 
     public function open($name, $action, $attrs = [])
     {
@@ -26,9 +27,14 @@ class Form
         return "</form>";
     }
 
-    public function fill($name, array $data)
+    public function fillTmp($name, array $data)
     {
         Service::getSession()->set($this->formName($name), $data);
+    }
+
+    public function fillData($name, array $data)
+    {
+        $this->data[$this->formName($name)] = $data;
     }
 
     private function formName($name)
@@ -36,13 +42,16 @@ class Form
         return "Form" . $name;
     }
 
-    public function valueOf($name)
+    public function valueOf($name,$default = "")
     {
-        $data = Service::getSession()->get($this->name);
-        if (isset($data[$name])) {
-            return $data[$name];
-        } else {
+        $tmp = Service::getSession()->get($this->name);
 
+        if (isset($tmp[$name])) {
+            return $tmp[$name];
+        } elseif (isset($this->data[$this->name][$name])) {
+            return $this->data[$this->name][$name];
         }
+
+        return $default;
     }
 }
