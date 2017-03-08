@@ -34,10 +34,14 @@ return [
     "RETYPE_PASSWORD" => "Re-type Password",
     "NAME" => "Name",
 
-    "SUBCATEGORIES" => "Subcategories",
-    "COURSES" => "Courses",
-    "MATERIAL" => "Material",
 
+    "SUBCATEGORIES" => "Subcategories",
+    "SUBCATEGORIES_TITLE" => "Subcategories",
+    "COURSES" => "Courses",
+    "COURSES_TITLE" => "Courses",
+    "MATERIAL" => "Material",
+    "MATERIAL_TITLE" => "Material",
+    
 
     "REGISTER_HINT" => "Have an account?",
     "LOGIN_HINT" => "New to us?",

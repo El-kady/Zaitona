@@ -46,6 +46,7 @@
         <a class="item">Signup</a>
     </div>
     <div class="pusher">
+
         <div class="ui inverted vertical masthead center aligned segment">
 
             <div class="ui container">
@@ -63,7 +64,7 @@
                         <div class="menu">
                             <div class="header"><?php echo $this->text("CATEGORIES"); ?></div>
                             <div class="divider"></div>
-                            <?php foreach ($this->categories as $category) : ?>
+                            <?php foreach ($this->categories_tree as $category) : ?>
                                 <div class="item">
                                     <i class="dropdown icon"></i>
                                     <span href="#"><?php echo $category['title']; ?></span>
@@ -72,7 +73,7 @@
                                             <div class="header"><?php echo $this->text("SUBCATEGORIES"); ?></div>
                                             <div class="divider"></div>
                                             <?php foreach ($category['subcategories'] as $subcategory) : ?>
-                                                <div class="item" href="#"><?php echo $subcategory['title']; ?></div>
+                                                <a class="item" href="<?php echo $this->route(["controller" => "category" , "action" => "list" , "params" => ["id" => $subcategory['id']]]); ?>"><?php echo $subcategory['title']; ?></a>
                                             <?php endforeach; ?>
                                         </div>
                                     <?php endif; ?>

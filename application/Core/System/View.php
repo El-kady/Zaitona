@@ -123,7 +123,9 @@ class View
         }
 
         $route[] = (isset($data["controller"])) ? $data["controller"] : $this->controller;
-        $route[] = (isset($data["action"])) ? $data["action"] : $this->action;
+        if(isset($data["action"])) {
+            $route[] = $data["action"];
+        } 
 
         if (isset($data["params"])) {
             foreach ((array)$data["params"] as $value) {
