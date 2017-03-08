@@ -76,6 +76,7 @@ class App
         Service::defSession('\Core\Auth\Session');
         Service::defAuth('\Core\Auth\Auth');
 
+        Service::defForm('\Core\Helpers\Form');
         Service::defRequest('\Core\Request\Request');
         Service::defRedirect('\Core\Request\Redirect');
 
@@ -95,8 +96,8 @@ class App
     {
         return array(
             "module" => ucfirst($this->url_module),
-            "controller" => ucfirst($this->url_controller),
-            "action" => $this->url_action,
+            "controller" => (!empty($this->url_controller)) ? ucfirst($this->url_controller) : "Home",
+            "action" => (!empty($this->url_action)) ? $this->url_action : "index",
             "params" => $this->url_params
         );
     }

@@ -15,14 +15,14 @@ class User extends BaseModel
             if ($user = $this->getRow($email, "email")) {
 
                 if (md5($password) == $user['password']) {
-                    if($this->doLogin($user)){
+                    if (Service::getAuth()->setLogin($user)) {
                         return true;
                     }
                 } else {
-                    Service::getSession()->add('feedback_negative', Service::getText()->get("USERNAME_OR_PASSWORD_WRONG"));
+                    Service::getSession()->add('feedback_negative', Service::getText()->get("EMAIL_OR_PASSWORD_WRONG"));
                 }
             } else {
-                Service::getSession()->add('feedback_negative', Service::getText()->get("USERNAME_OR_PASSWORD_WRONG"));
+                Service::getSession()->add('feedback_negative', Service::getText()->get("EMAIL_OR_PASSWORD_WRONG"));
             }
         } else {
             Service::getSession()->add('feedback_negative', Service::getText()->get("FILL_ALL_FIELDS"));
@@ -33,10 +33,16 @@ class User extends BaseModel
     public function register($data)
     {
 
+        Service::getForm()->fill('register', $data);
+
         foreach ($data as $key => $value) {
             if (empty($value)) {
                 Service::getSession()->add('feedback_negative', sprintf(Service::getText()->get("FIELD_IS_REQUIRED"), Service::getText()->get($key)));
             }
+        }
+
+        if (!empty($data["email"]) && !filter_var($data["email"], FILTER_VALIDATE_EMAIL)) {
+            Service::getSession()->add('feedback_negative', Service::getText()->get("EMAIL_NOT_VALID"));
         }
 
         if (!empty($data["email"]) && $this->getRow($data["email"], "email")) {
@@ -57,22 +63,9 @@ class User extends BaseModel
             if ($this->insert($record)) {
                 return true;
             }
-
         }
-
         return false;
 
     }
-        public function doLogin($user){
 
-            session_regenerate_id(true);
-            $_SESSION = array();
-            Service::getSession()->set('user_id',$user["id"]);
-            Service::getSession()->set('name',$user["name"]);
-            Service::getSession()->set('email',$user["email"]);
-            Service::getSession()->set('account_type',$user["account_type"]);
-            Service::getSession()->set('user_logged_in',true);
-
-            return true;
-        }
 }

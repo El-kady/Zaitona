@@ -6,45 +6,49 @@
                     <?php echo $this->text("REGISTER_TITLE") ?>
                 </div>
             </h2>
-            <form method="post" action="<?php echo $this->route(["action" => "register"]); ?>" class="ui large form">
-                <div class="ui stacked segment">
+            <?php echo $this->form()->open("register", $this->route(["action" => "register"]), ["class" => "ui large form"]); ?>
+            <div class="ui stacked segment">
 
-                    <div class="field">
-                        <div class="ui left icon input">
-                            <i class="user icon"></i>
-                            <input type="text" name="name" placeholder="<?php echo $this->text("NAME"); ?>">
-                        </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        <input type="text" name="name" value="<?php echo $this->form()->valueOf("name"); ?>"
+                               placeholder="<?php echo $this->text("NAME"); ?>">
                     </div>
-
-                    <div class="field">
-                        <div class="ui left icon input">
-                            <i class="mail icon"></i>
-                            <input type="text" name="email" placeholder="<?php echo $this->text("EMAIL"); ?>">
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <div class="ui left icon input">
-                            <i class="lock icon"></i>
-                            <input type="password" name="password" placeholder="<?php echo $this->text("PASSWORD"); ?>">
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <div class="ui left icon input">
-                            <i class="lock icon"></i>
-                            <input type="password" name="retype_password" placeholder="<?php echo $this->text("RETYPE_PASSWORD"); ?>">
-                        </div>
-                    </div>
-
-                    <button class="ui fluid large teal submit button"><?php echo $this->text("REGISTER"); ?></button>
                 </div>
-            </form>
+
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="mail icon"></i>
+                        <input type="text" name="email" value="<?php echo $this->form()->valueOf("email"); ?>"
+                               placeholder="<?php echo $this->text("EMAIL"); ?>">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        <input type="password" name="password" placeholder="<?php echo $this->text("PASSWORD"); ?>">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        <input type="password" name="retype_password"
+                               placeholder="<?php echo $this->text("RETYPE_PASSWORD"); ?>">
+                    </div>
+                </div>
+
+                <button class="ui fluid large teal submit button"><?php echo $this->text("REGISTER"); ?></button>
+            </div>
+            <?php echo $this->form()->close(); ?>
 
             <?php $this->renderFeedbackMessages(); ?>
 
             <div class="ui message">
-                <?php echo $this->text("REGISTER_HINT"); ?> <a href="<?php echo $this->route(["controller" => "login"]); ?>"> <?php echo $this->text("LOGIN"); ?></a>
+                <?php echo $this->text("REGISTER_HINT"); ?> <a
+                    href="<?php echo $this->route(["controller" => "login"]); ?>"> <?php echo $this->text("LOGIN"); ?></a>
             </div>
         </div>
     </div>

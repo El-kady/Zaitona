@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../Zaitona/.idea/MyMVC.iml" filepath="$PROJECT_DIR$/../Zaitona/.idea/MyMVC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Zaitona.iml" filepath="$PROJECT_DIR$/.idea/Zaitona.iml" />
     </modules>
   </component>
 </project>

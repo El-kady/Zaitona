@@ -16,7 +16,7 @@ class Auth
 
         // if user is NOT logged in...
         // (if user IS logged in the application will not run the code below and therefore just go on)
-        if (!Service::getSession()->userIsLoggedIn()) {
+        if (!Service::getSession()->IsLoggedIn()) {
 
             // ... then treat user as "not logged in", destroy session, redirect to login page
             Service::getSession()->destroy();
@@ -41,13 +41,9 @@ class Auth
      */
     public static function checkAdminAuthentication()
     {
-        // initialize the session (if not initialized yet)
-        Service::getSession()->init();
-
-        // self::checkSessionConcurrency();
 
         // if user is not logged in or is not an admin (= not role type 7)
-        if (!Service::getSession()->userIsLoggedIn() || Service::getSession()->get("user_account_type") != 7) {
+        if (!Service::getSession()->IsLoggedIn() || Service::getSession()->get("user_account_type") != 7) {
 
             // ... then treat user as "not logged in", destroy session, redirect to login page
             Service::getSession()->destroy();
@@ -60,17 +56,67 @@ class Auth
         }
     }
 
-    /**
-     * Detects if there is concurrent session (i.e. another user logged in with the same current user credentials),
-     * If so, then logout.
-     */
-    public static function checkSessionConcurrency(){
-        if(Service::getSession()->userIsLoggedIn()){
-            if(Service::getSession()->isConcurrentSessionExists()){
-                LoginModel::logout();
-                Redirect::home();
+    public function setLogin($user){
+
+        session_regenerate_id(true);
+        $_SESSION = array();
+
+        Service::getSession()->set('user_id',$user["id"]);
+        Service::getSession()->set('user_name',$user["name"]);
+        Service::getSession()->set('user_email',$user["email"]);
+        Service::getSession()->set('user_account_type',$user["account_type"]);
+        Service::getSession()->set('user_logged_in',true);
+
+        $this->updateSessionId($user["id"], session_id());
+
+        return true;
+    }
+
+    public function getUserId()
+    {
+        return ($this->IsLoggedIn()) ? Service::getSession()->get('user_id') : 0;
+    }
+
+    public function IsLoggedIn()
+    {
+        return (Service::getSession()->get('user_logged_in') ? true : false);
+    }
+
+    public function checkSessionConcurrency(){
+        if($this->IsLoggedIn()){
+            if($this->isConcurrentSessionExists()){
+                $this->logout();
+                Service::getRedirect()->home();
                 exit();
             }
         }
+    }
+
+    public function isConcurrentSessionExists()
+    {
+        $session_id = session_id();
+        $userId = Service::getSession()->get('user_id');
+
+        if (isset($userId) && isset($session_id)) {
+            $userSessionId = Service::getDatabase()->fetchOne("SELECT session_id FROM users WHERE id = :id LIMIT 1",array(":id" => $userId));
+            return $session_id !== $userSessionId;
+        }
+
+        return false;
+    }
+
+    public function updateSessionId($userId, $sessionId = null)
+    {
+        Service::getDatabase()->update(
+            "users",
+            array("session_id" => $sessionId),
+            array("id" => (int) $userId)
+        );
+    }
+
+    public function logout()
+    {
+        Service::getSession()->destroy();
+        $this->updateSessionId(Service::getSession()->get('user_id'));
     }
 }

@@ -26,7 +26,8 @@ class View
         }
     }
 
-    public function assign($key,$value){
+    public function assign($key, $value)
+    {
         $this->{$key} = $value;
         return $this;
     }
@@ -39,9 +40,9 @@ class View
             }
         }
 
-        require $this->views_path . '_templates/header.php';
-        require $this->views_path . $filename . '.php';
-        require $this->views_path . '_templates/footer.php';
+        $this->loadView('_templates/header.php');
+        $this->loadView($filename . '.php');
+        $this->loadView('_templates/footer.php');
     }
 
     public function renderWithoutHeaderAndFooter($filename, $data = null)
@@ -73,10 +74,25 @@ class View
         Service::getSession()->set('feedback_negative', null);
     }
 
+    public function loadView($file)
+    {
+        require $this->views_path . $file;
+    }
+
     public function setTitle($title = "")
     {
         $this->page_title = $title;
         return $this;
+    }
+
+    private function IsLoggedIn()
+    {
+        return Service::getAuth()->IsLoggedIn();
+    }
+
+    private function form()
+    {
+        return Service::getForm();
     }
 
     private function text($key)
@@ -94,18 +110,30 @@ class View
         return Service::getConfig()->get($key, $default);
     }
 
+    private function getFromSession($key)
+    {
+        return Service::getSession()->get($key);
+    }
+
     private function route(array $data)
     {
         $route = array();
-
         if ($this->module != "Frontend") {
             $route[] = (isset($data["module"])) ? $data["module"] : $this->module;
         }
 
         $route[] = (isset($data["controller"])) ? $data["controller"] : $this->controller;
-        $route[] = (isset($data["action"])) ? $data["action"] : $this->action;
+        if(isset($data["action"])) {
+            $route[] = $data["action"];
+        } 
 
-        return $this->getConfig("URL") . "/" . implode("/", array_map("strtolower",$route));
+        if (isset($data["params"])) {
+            foreach ((array)$data["params"] as $value) {
+                $route[] = $value;
+            }
+        }
+
+        return $this->getConfig("URL") . "/" . implode("/", array_map("strtolower", $route));
     }
 
     public function encodeHTML($str)
@@ -117,10 +145,12 @@ class View
     {
         return sprintf("<link rel='stylesheet' href='%s/assets/%s'>\n", Service::getConfig()->get("URL"), $filename);
     }
+
     public function loadJSFile($filename)
     {
         return sprintf("<script type='text/javascript' src='%s/assets/%s'></script>\n", Service::getConfig()->get("URL"), $filename);
     }
+
     public function loadImg($filename)
     {
         return sprintf("<img src='%s/assets/%s'/>\n", Service::getConfig()->get("URL"), $filename);

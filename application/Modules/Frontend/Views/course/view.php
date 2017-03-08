@@ -1,0 +1,1 @@
+<div class="header"><?php echo $this->course['title']; ?></div>

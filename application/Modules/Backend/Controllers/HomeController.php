@@ -1,14 +1,14 @@
 <?php
-
-
 namespace Modules\Backend\Controllers;
 
-class HomeController
+use \Core\Service\Service;
+
+class HomeController extends BackendController
 {
 
     public function index()
     {
-        echo 'hello from backend home';
+        Service::getView()->setTitle(Service::getConfig()->get("site_name"))->render("index");
     }
 
 }
