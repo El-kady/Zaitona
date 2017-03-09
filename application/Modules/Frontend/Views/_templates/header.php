@@ -84,7 +84,7 @@
 
                     </a>
                     <a class="item">Careers</a>
-                    <a class="item">About Us</a>
+                    <a class="item" href="<?php echo $this->route(["controller" => "page" , "action" => "about"]); ?>">About Us</a>
                     <div class="right item">
                         <?php if($this->IsLoggedIn()){ ?>
                             <div class="ui inline labeled icon top right pointing dropdown">

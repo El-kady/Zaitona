@@ -42,7 +42,6 @@ return [
 
     "SUBCATEGORIES" => "Subcategories",
     "SUBCATEGORIES_TITLE" => "Subcategories",
-    "COURSES" => "Courses",
     "COURSES_TITLE" => "Courses",
     "MATERIAL" => "Material",
     "MATERIAL_TITLE" => "Material",
