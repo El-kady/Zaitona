@@ -33,7 +33,7 @@ class User extends BaseModel
     public function register($data)
     {
 
-        Service::getForm()->fill('register', $data);
+        Service::getForm()->fillTmp('register', $data);
 
         foreach ($data as $key => $value) {
             if (empty($value)) {
