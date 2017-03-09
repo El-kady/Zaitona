@@ -16,6 +16,7 @@ class Config extends BaseModel
                 Service::getSession()->add('feedback_negative', sprintf(Service::getText()->get("FIELD_IS_REQUIRED"), Service::getText()->get($key)));
             }
         }
+
         if (count(Service::getSession()->get('feedback_negative')) == 0) {
             foreach ($data as $key => $value) {
                 $where = "name = :name";

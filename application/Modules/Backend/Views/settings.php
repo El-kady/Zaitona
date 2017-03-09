@@ -17,6 +17,8 @@
                     </div>
                 </div>
 
+                <?php $this->renderFeedbackMessages(); ?>
+
                 <div class="ui form fluid vertical segment">
                     <?php echo $this->form()->open("settings", $this->route(["action" => "save"]), ["class" => "ui large form"]); ?>
 
