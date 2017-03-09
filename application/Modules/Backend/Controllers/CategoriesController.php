@@ -59,7 +59,9 @@ class CategoriesController extends BackendController
 
     public function delete($id)
     {
-        $this->category->delete("id = :id ",[":id" => (int) $id]);
+        if (Service::getRequest()->post("delete")) {
+            $this->category->delete("id = :id ",[":id" => (int) $id]);
+        }
         Service::getRedirect()->to("/backend/categories");
     }
 

@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="ui fluid vertical segment">
-                    <table class="ui celled striped table">
+                    <table class="ui table">
                         <thead>
                             <tr>
                                 <th><?php echo $this->text("TITLE"); ?></th>
@@ -41,9 +41,9 @@
                                     <td><?php echo $row["title"]; ?></td>
                                     <td class="center aligned">
                                         <div class="ui buttons mini">
-                                            <a class="green ui button" href="<?php echo $this->route(["controller" => "sections","action" => "index","params" => [$row["id"]]]); ?>"><i class="list layout icon"></i> <?php echo $this->text("SECTIONS"); ?></a>
-                                            <a class="blue ui button" href="<?php echo $this->route(["action" => "edit","params" => [$row["id"]]]); ?>"><i class="edit icon"></i> <?php echo $this->text("EDIT"); ?></a>
-                                            <a class="negative ui button" href="<?php echo $this->route(["action" => "delete","params" => [$row["id"]]]); ?>"><i class="trash icon"></i> <?php echo $this->text("DELETE"); ?></a>
+                                            <a class="ui button" href="<?php echo $this->route(["controller" => "sections","action" => "index","params" => [$row["id"]]]); ?>"><i class="list layout icon"></i> <?php echo $this->text("SECTIONS"); ?></a>
+                                            <a class="ui button" href="<?php echo $this->route(["action" => "edit","params" => [$row["id"]]]); ?>"><i class="edit icon"></i> <?php echo $this->text("EDIT"); ?></a>
+                                            <a class="ui button" href="<?php echo $this->route(["action" => "delete_confirm","params" => [$row["id"]]]); ?>"><i class="trash icon"></i> <?php echo $this->text("DELETE"); ?></a>
                                         </div>
                                     </td>
                                 </tr>

@@ -24,7 +24,7 @@
             </div>
 
             <div class="ui fluid vertical segment">
-                <table class="ui celled striped table">
+                <table class="ui table">
                     <thead>
                     <tr>
                         <th><?php echo $this->text("TITLE"); ?></th>
@@ -40,11 +40,11 @@
                                 <td>+ <strong><?php echo $cat["title"]; ?></strong></td>
                                 <td class="center aligned">
                                     <div class="ui buttons mini">
-                                        <a class="blue ui button"
+                                        <a class="ui button"
                                            href="<?php echo $this->route(["action" => "edit", "params" => [$cat["id"]]]); ?>"><i
                                                 class="edit icon"></i> <?php echo $this->text("EDIT"); ?></a>
-                                        <a class="negative ui button"
-                                           href="<?php echo $this->route(["action" => "delete", "params" => [$cat["id"]]]); ?>"><i
+                                        <a class="ui button"
+                                           href="<?php echo $this->route(["action" => "delete_confirm", "params" => [$cat["id"]]]); ?>"><i
                                                 class="trash icon"></i> <?php echo $this->text("DELETE"); ?></a>
                                     </div>
                                 </td>
@@ -55,11 +55,11 @@
                                         <td>|-- <?php echo $sub["title"]; ?></td>
                                         <td class="center aligned">
                                             <div class="ui buttons mini">
-                                                <a class="blue ui button"
+                                                <a class="ui button"
                                                    href="<?php echo $this->route(["action" => "edit", "params" => [$sub["id"]]]); ?>"><i
                                                         class="edit icon"></i> <?php echo $this->text("EDIT"); ?></a>
-                                                <a class="negative ui button"
-                                                   href="<?php echo $this->route(["action" => "delete", "params" => [$sub["id"]]]); ?>"><i
+                                                <a class="ui button"
+                                                   href="<?php echo $this->route(["action" => "delete_confirm", "params" => [$sub["id"]]]); ?>"><i
                                                         class="trash icon"></i> <?php echo $this->text("DELETE"); ?></a>
                                             </div>
                                         </td>

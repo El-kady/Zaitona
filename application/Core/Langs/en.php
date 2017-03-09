@@ -5,6 +5,7 @@ return [
     "CATEGORIES" => "Categories",
     "SECTIONS" => "Sections",
     "COURSES" => "Courses",
+    "MATERIALS" => "Materials",
     "MY_ACCOUNT" => "My Account",
     "LOGOUT" => "Logout",
     "SITE_NAME" => "Site Name",
@@ -63,10 +64,14 @@ return [
     "NO_ROWS" => "No data to display right now !",
     "ERROR_PAGE_TITLE" => "That’s an error",
     "ERROR_PAGE_DESC" => "The requested URL was not found on this server. That’s all we know.",
+    "MESSAGE_TITLE" => "You have a message !!",
+    "DELETE_CONFIRM_DESC" => "Are you sure you want to delete this? You can't undo this action.",
+    "BACK" => "Back",
 
     "INTRODUCTION" => "Introduction",
     "DESCRIPTION" => "Description",
     "REQUIREMENT" => "Requirement",
     "AUDIENCE" => "Audience",
     "FEATURE_IMAGE" => "Feature Image",
+    "UPLOAD_VIDEO" => "Upload Video",
 ];

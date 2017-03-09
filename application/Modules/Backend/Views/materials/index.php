@@ -8,18 +8,27 @@
             <div class="pageHeader">
                 <div class="segment">
                     <h3 class="ui dividing header">
-                        <i class="large list layout icon"></i>
+                        <i class="large file video outline icon"></i>
                         <div class="content">
-                            <?php echo $this->text("SECTIONS"); ?>
+                            <?php echo $this->text("MATERIALS"); ?>
                         </div>
                     </h3>
                 </div>
             </div>
 
             <div class="ui vertical">
-                <a class="ui green mini labeled icon add button"
-                   href="<?php echo $this->route(["action" => "add","params" => [$this->row["id"]]]); ?>"><i
-                        class="add icon"></i> <?php echo $this->text("ADD"); ?></a>
+
+                <div class="ui teal mini buttons">
+                    <div class="ui green mini labeled icon add button dropdown top left pointing" href="<?php echo $this->route(["action" => "add", "params" => [$this->row["id"]]]); ?>">
+                        <i class="add icon"></i> <?php echo $this->text("ADD"); ?>
+                        <div class="menu">
+                            <a class="item" href="<?php echo $this->route(["action" => "add","params" => ["file",$this->row["id"]]]); ?>"><i class="file video outline icon"></i> <?php echo $this->text("UPLOAD_VIDEO"); ?></a>
+                        </div>
+
+                    </div>
+                </div>
+
+
             </div>
 
             <div class="ui fluid vertical segment">
@@ -38,11 +47,8 @@
                         <?php foreach ((array)$this->rows as $row) { ?>
                             <tr>
                                 <td><?php echo $row["title"]; ?></td>
-                                <td width="350" class="center aligned">
+                                <td width="250" class="center aligned">
                                     <div class="ui buttons mini">
-                                        <a class="ui button"
-                                           href="<?php echo $this->route(["controller" => "materials","action" => "index", "params" => [$row["id"]]]); ?>"><i
-                                                class="list layout icon"></i> <?php echo $this->text("MATERIALS"); ?></a>
                                         <a class="ui button"
                                            href="<?php echo $this->route(["action" => "edit", "params" => [$row["id"]]]); ?>"><i
                                                 class="edit icon"></i> <?php echo $this->text("EDIT"); ?></a>

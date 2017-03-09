@@ -24,13 +24,11 @@ class SectionsController extends BackendController
 
     public function index($course_id = 0)
     {
-        if ((int)$course_id == 0 || ($row = $this->course->getRow($course_id)) == false) {
-            Service::getView()->errorPage();
-        }
+        $row = $this->course->getRow($course_id) OR Service::getView()->errorPage();
 
         $rows = $this->section->getAllByCond($course_id,"course_id");
         Service::getView()
-            ->setTitle(Service::getText()->get("COURSES"))
+            ->setTitle(Service::getText()->get("SECTIONS"))
             ->render("sections/index", ["row" => $row, "rows" => $rows]);
     }
 
@@ -72,8 +70,11 @@ class SectionsController extends BackendController
 
     public function delete($id)
     {
-        $this->section->delete("id = :id ", [":id" => (int)$id]);
-        Service::getRedirect()->to("/backend/sections");
+        $row = $this->section->getRow($id) OR Service::getView()->errorPage();
+        if (Service::getRequest()->post("delete")) {
+            $this->section->delete("id = :id ",[":id" => (int) $id]);
+        }
+        Service::getRedirect()->to("/backend/sections/index/" . $row["course_id"]);
     }
 
 }
