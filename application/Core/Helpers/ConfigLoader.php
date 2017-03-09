@@ -36,4 +36,10 @@ class ConfigLoader
     {
         return (isset($this->directives[$key])) ? $this->directives[$key] : $default;
     }
+
+    public function getAll()
+    {
+        return $this->directives;
+    }
+
 }
