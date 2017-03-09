@@ -61,7 +61,8 @@ return [
 
 
     "NO_ROWS" => "No data to display right now !",
-
+    "ERROR_PAGE_TITLE" => "That’s an error",
+    "ERROR_PAGE_DESC" => "The requested URL was not found on this server. That’s all we know.",
 
     "INTRODUCTION" => "Introduction",
     "DESCRIPTION" => "Description",
