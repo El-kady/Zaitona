@@ -4,6 +4,12 @@
 	$('document').ready(function(){
 		$('.ui.dropdown').dropdown();
 	})
+	$('.visible.example .ui.sidebar')
+  .sidebar({
+    context: '.visible.example .bottom.segment'
+  })
+  .sidebar('hide')
+;
 </script>
 
 </body>
