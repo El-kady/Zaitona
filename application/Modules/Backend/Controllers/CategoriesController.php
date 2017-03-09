@@ -34,7 +34,7 @@ class CategoriesController extends BackendController
     public function edit($id)
     {
         $row = $this->category->getRow((int)$id);
-        Service::getForm()->fillData('categories', $row);
+        Service::getForm()->fillData('categories', (array) $row);
 
         $parent_cats = $this->category->getAllByCond(0, "parent_id");
         Service::getView()
@@ -52,14 +52,16 @@ class CategoriesController extends BackendController
         if ($this->category->saveData($data, (int) $id)) {
             Service::getRedirect()->to("/backend/categories");
         } else {
-            Service::getForm()->fillTmp('categories', $data);
+            Service::getForm()->fillTmp('categories', (array) $data);
             Service::getRedirect()->absolute( Service::getRequest()->post("back"));
         }
     }
 
     public function delete($id)
     {
-        $this->category->delete("id = :id ",[":id" => (int) $id]);
+        if (Service::getRequest()->post("delete")) {
+            $this->category->delete("id = :id ",[":id" => (int) $id]);
+        }
         Service::getRedirect()->to("/backend/categories");
     }
 

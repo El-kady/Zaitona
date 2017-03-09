@@ -74,6 +74,12 @@ class View
         Service::getSession()->set('feedback_negative', null);
     }
 
+    public function errorPage()
+    {
+        $this->setTitle(Service::getText()->get("ERROR_PAGE_TITLE"))->render("error_page");
+        exit;
+    }
+
     public function loadView($file)
     {
         require $this->views_path . $file;

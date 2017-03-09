@@ -17,8 +17,10 @@
                     </div>
                 </div>
 
+                <?php $this->renderFeedbackMessages(); ?>
+
                 <div class="ui form fluid vertical segment">
-                    <?php echo $this->form()->open("register", $this->route(["action" => "save"]), ["class" => "ui large form"]); ?>
+                    <?php echo $this->form()->open("settings", $this->route(["action" => "save"]), ["class" => "ui large form"]); ?>
 
                     <div class="two fields">
                         <div class="field">

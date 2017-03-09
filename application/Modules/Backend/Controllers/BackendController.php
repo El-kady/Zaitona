@@ -11,4 +11,11 @@ class BackendController extends BaseController
     {
         parent::__construct();
     }
+
+    public function delete_confirm($id)
+    {
+        Service::getView()
+            ->setTitle(Service::getText()->get("DELETE"))
+            ->render("delete", ["id" => $id]);
+    }
 }

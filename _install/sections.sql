@@ -17,24 +17,18 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `courses`
+-- Table structure for table `sections`
 --
 
-CREATE TABLE `courses` (
+CREATE TABLE `sections` (
   `id` int(11) NOT NULL,
-  `title` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `introduction` text,
-  `description` text,
-  `requirement` text,
-  `audience` text,
-  `feature_image` varchar(255) DEFAULT NULL,
-  `user_id` int(11) NOT NULL,
-  `category_id` int(11) NOT NULL,
+  `course_id` int(11) NOT NULL DEFAULT '0',
+  `title` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `courses`
+-- Dumping data for table `sections`
 --
 
 
@@ -43,17 +37,17 @@ CREATE TABLE `courses` (
 --
 
 --
--- Indexes for table `courses`
+-- Indexes for table `sections`
 --
-ALTER TABLE `courses`
-ADD PRIMARY KEY (`id`);
+ALTER TABLE `sections`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `courses`
+-- AUTO_INCREMENT for table `sections`
 --
-ALTER TABLE `courses`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+ALTER TABLE `sections`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;

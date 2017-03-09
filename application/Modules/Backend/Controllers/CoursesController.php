@@ -67,7 +67,9 @@ class CoursesController extends BackendController
 
     public function delete($id)
     {
-        $this->course->delete("id = :id ",[":id" => (int) $id]);
+        if (Service::getRequest()->post("delete")) {
+            $this->course->delete("id = :id ",[":id" => (int) $id]);
+        }
         Service::getRedirect()->to("/backend/courses");
     }
 

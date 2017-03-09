@@ -9,6 +9,7 @@ class Request
         if (isset($_POST[$key])) {
             return ($clean) ? $this->XSSFilter(trim(strip_tags($_POST[$key]))) : $_POST[$key];
         }
+        return false;
     }
 
     public function postCheckbox($key)
