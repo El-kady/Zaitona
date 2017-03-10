@@ -29,7 +29,9 @@ class SettingsController extends BackendController
             "site_name" => Service::getRequest()->post("site_name")
         ];
 
-        $this->config->saveData($data);
+        if(!$this->config->saveData($data)){
+            Service::getForm()->fillTmp('settings', (array) $data);
+        }
 
         Service::getRedirect()->to("/backend/settings");
     }

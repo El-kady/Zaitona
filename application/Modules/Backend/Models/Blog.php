@@ -5,11 +5,11 @@ namespace Modules\Backend\Models;
 use \Core\Service\Service;
 use \Core\System\BaseModel;
 
-class Config extends BaseModel
+class Blog extends BaseModel
 {
-    protected $table = "configs";
+    protected $table = "blog_posts";
 
-    public function saveData($data)
+    public function saveData($data, $id = 0)
     {
         foreach ($data as $key => $value) {
             if ($value === "") {
@@ -18,16 +18,25 @@ class Config extends BaseModel
         }
 
         if (count(Service::getSession()->get('feedback_negative')) == 0) {
-            foreach ($data as $key => $value) {
-                $where = "name = :name";
-                $bind[":name"] = $key;
-                $this->save(["value" => $value], $where, $bind);
+            $record = [
+                "title" => $data["title"],
+                "content" => $data["content"],
+            ];
+
+            $where = "";
+            $bind = [];
+
+            if ($id > 0) {
+                $where .= "id = :id";
+                $bind[":id"] = $id;
             }
+
+            $this->save($record, $where, $bind);
+
             return true;
 
         }
         return false;
 
     }
-
 }
