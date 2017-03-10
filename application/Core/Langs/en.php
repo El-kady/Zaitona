@@ -6,6 +6,7 @@ return [
     "SECTIONS" => "Sections",
     "COURSES" => "Courses",
     "BLOG" => "Blog",
+    "BLOG_TITLE" => "Blog",
     "CONTENT" => "Content",
     "MATERIALS" => "Materials",
     "MY_ACCOUNT" => "My Account",
