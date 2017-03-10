@@ -21,7 +21,7 @@
 
                     <?php $this->renderFeedbackMessages(); ?>
 
-                    <?php echo $this->form()->open("courses", $this->route(["action" => "save", "params" => [$this->get("id", 0)]]), ["class" => "ui large form"]); ?>
+                    <?php echo $this->form()->open("courses", $this->route(["action" => "save", "params" => [$this->get("id", 0)]]), ["class" => "ui large form","enctype" => "multipart/form-data"],["upload"]); ?>
 
                     <div class="field">
                         <div class="field">
@@ -79,6 +79,11 @@
                     <div class="field">
                         <label><?php echo $this->text("AUDIENCE"); ?></label>
                         <textarea rows="2" name="audience" placeholder="<?php echo $this->text("AUDIENCE"); ?>"><?php echo $this->form()->valueOf("audience", ""); ?></textarea>
+                    </div>
+
+                    <div class="field">
+                        <label><?php echo $this->text("FEATURED_IMAGE"); ?></label>
+                        <input type="file" name="featured_image"/>
                     </div>
 
                     <input type="hidden" name="back"

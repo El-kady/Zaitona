@@ -1,8 +1,6 @@
 <div class="ui container">
     <div class="container">
-
         <div class="ui grid">
-
             <?php $this->loadView('_templates/sidebar.php'); ?>
 
             <div class="twelve wide column">
@@ -18,11 +16,8 @@
                 </div>
 
                 <div class="ui fluid vertical segment">
-
                     <?php $this->renderFeedbackMessages(); ?>
-
-                    <?php echo $this->form()->open("materials", $this->route(["action" => "save", "params" => [$this->get("id", 0)]]), ["class" => "ui large form"]); ?>
-
+                    <?php echo $this->form()->open("materials", $this->route(["action" => "save", "params" => [$this->get("id", 0)]]), ["class" => "ui large form","enctype" => "multipart/form-data"]); ?>
                     <div class="field">
                         <div class="field">
                             <label><?php echo $this->text("TITLE"); ?></label>
@@ -33,8 +28,25 @@
                         </div>
                     </div>
 
-                    <input type="hidden" name="course_id" value="<?php echo $this->get("course_id",0); ?>">
-                    <input type="hidden" name="section_id" value="<?php echo $this->get("section_id",0); ?>">
+                    <?php if ($this->get("id", 0) == 0) { ?>
+                        <?php
+                        switch ($this->get("type")) {
+                            case 1;
+                                ?>
+                                <div class="field">
+                                    <label><?php echo $this->text("FILE"); ?></label>
+                                    <input type="file" name="file"/>
+                                </div>
+                                <?php
+                                break;
+                        }
+                        ?>
+                    <?php } ?>
+
+                    <input type="hidden" name="type" value="<?php echo $this->get("type", 1); ?>">
+
+                    <input type="hidden" name="course_id" value="<?php echo $this->get("course_id", 0); ?>">
+                    <input type="hidden" name="section_id" value="<?php echo $this->get("section_id", 0); ?>">
 
                     <input type="hidden" name="back"
                            value="<?php echo $this->route(["action" => $this->action, "params" => $this->params]); ?>">

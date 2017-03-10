@@ -17,18 +17,14 @@
             </div>
 
             <div class="ui vertical">
-
                 <div class="ui teal mini buttons">
                     <div class="ui green mini labeled icon add button dropdown top left pointing" href="<?php echo $this->route(["action" => "add", "params" => [$this->row["id"]]]); ?>">
                         <i class="add icon"></i> <?php echo $this->text("ADD"); ?>
                         <div class="menu">
-                            <a class="item" href="<?php echo $this->route(["action" => "add","params" => ["file",$this->row["id"]]]); ?>"><i class="file video outline icon"></i> <?php echo $this->text("UPLOAD_VIDEO"); ?></a>
+                            <a class="item" href="<?php echo $this->route(["action" => "add","params" => [$this->row["id"],1]]); ?>"><i class="file video outline icon"></i> <?php echo $this->text("UPLOAD_FILE"); ?></a>
                         </div>
-
                     </div>
                 </div>
-
-
             </div>
 
             <div class="ui fluid vertical segment">

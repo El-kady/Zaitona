@@ -55,6 +55,7 @@ class CoursesController extends BackendController
             "requirement" => Service::getRequest()->post("requirement"),
             "audience" => Service::getRequest()->post("audience"),
             "category_id" => Service::getRequest()->post("category_id"),
+            "featured_image" => Service::getRequest()->file("featured_image"),
         ];
 
         if ($this->course->saveData($data, (int) $id)) {

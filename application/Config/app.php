@@ -20,6 +20,6 @@ return array(
     'DB_PORT' => '3306',
     'DB_CHARSET' => 'utf8',
 
-    'ENCRYPTION_KEY' => '6#x0gÊìf^25cL1f$08&',
-    'HMAC_SALT' => '8qk9c^4L6d#15tM8z7n0%',
+    'PATH_ROOT' => ROOT,
+    'PATH_UPLOADS' => ROOT . 'uploads' . DS
 );
