@@ -5,6 +5,8 @@ return [
     "CATEGORIES" => "Categories",
     "SECTIONS" => "Sections",
     "COURSES" => "Courses",
+    "BLOG" => "Blog",
+    "CONTENT" => "Content",
     "MATERIALS" => "Materials",
     "MY_ACCOUNT" => "My Account",
     "LOGOUT" => "Logout",
