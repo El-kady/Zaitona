@@ -64,7 +64,8 @@ return [
     "MATERIAL" => "Material",
     "MATERIAL_TITLE" => "Material",
     "INSTRUCTOR" => "Instructor",
-    
+    "DATE" => "Date",
+
 
     "REGISTER_HINT" => "Have an account?",
     "LOGIN_HINT" => "New to us?",

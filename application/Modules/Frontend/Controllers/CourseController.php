@@ -10,6 +10,7 @@ use \Modules\Frontend\Models\Course;
 use Modules\Frontend\Models\Request;
 use \Modules\Frontend\Models\Section;
 use \Modules\Frontend\Models\Material;
+use \Modules\Frontend\Models\User;
 
 class CourseController extends FrontendController
 {
@@ -18,6 +19,8 @@ class CourseController extends FrontendController
     private $section;
     private $material;
     private $request;
+    private $user;
+
     function __construct()
     {
         parent::__construct();
@@ -26,6 +29,7 @@ class CourseController extends FrontendController
         $this->section = new Section();
         $this->material = new Material();
         $this->request = new Request();
+        $this->user = new User();
     }
 
     public function index()
@@ -37,15 +41,18 @@ class CourseController extends FrontendController
     {
         $id = (int)$id;
         if($id > 0){
-            $data['course'] = $this->course->getRow($id,'id');
-            $data['category'] = $this->category->getRow($data['course']['category_id'],'id');
-            $data['category_parent'] = $this->category->getRow($data['category']['parent_id'],'id');
-            $data['sections'] = $this->section->getAllByCond($data['course']['id'],'course_id');
-            for ($i=0; $i<count($data['sections']); $i++) {
-                $data['sections'][$i]['materials'] = $this->material->getAllByCond($data['sections'][$i]['id'],'section_id');
+            $course = $this->course->getRow($id,'id');
+            $category = $this->category->getRow($course['category_id'],'id');
+            $category_parent = $this->category->getRow($category['parent_id'],'id');
+            $instructor = $this->user->getRow($course["user_id"]);
+
+            $sections = [];
+            foreach ((array) $this->section->getAllByCond($course['id'],'course_id') as $section) {
+                $sections[$section["id"]] = $section;
+                $sections[$section["id"]]['materials'] = $this->material->getAllByCond($section["id"],'section_id');
             }
-            
-            Service::getView()->setTitle(Service::getText()->get("COURSES_TITLE"))->render("course/view",$data);            
+
+            Service::getView()->setTitle($course["title"])->render("course/view",["course" => $course,"category" => $category,"category_parent" => $category_parent,"sections" => $sections,"instructor" => $instructor]);
         }else{
             Service::getRedirect()->to("/home");
         }
