@@ -14,9 +14,9 @@
     </a>
     <div class="content">
       <div class="header"><?php echo $course['title']; ?></div>
-      <!-- <div class="description">
+      <div class="description">
         <?php echo $course['introduction']; ?>
-      </div> -->
+      </div>
     </div>
     <div class="extra content">
       <!-- <span class="floated">
