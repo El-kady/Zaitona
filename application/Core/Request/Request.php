@@ -24,6 +24,13 @@ class Request
         }
     }
 
+    public function file($key)
+    {
+        if (isset($_FILES[$key])) {
+            return $_FILES[$key];
+        }
+    }
+
     public function cookie($key)
     {
         if (isset($_COOKIE[$key])) {

@@ -79,6 +79,7 @@ class App
         Service::defForm('\Core\Helpers\Form');
         Service::defRequest('\Core\Request\Request');
         Service::defRedirect('\Core\Request\Redirect');
+        Service::defUploader('\Core\System\Uploader', array($config["PATH_UPLOADS"], 1024 * 1024 * 10));
 
         Service::defView('\Core\System\View', array($this->requestInfo()));
 

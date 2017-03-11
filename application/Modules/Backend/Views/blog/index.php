@@ -8,32 +8,27 @@
             <div class="pageHeader">
                 <div class="segment">
                     <h3 class="ui dividing header">
-                        <i class="large file video outline icon"></i>
+                        <i class="large talk icon"></i>
                         <div class="content">
-                            <?php echo $this->text("MATERIALS"); ?>
+                            <?php echo $this->text("BLOG"); ?>
+                            <!-- <div class="sub header"></div> -->
                         </div>
                     </h3>
                 </div>
             </div>
 
             <div class="ui vertical">
-                <div class="ui teal mini buttons">
-                    <div class="ui green mini labeled icon add button dropdown top left pointing" href="<?php echo $this->route(["action" => "add", "params" => [$this->row["id"]]]); ?>">
-                        <i class="add icon"></i> <?php echo $this->text("ADD"); ?>
-                        <div class="menu">
-                            <a class="item" href="<?php echo $this->route(["action" => "add","params" => [$this->row["id"],1]]); ?>"><i class="file video outline icon"></i> <?php echo $this->text("UPLOAD_FILE"); ?></a>
-                        </div>
-                    </div>
-                </div>
+                <a class="ui green mini labeled icon add button"
+                   href="<?php echo $this->route(["action" => "add"]); ?>"><i
+                            class="add icon"></i> <?php echo $this->text("ADD"); ?></a>
             </div>
 
             <div class="ui fluid vertical segment">
                 <table class="ui table">
                     <thead>
                     <tr>
-                        <th colspan="2">
-                            <?php echo $this->row["title"]; ?>
-                        </th>
+                        <th><?php echo $this->text("TITLE"); ?></th>
+                        <th class="center aligned" width="350"><?php echo $this->text("OPTIONS"); ?></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -43,14 +38,14 @@
                         <?php foreach ((array)$this->rows as $row) { ?>
                             <tr>
                                 <td><?php echo $row["title"]; ?></td>
-                                <td width="250" class="center aligned">
+                                <td class="center aligned">
                                     <div class="ui buttons mini">
                                         <a class="ui button"
                                            href="<?php echo $this->route(["action" => "edit", "params" => [$row["id"]]]); ?>"><i
-                                                class="edit icon"></i> <?php echo $this->text("EDIT"); ?></a>
+                                                    class="edit icon"></i> <?php echo $this->text("EDIT"); ?></a>
                                         <a class="ui button"
                                            href="<?php echo $this->route(["action" => "delete_confirm", "params" => [$row["id"]]]); ?>"><i
-                                                class="trash icon"></i> <?php echo $this->text("DELETE"); ?></a>
+                                                    class="trash icon"></i> <?php echo $this->text("DELETE"); ?></a>
                                     </div>
                                 </td>
                             </tr>

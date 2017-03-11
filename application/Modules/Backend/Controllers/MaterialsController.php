@@ -35,12 +35,31 @@ class MaterialsController extends BackendController
             ->render("materials/index", ["row" => $row, "rows" => $rows]);
     }
 
-    public function add($section_id = 0)
+    public function add($section_id = 0,$type)
     {
         $section = $this->section->getRow($section_id) OR Service::getView()->errorPage();
         Service::getView()
             ->setTitle(Service::getText()->get("ADD"))
-            ->render("materials/form", ["course_id" => $section["course_id"],"section_id" => $section_id]);
+            ->render("materials/add", ["type" => $type,"course_id" => $section["course_id"],"section_id" => $section_id]);
+    }
+
+    public function save()
+    {
+        $course_id = Service::getRequest()->post("course_id");
+        $section_id = Service::getRequest()->post("section_id");
+        $data = [
+            "title" => Service::getRequest()->post("title"),
+            "type" => Service::getRequest()->post("type"),
+            "course_id" => $course_id,
+            "section_id" => $section_id,
+        ];
+
+        if ($this->material->insertData($data)) {
+            Service::getRedirect()->to("/backend/materials/index/" . $section_id);
+        } else {
+            Service::getForm()->fillTmp('materials', $data);
+            Service::getRedirect()->absolute(Service::getRequest()->post("back"));
+        }
     }
 
     public function edit($id)
@@ -50,20 +69,17 @@ class MaterialsController extends BackendController
 
         Service::getView()
             ->setTitle(Service::getText()->get("EDIT"))
-            ->render("materials/form", ["id" => $row["id"],"course_id" => $row["course_id"],"section_id" => $row["section_id"]]);
+            ->render("materials/edit", ["id" => $row["id"],"section_id" => $row["section_id"]]);
     }
 
-    public function save($id = 0)
+    public function update()
     {
-        $course_id = Service::getRequest()->post("course_id");
         $section_id = Service::getRequest()->post("section_id");
         $data = [
             "title" => Service::getRequest()->post("title"),
-            "course_id" => $course_id,
-            "section_id" => $section_id,
         ];
 
-        if ($this->material->saveData($data, (int)$id)) {
+        if ($this->material->updateData($data)) {
             Service::getRedirect()->to("/backend/materials/index/" . $section_id);
         } else {
             Service::getForm()->fillTmp('materials', $data);
@@ -75,7 +91,7 @@ class MaterialsController extends BackendController
     {
         $row = $this->material->getRow($id) OR Service::getView()->errorPage();
         if (Service::getRequest()->post("delete")) {
-            $this->section->delete("id = :id ",[":id" => (int) $id]);
+            $this->material->delete("id = :id ",[":id" => (int) $id]);
         }
         Service::getRedirect()->to("/backend/materials/index/" . $row["section_id"]);
     }
