@@ -1,36 +1,29 @@
 <?php
 
-namespace Modules\Backend\Models;
+namespace Modules\Frontend\Models;
 
 use \Core\Service\Service;
 use \Core\System\BaseModel;
 
-class Section extends BaseModel
+class Request extends BaseModel
 {
-    protected $table = "sections";
+    protected $table = "requests";
 
-    public function saveData($data,$id = 0)
+    public function saveData($data)
     {
         foreach ($data as $key => $value) {
             if ($value === "") {
                 Service::getSession()->add('feedback_negative', sprintf(Service::getText()->get("FIELD_IS_REQUIRED"), Service::getText()->get($key)));
             }
         }
+
         if (count(Service::getSession()->get('feedback_negative')) == 0) {
             $record = [
-                "title" => $data["title"],
-                "course_id" => (int) $data["course_id"],
+                "request" => $data["request"],
+                "course_id" => $data["course_id"]
             ];
 
-            $where = "";
-            $bind = [];
-
-            if ($id > 0) {
-                $where .= "id = :id";
-                $bind[":id"] = $id;
-            }
-
-            $this->save($record,$where,$bind);
+            $this->insert($record);
 
             return true;
 
