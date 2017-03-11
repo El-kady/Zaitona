@@ -22,12 +22,17 @@
                 <div class="ui form fluid vertical segment">
                     <?php echo $this->form()->open("settings", $this->route(["action" => "save"]), ["class" => "ui large form"]); ?>
 
-                    <div class="two fields">
-                        <div class="field">
-                            <label><?php echo $this->text("SITE_NAME"); ?></label>
-                            <input type="text" name="site_name" value="<?php echo $this->form()->valueOf("site_name"); ?>">
-                        </div>
+                    <div class="field">
+                        <label><?php echo $this->text("SITE_NAME"); ?></label>
+                        <input type="text" name="site_name" value="<?php echo $this->form()->valueOf("site_name"); ?>">
                     </div>
+
+                    <div class="field">
+                        <label><?php echo $this->text("SITE_SLOGAN"); ?></label>
+                        <input type="text" name="site_slogan"
+                               value="<?php echo $this->form()->valueOf("site_slogan"); ?>">
+                    </div>
+
 
                     <input class="ui small blue submit button" type="submit" value="save">
 

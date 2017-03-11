@@ -6,12 +6,15 @@ return [
     "SECTIONS" => "Sections",
     "COURSES" => "Courses",
     "USERS" => "Users",
+    "ABOUT_US" => "About Us",
     "BLOG" => "Blog",
     "BLOG_TITLE" => "Blog",
     "CONTENT" => "Content",
     "MATERIALS" => "Materials",
     "MY_ACCOUNT" => "My Account",
+    "ADMIN_PANEL" => "Admin Panel",
     "LOGOUT" => "Logout",
+    "SITE_SLOGAN" => "Site Slogan",
     "SITE_NAME" => "Site Name",
     "SITE_LANG" => "Site Language",
 
@@ -24,6 +27,7 @@ return [
 
     "TITLE" => "Title",
     "ADD" => "Add",
+    "START" => "Start",
     "SAVE" => "Save",
     "EDIT" => "Edit",
     "DELETE" => "Delete",

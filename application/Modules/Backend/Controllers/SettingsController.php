@@ -26,7 +26,8 @@ class SettingsController extends BackendController
     {
 
         $data = [
-            "site_name" => Service::getRequest()->post("site_name")
+            "site_name" => Service::getRequest()->post("site_name"),
+            "site_slogan" => Service::getRequest()->post("site_slogan"),
         ];
 
         if(!$this->config->saveData($data)){

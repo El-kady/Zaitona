@@ -1,32 +1,53 @@
+<div class="ui container main">
+  <div class="ui grid">
+    <div class="three wide column">
+        <div class="ui fluid vertical menu">
+            <?php foreach ($this->categories_tree as $category) : ?>
+                <?php if (isset($category['children']) && count($category['children']) > 0) { ?>
+                    <div class="ui dropdown item">
+                        <?php echo $category['title']; ?>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <?php foreach ($category['children'] as $subcategory) : ?>
+                                <a class="item" href="<?php echo $this->route(["controller" => "category" , "action" => "view" , "params" => ["id" => $subcategory['id']]]); ?>"><?php echo $subcategory['title']; ?></a>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                <?php }else{ ?>
+                    <a class="item" href="<?php echo $this->route(["controller" => "category" , "action" => "view" , "params" => ["id" => $category['id']]]); ?>"><?php echo $category['title']; ?></a>
+                <?php } ?>
+            <?php endforeach; ?>
 
-<br>
-<h1>category name</h1>
-<p><?php echo $this->category['title']; ?></p>
-<h1>courses</h1>
-
-
-<div class="ui link seven cards container">
-
-  <?php foreach($this->courses as $course): ?>
-  <div class="ui fluid card">
-    <a href="<?php echo $this->route(["controller" => "course" , "action" => "view" , "params" => ["id" => $course['id']]]); ?>" class="image">
-      <?php echo $this->loadImg($course['feature_image']); ?>
-    </a>
-    <div class="content">
-      <div class="header"><?php echo $course['title']; ?></div>
-      <!-- <div class="description">
-        <?php echo $course['introduction']; ?>
-      </div> -->
+        </div>
     </div>
-    <div class="extra content">
-      <!-- <span class="floated">
-        Created at <?php echo $course['created_at']; ?>
-      </span> -->
-      <span>
-        <i class="user icon"></i>
-        75 Users
-      </span>
+    <div class="thirteen wide column">
+       <h1><?php echo $this->row['title']; ?></h1>
+
+        <div class="ui grid">
+            <?php foreach ($this->get("courses",[]) as $course) { ?>
+                <div class="four wide column">
+
+                    <div class="ui card">
+                        <a class="image" href="<?php echo $this->route(["controller" => "course" , "action" => "view" , "params" => ["id" => $course['id']]]); ?>">
+                            <img src="<?php echo $this->uploadedFile($course["featured_image"]); ; ?>">
+                        </a>
+                        <div class="content">
+                            <a href="<?php echo $this->route(["controller" => "course" , "action" => "view" , "params" => ["id" => $course['id']]]); ?>" class="header"><?php echo $course["title"]; ?></a>
+                            <div class="meta">
+                                <span class="date"><?php echo $this->strDate($course["created_at"]); ?></span>
+                            </div>
+                        </div>
+                        <div class="extra content">
+                            <a href="<?php echo $this->route(["controller" => "course" , "action" => "view" , "params" => ["id" => $course['id']]]); ?>" class="ui blue button"><?php echo $this->text("START"); ?></a>
+                        </div>
+                    </div>
+
+                </div>
+            <?php } ?>
+
+        </div>
+
     </div>
   </div>
-  <?php endforeach; ?>
+
 </div>
