@@ -1,307 +1,93 @@
-
-<!-- <div class="ui sidebar inverted vertical menu">
-      <a class="item" href="./login.html">
-        <h4 class="ui grey header">John Doe</h4>
-        <p>Sign Out</p>
-      </a>
-      <a class="active gray item" href="./dashboard.html">
-        Dashboard
-      </a>
-      <a class="item" href="./sales.html">
-        Sales
-        <div class="ui label">11</div>
-      </a>
-      <a class="item" href="./products.html">
-        Products
-        <div class="ui label">2</div>
-      </a>
-      <a class="item" href="./customers.html">
-        Customers
-      </a>
-      <a class="item" href="./employees.html">
-        Employees
-      </a>
-    </div> -->
 <div class="ui grid container">
-      <div class="ui grid container">
-        <!-- Non-responsive main left menu -->
-        <div class="ui bottom attached segment pushable">
-		  <div class="ui visible left vertical sidebar menu">
-		    <a class="item ui medium rounded image">
-		      <?php echo $this->loadImg($this->course['pic']); ?>
+	<!-- Non-responsive main left menu -->
+    <div class="ui bottom attached segment pushable">
+		<div class="ui visible left vertical sidebar menu">
+			<a class="item ui medium rounded image">
+		      <?php echo $this->loadImg($this->course['feature_image']); ?>
 		    </a>
 		    <a class="item" href="<?php echo $this->route(["controller" => "category" , "action" => "view" , "params" => ["id" => $this->category['id']]]); ?>">
 		      <i class="block layout icon"></i>
-		      <h2><?php echo $this->text("CATEGORY"); ?></h2>
-		      <?php echo $this->category['title']; ?>
+		      <?php echo $this->text("CATEGORY"); ?> :<br><br>
+		      <?php echo $this->category_parent['title']; ?> / <?php echo $this->category['title']; ?>
 		    </a>
 		    <a class="item">
-		      <i class="smile icon"></i>
-		      Friends
+		      <i class="user circle icon"></i>
+		      <?php echo $this->text("INSTRUCTOR"); ?> :<br><br>
+
 		    </a>
 		    <a class="item">
 		      <i class="calendar icon"></i>
-		      History
+		      Created at:<br><br>
+			  <?php echo $this->course['created_at']; ?>
 		    </a>
-		  </div>
-		  <div class="pusher">
-		    <div class="ui basic segment">
-		      
-
-
-
-
-
-		  <div class="ui icon message">
-            <i class="empty heart icon"></i>
-            <div class="content">
-              <div class="header">
-                Welcome to our admin theme!
-              </div>
-              <p>You'll find a lot of common admin views here. For requests, just tweet <a href="https://twitter.com/SemanticKit">@SemanticKit</a> or <a href="https://twitter.com/travisvalentine">@travisvalentine</a>.</p>
-            </div>
-          </div>
-
-          <div class="ui three column row">
-            <div class="dashboard-stat column">
-              <div class="ui segments">
-                <div class="ui segment">
-                  <h3 class="ui blue header">Any Header</h3>
-                </div>
-                <div class="ui secondary olive green inverted dashboard center aligned segment">
-                  <div class="ui dashboard statistic">
-                    <div class="value">
-                      5,550
-                    </div>
-                    <div class="label">
-                      Downloads
-                    </div>
-
-                    <div class="ui two mini statistics">
-                      <div class="statistic">
-                        <div class="value">
-                          120
-                        </div>
-                        <div class="label">
-                          iPhone
-                        </div>
-                      </div>
-                      <div class="statistic">
-                        <div class="value">
-                          700
-                        </div>
-                        <div class="label">
-                          Android
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="ui segment">
-                  <p>Footer</p>
-                </div>
-              </div>
-            </div>
-            <div class="dashboard-stat column">
-              <div class="ui segments">
-                <div class="ui segment">
-                  <h3 class="ui blue header">Any Header</h3>
-                </div>
-                <div class="ui teal inverted dashboard center aligned segment">
-                  <div class="ui dashboard statistic">
-                    <div class="value">
-                      5,550
-                    </div>
-                    <div class="label">
-                      Downloads
-                    </div>
-                  </div>
-
-                  <div class="ui center animated list">
-                    <a class="item">
-                      <i class="add circle icon"></i>
-                      <div class="content">
-                        <div class="description">10% from last week</div>
-                      </div>
-                    </a>
-                    <a class="item">
-                      <i class="minus circle icon"></i>
-                      <div class="content">
-                        <div class="description">5% from 2 weeks ago</div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-                <div class="ui segment">
-                  <p>Footer</p>
-                </div>
-              </div>
-            </div>
-            <div class="dashboard-stat column">
-              <div class="ui segments">
-                <div class="ui segment">
-                  <h3 class="ui blue header">Any Header</h3>
-                </div>
-                <div class="ui secondary blue inverted dashboard center aligned segment">
-                  <div class="ui dashboard statistic">
-                    <div class="value">
-                      5,550
-                    </div>
-                    <div class="label">
-                      Downloads
-                    </div>
-                  </div>
-                </div>
-                <div class="ui segment">
-                  <p>Footer</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="top-table column">
-              <div class="ui segments">
-                <div class="ui segment">
-                  <h3 class="ui blue header">Any Header</h3>
-                </div>
-                <div class="ui segment">
-                  <table class="ui very basic table">
-                    <tbody>
-                      <tr>
-                        <td>1.</td>
-                        <td>Item 1</td>
-                        <td>$20</td>
-                        <td>30</td>
-                      </tr>
-                      <tr>
-                        <td>2.</td>
-                        <td>Item 2</td>
-                        <td>$22</td>
-                        <td>24</td>
-                      </tr>
-                      <tr>
-                        <td>3.</td>
-                        <td>Item 3</td>
-                        <td>$15</td>
-                        <td>20</td>
-                      </tr>
-                      <tr>
-                        <td>4.</td>
-                        <td>Item 4</td>
-                        <td>$10</td>
-                        <td>18</td>
-                      </tr>
-                      <tr>
-                        <td>5.</td>
-                        <td>Item 5</td>
-                        <td>$15</td>
-                        <td>15</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-
-            <div class="doughnut-chart column">
-              <div class="ui segments">
-                <div class="ui segment">
-                  <h3 class="ui blue header">Any Header</h3>
-                </div>
-                <div class="ui segment">
-                  <canvas id="doughnuts_are_tasty" width="274" height="179"></canvas>
-                  <ul id="dashboard_legend"></ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="ui three column row">
-            <div class="dashboard-stat column">
-              <div class="ui segments">
-                <div class="ui segment">
-                  <h3 class="ui blue header">Any Header</h3>
-                </div>
-                <div class="ui violet inverted dashboard center aligned segment">
-                  <div class="ui dashboard statistic">
-                    <div class="value">
-                      5,550
-                    </div>
-                    <div class="label">
-                      Downloads
-                    </div>
-                  </div>
-                </div>
-                <div class="ui segment">
-                  Footer
-                </div>
-              </div>
-            </div>
-
-            <div class="dashboard-stat column">
-              <div class="ui segments">
-                <div class="ui segment">
-                  <h3 class="ui blue header">Any Header</h3>
-                </div>
-                <div class="ui grey inverted dashboard center aligned segment">
-                  <div class="ui dashboard statistic">
-                    <div class="value">
-                      5,550
-                    </div>
-                    <div class="label">
-                      Downloads
-                    </div>
-                  </div>
-                </div>
-                <div class="ui segment">
-                  Footer
-                </div>
-              </div>
-            </div>
-
-            <div class="dashboard-stat column">
-              <div class="ui segments">
-                <div class="ui segment">
-                  <h3 class="ui blue header">Any Header</h3>
-                </div>
-                <div class="ui pink inverted dashboard center aligned segment">
-                  <div class="ui dashboard statistic">
-                    <div class="value">
-                      5,550
-                    </div>
-                    <div class="label">
-                      Downloads
-                    </div>
-                  </div>
-                </div>
-                <div class="ui segment">
-                  Footer
-                </div>
-              </div>
-            </div>
-          </div>
-      
-
-
-
-
-
-
-
-		    </div>
-		  </div>
 		</div>
-        <div class="ui main grid">
-          <!-- Responsive top menu -->
-          <!-- <div class="ui fixed inverted main menu">
-            <div class="ui container">
-              <a class="launch icon item sidebar-toggle">
-                <i class="sidebar icon"></i>
-              </a>
-            </div>
-          </div>
- -->
-          
+		
+		<div class="pusher">
+		<div class="grid container">
+			<div class="ui vertical segments container">
+		      
+				<div class="ui raised very padded segment">
+          			<h1 class="header">
+          				<div class="ui mini image">
+          				<?php echo $this->loadImg($this->course['feature_image']); ?>
+          				</div>
+          				<?php echo $this->course['title']; ?>
+          			</h1>
+          			<h4 class="header">description</h4>
+          			<div class="description">
+          				<p>
+          				<?php echo $this->course['introduction']; ?><br><br>
+          				<?php echo nl2br($this->course['description']); ?>
+          				</p>
+          			</div>
+          			<h4 class="header">
+          			course requirements
+          			</h4>
+          			<div class="description">
+          				<p>
+          				<?php echo nl2br($this->course['requirement']); ?>
+          				</p>
+          			</div>
+         			<h4 class="header">What is the target audience</h4>
+          			<div class="description">
+          				<p>
+          				<?php echo nl2br($this->course['audience']); ?>
+          				</p>
+          			</div>
+          		</div>
+
+          		<div class="ui raised very padded segment">
+          		    <h4>LESSONS</h4>
+          			<ul>
+          			<?php for ($i=0; $i<count($this->sections); $i++) : ;?>
+          		      	
+          		        <li class="chap-title"><b> SECTION <?php echo $i+1; ?> : </b>
+          		        	<h5> <?php echo $this->sections[$i]['title']; ?> </h5>
+          		        </li>
+		
+                			<div class="lec-left">
+                      			<span class="course-no">1.1 </span>
+                    		</div>
+                    		<div class="lec-right">
+                      			<div class="lec-url">
+                        			<div class="lec-main fxac">
+                          				<div class="lec-title">
+											<i class="link icon"></i> <a href="https://laravel.com/docs/5.2/providers" target="_blank">Test link</a>
+				                            <span class="label label-default pull-right">Free</span>
+				                            <span class="help-block small">Type:   external link  | Added: Mar 11, 2017 </span>
+                          				</div>
+                        			</div>
+                      			</div>
+                    		</div>
+                  	<?php endfor;?>
+        			</ul>
+         			</div>
+         		</div>
+	         	
+
+          	</div>
+    	</div>
     	</div>
     </div>
 </div>
+

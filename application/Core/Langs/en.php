@@ -45,6 +45,7 @@ return [
     "COURSES_TITLE" => "Courses",
     "MATERIAL" => "Material",
     "MATERIAL_TITLE" => "Material",
+    "INSTRUCTOR" => "Instructor",
     
 
     "REGISTER_HINT" => "Have an account?",
