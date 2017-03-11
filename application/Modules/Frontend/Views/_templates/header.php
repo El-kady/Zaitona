@@ -82,7 +82,6 @@
                         </div>
                     </div>
 
-                    </a>
                     <a class="item">Careers</a>
                     <a class="item" href="<?php echo $this->route(["controller" => "blog" , "action" => "index"]); ?>">Blog</a>
                     <a class="item" href="<?php echo $this->route(["controller" => "page" , "action" => "about"]); ?>">About Us</a>
@@ -112,3 +111,20 @@
 
 
 </header>
+ <nav class="ui fixed menu inverted navbar">
+        <a href="<?php echo $this->route(["controller" => "home"]); ?>" class="brand item"><?php echo $this->loadImg("img/olive.png"); ?> <?php echo $this->get("page_title", $this->getConfig("site_name")); ?></a>
+        <a href="<?php echo $this->route(["controller" => "home"]); ?>" class="active item"><?php echo $this->text("HOME"); ?></a>
+        <a href="" class="item">About</a>
+        <a href="" class="item">Contact</a>
+        <a class="ui dropdown item">Dropdown
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            <div class="item">Action</div>
+            <div class="item">Another action</div>
+            <div class="item">Something else here</div>
+            <div class="ui horizontal divider"></div>
+            <div class="item">Seperated link</div>
+            <div class="item">One more seperated link</div>
+          </div>
+        </a>
+    </nav> 
