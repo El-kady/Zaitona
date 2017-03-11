@@ -50,6 +50,8 @@ class MaterialsController extends BackendController
         $data = [
             "title" => Service::getRequest()->post("title"),
             "type" => Service::getRequest()->post("type"),
+            "provider" => Service::getRequest()->post("provider"),
+            "link" => Service::getRequest()->post("link"),
             "course_id" => $course_id,
             "section_id" => $section_id,
         ];
