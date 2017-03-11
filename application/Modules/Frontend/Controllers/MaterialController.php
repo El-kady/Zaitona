@@ -33,15 +33,38 @@ class MaterialController extends FrontendController
     {
         $id = (int)$id;
         if($id > 0){
-            $data['course'] = $this->course->getRow($id,'id');
+            $data['material'] = $this->material->getRow($id,'id');
+            $data['section'] = $this->section->getRow($data['material']['section_id'],'id');
+            $data['course'] = $this->course->getRow($data['material']['course_id'],'id');
             $data['category'] = $this->category->getRow($data['course']['category_id'],'id');
             $data['category_parent'] = $this->category->getRow($data['category']['parent_id'],'id');
-            $data['sections'] = $this->section->getAllByCond($data['course']['id'],'course_id');
-            for ($i=0; $i<count($data['sections']); $i++) {
-                $data['sections'][$i]['materials'] = $this->material->getAllByCond($data['sections'][$i]['id'],'section_id');
-            }
+            
             
             Service::getView()->setTitle(Service::getText()->get("COURSES_TITLE"))->render("material/view",$data);            
+        }else{
+            Service::getRedirect()->to("/home");
+        }
+    }
+
+    public function download($id)
+    {
+        $id = (int)$id;
+        if($id > 0){
+            $data['material'] = $this->material->getRow($id,'id');
+            $filename = Service::getConfig()->get("PATH_UPLOADS").$data['material']['file_name'];
+     
+            header('Pragma: public');
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+            header('Cache-Control: private', false);
+            header('Content-Type: '.$data['material']['file_type']);
+            
+            header('Content-Disposition: attachment; filename="'. $data['material']['title'] . '";');
+            header('Content-Transfer-Encoding: binary');
+            header('Content-Length: ' . $data['material']['file_size']);
+            readfile($filename);
+            exit;
+            
         }else{
             Service::getRedirect()->to("/home");
         }

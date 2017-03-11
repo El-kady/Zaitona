@@ -26,6 +26,7 @@
                 })
             ;
             $('.ui.sidebar').sidebar('attach events', '.toc.item');
+            $('.ui.embed').embed();
         });
 </script>
 
