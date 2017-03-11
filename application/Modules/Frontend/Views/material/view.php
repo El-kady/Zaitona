@@ -25,4 +25,34 @@
             </div>
         </div>
         <?php endif; ?>
+
+        <div class="row">
+            <div class="column">
+        <div class="ui vertical segments container">
+            <h4 class="ui attached top block header">
+                Comments
+            </h4>
+            <div class="ui very padded attached segment">
+            <div class="ui feed">
+                <?php foreach ($this->comments as $comment) : ?>
+                <div class="event">
+                <div class="content">
+                    <div class="summary">
+                        <a><?php echo $comment['user_name']['name']; ?></a> posted on his page
+                        <div class="date">
+                        3 days ago
+                        </div>
+                    </div>
+                    <div class="extra text">
+                        <?php echo $comment['comment']; ?>
+                    </div>
+                </div>
+                </div>
+                <div class="ui divider"></div>
+                <?php endforeach; ?>
+            </div>
+            </div>
+        </div>
+        </div>
+        </div>
     </main>

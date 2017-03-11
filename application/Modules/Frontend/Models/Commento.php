@@ -1,11 +1,11 @@
 <?php
 
-namespace Modules\Backend\Models;
+namespace Modules\Frontend\Models;
 
 use \Core\Service\Service;
 use \Core\System\BaseModel;
 
-class Comment extends BaseModel
+class Commento extends BaseModel
 {
     protected $table = "comments";
 
