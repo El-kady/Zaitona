@@ -72,7 +72,12 @@
                       			<div class="lec-url">
                         			<div class="lec-main fxac">
                           				<div class="lec-title">
-											<i class="link icon"></i> <a href="https://laravel.com/docs/5.2/providers" target="_blank">Test link</a>
+											<i class="link icon"></i> 
+											<a href="https://laravel.com/docs/5.2/providers" target="_blank">
+												<?php foreach ($this->sections[$i]['materials'] as $material) {
+													echo $material['title'],$material['file_name'];
+												}  ?>
+											</a>
 				                            <span class="label label-default pull-right">Free</span>
 				                            <span class="help-block small">Type:   external link  | Added: Mar 11, 2017 </span>
                           				</div>
