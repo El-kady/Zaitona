@@ -10,6 +10,8 @@ class BackendController extends BaseController
     public function __construct()
     {
         parent::__construct();
+        Service::getAuth()->checkAuthentication();
+        Service::getAuth()->checkAdminAuthentication();
     }
 
     public function delete_confirm($id)

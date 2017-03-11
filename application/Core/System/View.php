@@ -124,7 +124,7 @@ class View
     private function route(array $data)
     {
         $route = array();
-        if ($this->module != "Frontend") {
+        if ($this->module != "Frontend" || isset($data["module"])) {
             $route[] = (isset($data["module"])) ? $data["module"] : $this->module;
         }
 
@@ -147,6 +147,11 @@ class View
         return htmlentities($str, ENT_QUOTES, 'UTF-8');
     }
 
+    public function strDate($date,$format = "F j, Y")
+    {
+        return date($format,strtotime($date));
+    }
+
     public function loadCSSLink($filename)
     {
         return sprintf("<link rel='stylesheet' href='%s/assets/%s'>\n", Service::getConfig()->get("URL"), $filename);
@@ -160,5 +165,10 @@ class View
     public function loadImg($filename)
     {
         return sprintf("<img src='%s/assets/%s'/>\n", Service::getConfig()->get("URL"), $filename);
+    }
+
+    public function uploadedFile($file)
+    {
+        return Service::getConfig()->get("URL") . '/uploads/'. $file;
     }
 }

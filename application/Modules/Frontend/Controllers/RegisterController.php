@@ -15,6 +15,10 @@ class RegisterController extends FrontendController
     {
         parent::__construct();
         $this->user = new User();
+
+        if (Service::getAuth()->IsLoggedIn()) {
+            Service::getRedirect()->to("/home");
+        }
     }
 
     public function index()

@@ -28,9 +28,9 @@ class CategoryController extends FrontendController
     {
         $id = (int)$id;
         if($id > 0){
-            $data['category'] = $this->category->getRow($id,'id');
-            $data['courses'] = $this->course->getAllByCond($id,'category_id');
-            Service::getView()->setTitle(Service::getText()->get("CATEGORIES_TITLE"))->render("category/view",$data);
+            $row = $this->category->getRow($id,'id');
+            $courses = $this->course->getAllByCond($id,'category_id');
+            Service::getView()->setTitle($row["title"])->render("category/view",["row" => $row,"courses" => $courses]);
         }else{
             Service::getRedirect()->to("/home");
         }
