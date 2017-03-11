@@ -1,98 +1,134 @@
-<main class="ui page grid">
-	<!-- Non-responsive main left menu -->
-    <div class="ui bottom attached segment pushable">
-		<div class="ui padded visible left vertical sidebar menu">
-			<a class="item ui medium rounded image">
-		      <?php echo $this->loadImg($this->course['feature_image']); ?>
-		    </a>
-		    <a class="item" href="<?php echo $this->route(["controller" => "category" , "action" => "view" , "params" => ["id" => $this->category['id']]]); ?>">
-		      <i class="block layout icon"></i>
-		      <?php echo $this->text("CATEGORY"); ?> :<br><br>
-		      <?php echo $this->category_parent['title']; ?> / <?php echo $this->category['title']; ?>
-		    </a>
-		    <a class="item">
-		      <i class="user circle icon"></i>
-		      <?php echo $this->text("INSTRUCTOR"); ?> :<br><br>
+<div class="ui container main">
+    <div class="ui grid">
+        <div class="four wide column">
+            <div class="ui vertical steps">
+                <div class="step">
+                    <img class="ui image" src="<?php echo $this->uploadedFile($this->course["featured_image"]); ?>">
+                </div>
+                <div class="step">
+                    <i class="list layout icon"></i>
+                    <div class="content">
+                        <div class="title"><?php echo $this->text("CATEGORY"); ?></div>
+                        <div class="description">
+                            <?php echo $this->category['title']; ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="step">
+                    <i class="user icon"></i>
+                    <div class="content">
+                        <div class="title"><?php echo $this->text("INSTRUCTOR"); ?></div>
+                        <div class="description">
+                            <?php echo $this->instructor["name"]; ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="step">
+                    <i class="calendar icon"></i>
+                    <div class="content">
+                        <div class="title"><?php echo $this->text("DATE"); ?></div>
+                        <div class="description">
+                            <?php echo $this->strDate($this->course["created_at"]); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-		    </a>
-		    <a class="item">
-		      <i class="calendar icon"></i>
-		      Created at:<br><br>
-			  <?php echo $this->course['created_at']; ?>
-		    </a>
-		</div>
-		
-		<div class="ui padded pusher">
-		<div class="ui padded grid container">
+        </div>
+        <div class="ten wide column">
 
-		<div class="ui breadcrumb row">
-  <div class="section"><?php echo $this->category_parent['title']; ?></a>
-  <i class="right angle icon divider"></i>
-  <a class="section" href="<?php echo $this->route(["controller" => "category" , "action" => "view" , "params" => ["id" => $this->category['id']]]); ?>"><?php echo $this->category['title']; ?></a>
-  <i class="right angle icon divider"></i>
-  <div class="active section"><?php echo $this->course['title']; ?></div>
-</div>
+            <h1><?php echo $this->course["title"]; ?></h1>
 
-			<div class="ui vertical segments container">
-		      
-				<div class="ui raised very padded segment">
-        
-          			<h1 class="header">
-          				<div class="ui mini image">
-          				<?php echo $this->loadImg($this->course['feature_image']); ?>
-          				</div>
-          				<?php echo $this->course['title']; ?>
-          			</h1>
-          			<h4 class="header">description</h4>
-          			<div class="description">
-          				<p>
-          				<?php echo $this->course['introduction']; ?><br><br>
-          				<?php echo nl2br($this->course['description']); ?>
-          				</p>
-          			</div>
-          			<h4 class="header">
-          			course requirements
-          			</h4>
-          			<div class="description">
-          				<p>
-          				<?php echo nl2br($this->course['requirement']); ?>
-          				</p>
-          			</div>
-         			<h4 class="header">What is the target audience</h4>
-          			<div class="description">
-          				<p>
-          				<?php echo nl2br($this->course['audience']); ?>
-          				</p>
-          			</div>
-          		</div>
+            <div class="ui small breadcrumb">
+                <a href="<?php echo $this->getConfig("URL"); ?>"
+                   class="section"><i class="home icon divider"></i> <?php echo $this->getConfig("site_name"); ?></a>
 
-          		<div class="ui raised very padded segment">
-          		    <h4>LESSONS</h4>
-					<div class="ui vertical segments container">
-						<?php for ($i=0; $i<count($this->sections); $i++) : ;?>
-						<h4 class="ui attached block header">
- 							SECTION <?php echo $i+1; ?> : <?php echo $this->sections[$i]['title']; ?>
-   						</h4>
-  						<div class="ui attached segment">
-  						<a href="<?php echo $this->route(["controller" => "material" , "action" => "view" , "params" => ["id" => $this->category['id']]]); ?>">
-    					<?php foreach ($this->sections[$i]['materials'] as $material) {
-													echo $material['title'],$material['file_name'];
-												}  ?>
-						</a>
-  						</div>
-  						<?php endfor;?>
-  					</div>
+                <?php if ($this->category_parent) { ?>
+                    <i class="right chevron icon divider"></i>
+                    <a href="<?php echo $this->route(["controller" => "category", "action" => "view", "params" => ["id" => $this->category_parent['id']]]); ?>"
+                       class="section"><?php echo $this->category_parent['title']; ?></a>
+                <?php } ?>
 
-          			
-         		</div>
-         		</div>
-	         	
+                <i class="right chevron icon divider"></i>
+                <a href="<?php echo $this->route(["controller" => "category", "action" => "view", "params" => ["id" => $this->category['id']]]); ?>"
+                   class="section"><?php echo $this->category['title']; ?></a>
+            </div>
 
-          	</div>
-    	</div>
+            <h4 class="ui header"><?php echo $this->text("DESCRIPTION"); ?></h4>
+            <p>
+                <?php echo $this->course["description"]; ?>
+            </p>
+
+            <h4 class="ui header"><?php echo $this->text("INTRODUCTION"); ?></h4>
+            <p>
+                <?php echo $this->course["introduction"]; ?>
+            </p>
+
+            <h4 class="ui header"><?php echo $this->text("REQUIREMENT"); ?></h4>
+            <p>
+                <?php echo $this->course["requirement"]; ?>
+            </p>
+
+            <h4 class="ui header"><?php echo $this->text("AUDIENCE"); ?></h4>
+            <p>
+                <?php echo $this->course["audience"]; ?>
+            </p>
+
+
+            <h2>LESSONS</h2>
+            <div class="ui vertical segments container">
+                <?php foreach ($this->sections as $section) : ; ?>
+                    <h4 class="ui attached block header">
+                        SECTION  : <?php echo $section['title']; ?>
+                    </h4>
+                    <div class="ui attached segment">
+                        <div class="ui relaxed divided list">
+                            <?php if (count($section['materials'])) { ?>
+                                <?php foreach ($section['materials'] as $material) { ?>
+                                    <div class="item">
+                                        <i class="large file middle aligned icon"></i>
+                                        <div class="content">
+                                            <a href="<?php echo $this->route(["controller" => "material", "action" => "view", "params" => ["id" => $this->category['id']]]); ?>"
+                                               class="header">
+                                                <?php echo $material["title"]; ?>
+                                            </a>
+                                            <div class="description"><?php echo $this->strDate($material["created_at"]);?></div>
+                                        </div>
+                                    </div>
+                                <?php } ?>
+                            <?php }else{ ?>
+                                <?php echo $this->text("NO_ROWS"); ?>
+                           <?php } ?>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+
+        </div>
+        <div class="two wide column">
+
+            <p>
+                <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $this->selfRoute(); ?>" class="ui fluid mini facebook button">
+                    <i class="facebook icon"></i>
+                    Facebook
+                </a>
+            </p>
+            <p>
+                <a target="_blank" href="https://twitter.com/intent/tweet?&text=<?php echo $this->course["title"]; ?>&url=<?php echo $this->selfRoute(); ?>" class="ui fluid mini twitter button">
+                    <i class="twitter icon"></i>
+                    Twitter
+                </a>
+            </p>
+
+            <p>
+                <a target="_blank" href="https://plus.google.com/share?url=<?php echo $this->course["title"]; ?>" class="ui fluid mini google plus button">
+                    <i class="google plus icon"></i>
+                    Google Plus
+                </a>
+            </p>
+        </div>
     </div>
-</div>
-</main>
 
+</div>
 
 

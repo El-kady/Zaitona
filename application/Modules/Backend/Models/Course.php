@@ -39,6 +39,7 @@ class Course extends BaseModel
                 "requirement" => $data["requirement"],
                 "audience" => $data["audience"],
                 "category_id" => (int)$data["category_id"],
+                "user_id" => Service::getAuth()->getUserId(),
                 "featured_image" => (Service::getUploader()->isUploaded()) ? Service::getUploader()->getFile("physical_url") : "",
             ]);
             return true;
