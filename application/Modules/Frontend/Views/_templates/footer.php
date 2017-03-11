@@ -1,6 +1,6 @@
 <div class="ui inverted vertical footer segment">
 	<div class="ui container">
-		&copy; <?php echo date("Y"); ?> Walid
+		&copy; <?php echo date("Y"); ?>
 	</div>
 </div>
 

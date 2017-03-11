@@ -7,6 +7,7 @@ use \Core\System\BaseController;
 
 use \Modules\Frontend\Models\Category;
 use \Modules\Frontend\Models\Course;
+use Modules\Frontend\Models\Request;
 use \Modules\Frontend\Models\Section;
 use \Modules\Frontend\Models\Material;
 use \Modules\Frontend\Models\User;
@@ -17,6 +18,7 @@ class CourseController extends FrontendController
     private $course;
     private $section;
     private $material;
+    private $request;
     private $user;
 
     function __construct()
@@ -26,6 +28,7 @@ class CourseController extends FrontendController
         $this->course = new Course();
         $this->section = new Section();
         $this->material = new Material();
+        $this->request = new Request();
         $this->user = new User();
     }
 
@@ -55,5 +58,25 @@ class CourseController extends FrontendController
         }
     }
 
+    public function request($course_id)
+    {
+        Service::getView()->setTitle(Service::getText()->get("REQUEST_TITLE"))->render("request/request",["course_id" => $course_id]);
+    }
+
+    public function saveRequest(){
+
+        $course_id = Service::getRequest()->post("course_id");
+
+        $data = [
+            "request" => Service::getRequest()->post("request"),
+            "course_id" => $course_id,
+        ];
+
+        if ($this->request->saveData($data)) {
+            Service::getSession()->add('feedback_positive', Service::getText()->get("REQUEST_SENT"));
+        }
+
+        Service::getRedirect()->to("/course/request/" . $course_id);
+    }
 
 }
