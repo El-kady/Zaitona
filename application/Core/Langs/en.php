@@ -7,6 +7,7 @@ return [
     "COURSES" => "Courses",
     "USERS" => "Users",
     "ABOUT_US" => "About Us",
+    "REQUESTS" => "Requests",
     "BLOG" => "Blog",
     "BLOG_TITLE" => "Blog",
     "CONTENT" => "Content",
