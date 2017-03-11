@@ -3,7 +3,8 @@
     <div class="ui bottom attached segment pushable">
 		<div class="ui padded visible left vertical sidebar menu">
 			<a class="item ui medium rounded image">
-		      <?php echo $this->loadImg($this->course['feature_image']); ?>
+			<img src="<?php echo $this->uploadedFile($this->course["featured_image"]); ?>">
+		      
 		    </a>
 		    <a class="item" href="<?php echo $this->route(["controller" => "category" , "action" => "view" , "params" => ["id" => $this->category['id']]]); ?>">
 		      <i class="block layout icon"></i>
@@ -74,11 +75,12 @@
  							SECTION <?php echo $i+1; ?> : <?php echo $this->sections[$i]['title']; ?>
    						</h4>
   						<div class="ui attached segment">
-  						<a href="<?php echo $this->route(["controller" => "material" , "action" => "view" , "params" => ["id" => $this->category['id']]]); ?>">
-    					<?php foreach ($this->sections[$i]['materials'] as $material) {
-													echo $material['title'],$material['file_name'];
-												}  ?>
+  						<?php foreach ($this->sections[$i]['materials'] as $material) :?>
+						<a href="<?php echo $this->route(["controller" => "material" , "action" => "view" , "params" => ["id" => $material['id']]]); ?>">
+						<?php echo $material['title'],$material['file_name'];?>
+    					
 						</a>
+						<?php endforeach;?>
   						</div>
   						<?php endfor;?>
   					</div>

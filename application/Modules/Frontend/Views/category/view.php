@@ -29,7 +29,7 @@
 
                     <div class="ui card">
                         <a class="image" href="<?php echo $this->route(["controller" => "course" , "action" => "view" , "params" => ["id" => $course['id']]]); ?>">
-                            <img src="<?php echo $this->uploadedFile($course["featured_image"]); ; ?>">
+                            <img src="<?php echo $this->uploadedFile($course["featured_image"]); ?>">
                         </a>
                         <div class="content">
                             <a href="<?php echo $this->route(["controller" => "course" , "action" => "view" , "params" => ["id" => $course['id']]]); ?>" class="header"><?php echo $course["title"]; ?></a>

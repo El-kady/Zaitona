@@ -46,5 +46,29 @@ class MaterialController extends FrontendController
         }
     }
 
+    public function download($id)
+    {
+        $id = (int)$id;
+        if($id > 0){
+            $data['material'] = $this->material->getRow($id,'id');
+            $filename = Service::getConfig()->get("PATH_UPLOADS").$data['material']['file_name'];
+     
+            header('Pragma: public');
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+            header('Cache-Control: private', false);
+            header('Content-Type: '.$data['material']['file_type']);
+            
+            header('Content-Disposition: attachment; filename="'. $data['material']['title'] . '";');
+            header('Content-Transfer-Encoding: binary');
+            header('Content-Length: ' . $data['material']['file_size']);
+            readfile($filename);
+            exit;
+            
+        }else{
+            Service::getRedirect()->to("/home");
+        }
+    }
+
 
 }
