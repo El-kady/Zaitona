@@ -65,6 +65,7 @@ class Auth
         Service::getSession()->set('user_name',$user["name"]);
         Service::getSession()->set('user_email',$user["email"]);
         Service::getSession()->set('user_account_type',$user["account_type"]);
+        Service::getSession()->set('user_status',$user["status"]);
         Service::getSession()->set('user_logged_in',true);
 
         $this->updateSessionId($user["id"], session_id());

@@ -17,7 +17,7 @@
 
                 <div class="ui fluid vertical segment">
                     <?php $this->renderFeedbackMessages(); ?>
-                    <?php echo $this->form()->open("materials", $this->route(["action" => "save", "params" => [$this->get("id", 0)]]), ["class" => "ui large form","enctype" => "multipart/form-data"]); ?>
+                    <?php echo $this->form()->open("materials", $this->route(["action" => "save", "params" => [$this->get("id", 0)]]), ["class" => "ui large form", "enctype" => "multipart/form-data"]); ?>
                     <div class="field">
                         <div class="field">
                             <label><?php echo $this->text("TITLE"); ?></label>
@@ -31,11 +31,24 @@
                     <?php if ($this->get("id", 0) == 0) { ?>
                         <?php
                         switch ($this->get("type")) {
-                            case 1;
+                            case 1:
                                 ?>
                                 <div class="field">
                                     <label><?php echo $this->text("FILE"); ?></label>
                                     <input type="file" name="file"/>
+                                </div>
+                                <?php
+                                break;
+                            case 2:
+                                ?>
+                                <div class="field">
+                                    <label><?php echo $this->text("VIDEO_LINK"); ?></label>
+                                    <div class="ui left action input">
+                                        <select name="provider" class="ui compact selection dropdown">
+                                            <option selected value="youtube">YouTube</option>
+                                        </select>
+                                        <input name="link" type="url" placeholder="http://">
+                                    </div>
                                 </div>
                                 <?php
                                 break;

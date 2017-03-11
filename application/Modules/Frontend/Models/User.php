@@ -55,10 +55,11 @@ class User extends BaseModel
 
         if (count(Service::getSession()->get('feedback_negative')) == 0) {
             $record = [
+                "account_type" => 1,
                 "name" => $data["name"],
                 "email" => $data["email"],
                 "password" => md5($data["password"]),
-                "active" => 1
+                "status" => 1
             ];
             if ($this->insert($record)) {
                 return true;

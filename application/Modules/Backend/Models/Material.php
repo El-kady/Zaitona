@@ -9,6 +9,10 @@ class Material extends BaseModel
 {
     protected $table = "materials";
 
+    private $rules = [
+        "youtube" => "~v=(?:[a-z0-9_-]+)~i"
+    ];
+
     private function validate($data)
     {
         foreach ($data as $key => $value) {
@@ -21,19 +25,24 @@ class Material extends BaseModel
     public function insertData($data)
     {
         $this->validate($data);
-        try {
-            Service::getUploader()->upload("file", ["image", "text", "document", "video"]);
-        } catch (\Exception $e) {
-            Service::getSession()->add('feedback_negative', Service::getText()->get($e->getMessage()) );
+
+        if ((int)$data["type"] == 1) {
+            try {
+                Service::getUploader()->upload("file", ["image", "text", "document", "video"]);
+                $data["file_name"] = Service::getUploader()->getFile("physical_url");
+                $data["file_type"] = Service::getUploader()->getFile("type");
+                $data["file_size"] = Service::getUploader()->getFile("size");
+            } catch (\Exception $e) {
+                Service::getSession()->add('feedback_negative', Service::getText()->get($e->getMessage()));
+            }
         }
+
+        if ((int)$data["type"] == 2 && !preg_match($this->rules[$data["provider"]], $data["link"])) {
+            Service::getSession()->add('feedback_negative', sprintf(Service::getText()->get("LINK_NOT_SUPPORTED"), Service::getText()->get($data["provider"])));
+        }
+
         if (count(Service::getSession()->get('feedback_negative')) == 0) {
-
-            $data["file_name"] = Service::getUploader()->getFile("physical_url");
-            $data["file_type"] = Service::getUploader()->getFile("type");
-            $data["file_size"] = Service::getUploader()->getFile("size");
-
             $this->insert($data);
-
             return true;
         }
         return false;
