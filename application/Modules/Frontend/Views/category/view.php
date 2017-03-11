@@ -41,7 +41,6 @@
                             <a href="<?php echo $this->route(["controller" => "course" , "action" => "view" , "params" => ["id" => $course['id']]]); ?>" class="ui blue button"><?php echo $this->text("START"); ?></a>
                         </div>
                     </div>
-
                 </div>
             <?php } ?>
 

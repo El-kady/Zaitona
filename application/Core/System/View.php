@@ -12,6 +12,7 @@ class View
     private $module;
     private $controller;
     private $action;
+    private $params;
 
     private $feedback_positive = array();
     private $feedback_negative = array();
@@ -140,6 +141,11 @@ class View
         }
 
         return $this->getConfig("URL") . "/" . implode("/", array_map("strtolower", $route));
+    }
+
+    public function selfRoute()
+    {
+        return $this->route(["controller" => $this->controller,"action" => $this->action,"params" => $this->params]);
     }
 
     public function encodeHTML($str)
