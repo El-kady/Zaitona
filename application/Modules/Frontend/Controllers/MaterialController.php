@@ -33,13 +33,12 @@ class MaterialController extends FrontendController
     {
         $id = (int)$id;
         if($id > 0){
-            $data['course'] = $this->course->getRow($id,'id');
+            $data['material'] = $this->material->getRow($id,'id');
+            $data['section'] = $this->section->getRow($data['material']['section_id'],'id');
+            $data['course'] = $this->course->getRow($data['material']['course_id'],'id');
             $data['category'] = $this->category->getRow($data['course']['category_id'],'id');
             $data['category_parent'] = $this->category->getRow($data['category']['parent_id'],'id');
-            $data['sections'] = $this->section->getAllByCond($data['course']['id'],'course_id');
-            for ($i=0; $i<count($data['sections']); $i++) {
-                $data['sections'][$i]['materials'] = $this->material->getAllByCond($data['sections'][$i]['id'],'section_id');
-            }
+            
             
             Service::getView()->setTitle(Service::getText()->get("COURSES_TITLE"))->render("material/view",$data);            
         }else{

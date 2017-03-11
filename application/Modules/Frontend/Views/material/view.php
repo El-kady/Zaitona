@@ -1,29 +1,9 @@
- <nav class="ui fixed menu inverted navbar">
-        <a href="" class="brand item">Project Name</a>
-        <a href="" class="active item">Home</a>
-        <a href="" class="item">About</a>
-        <a href="" class="item">Contact</a>
-        <a class="ui dropdown item">Dropdown
-          <i class="dropdown icon"></i>
-          <div class="menu">
-            <div class="item">Action</div>
-            <div class="item">Another action</div>
-            <div class="item">Something else here</div>
-            <div class="ui horizontal divider"></div>
-            <div class="item">Seperated link</div>
-            <div class="item">One more seperated link</div>
-          </div>
-        </a>
-    </nav> <!-- end nav -->
+<!-- end nav -->
 
     <main class="ui page grid">
         <div class="row">
             <div class="column">
-                <div class="ui message main">
-                    <h1 class="ui header">Hello, world!</h1>
-                    <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-                    <a class="ui blue button">Learn more &raquo;</a>
-                </div>
+                <div class="ui embed" data-source="<?php echo $this->material['provider'];?>" data-id="<?php echo $this->material['link_id'];?>" data-icon="video" ></div>
             </div>
         </div>
         <div class="row">
