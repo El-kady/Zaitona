@@ -88,7 +88,7 @@
                                     <div class="item">
                                         <i class="large file middle aligned icon"></i>
                                         <div class="content">
-                                            <a href="<?php echo $this->route(["controller" => "material", "action" => "view", "params" => ["id" => $this->category['id']]]); ?>"
+                                            <a href="<?php echo $this->route(["controller" => "material", "action" => "view", "params" => ["id" => $material['id']]]); ?>"
                                                class="header">
                                                 <?php echo $material["title"]; ?>
                                             </a>
