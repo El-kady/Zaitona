@@ -22,7 +22,8 @@
                 <table class="ui table">
                     <thead>
                     <tr>
-                        <th><?php echo $this->text("TITLE"); ?></th>
+                        <th><?php echo $this->text("REQUEST"); ?></th>
+                        <th><?php echo $this->text("RELATED_COURSE"); ?></th>
                         <th class="center aligned" width="350"><?php echo $this->text("OPTIONS"); ?></th>
                     </tr>
                     </thead>
@@ -33,6 +34,7 @@
                         <?php foreach ((array)$this->rows as $row) { ?>
                             <tr>
                                 <td><?php echo $row["request"]; ?></td>
+                                <td><?php echo $row["course_id"]; ?></td>
                                 <td class="center aligned">
                                     <div class="ui buttons mini">
                                         <a class="ui button"
