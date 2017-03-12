@@ -27,8 +27,8 @@
                             <div class="column verborder">
                                 <div class="ui info">
                                     <h5 class="ui header">
-                                        USER
-                                        <div class="sub header"><?php echo $this->strDate($row["created_at"]);?></div>
+                                        User
+                                        <div class="sub header"><?php echo $this->strDate($row["created_at"]); ?></div>
                                     </h5>
                                     <p>
                                         <?php echo $this->beautifyText($row["request"]); ?>
@@ -36,7 +36,9 @@
                                 </div>
                             </div>
                             <div class="center aligned column">
-                                <a class="ui mini red button" href="<?php echo $this->route(["action" => "delete_confirm","params" => [$row["id"]]]); ?>" ><i class="trash icon"></i> <?php echo $this->text("DELETE"); ?></a>
+                                <a class="ui mini red button"
+                                   href="<?php echo $this->route(["action" => "delete_confirm", "params" => [$row["id"]]]); ?>"><i
+                                            class="trash icon"></i> <?php echo $this->text("DELETE"); ?></a>
                             </div>
                         </div>
                     <?php } ?>
