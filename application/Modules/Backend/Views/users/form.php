@@ -88,7 +88,6 @@
                                 <i class="dropdown icon"></i>
                                 <div class="menu">
                                     <div class="item" data-value="1"><?php echo $this->text("ACTIVE"); ?></div>
-                                    <div class="item" data-value="2"><?php echo $this->text("INACTIVE"); ?></div>
                                     <div class="item" data-value="3"><?php echo $this->text("BANNED"); ?></div>
                                 </div>
                             </div>

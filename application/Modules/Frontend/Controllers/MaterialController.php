@@ -46,7 +46,8 @@ class MaterialController extends FrontendController
             $data['course'] = $this->course->getRow($data['material']['course_id'],'id');
             $data['category'] = $this->category->getRow($data['course']['category_id'],'id');
             $data['category_parent'] = $this->category->getRow($data['category']['parent_id'],'id');
-            $data['comments'] = $this->comment->getAllByCond($id,'material_id');
+            $data['comments'] = $this->comment->getAllByCond($id,'material_id','ORDER BY created_at','DESC');
+
             for ($i = 0; $i < count($data['comments']); $i++) {
                 $data['comments'][$i]['user_name'] = $this->user->getRow($data['comments'][$i]['user_id'],'id');
             }

@@ -198,7 +198,9 @@
                     <?php echo $this->getConfig("site_name"); ?>
                 </h1>
                 <h2><?php echo $this->getConfig("site_slogan"); ?></h2>
-                <a class="ui huge primary button">Get Started <i class="right arrow icon"></i></a>
+                <?php if (!$this->IsLoggedIn()) { ?>
+                    <a href="<?php echo $this->route(["controller" => "login"]); ?>" class="ui huge primary button">Get Started <i class="right arrow icon"></i></a>
+                <?php } ?>
             </div>
 
         <?php } ?>

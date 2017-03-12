@@ -36,7 +36,12 @@
 
                         <?php foreach ((array)$this->rows as $row) { ?>
                             <tr>
-                                <td><?php echo $row["name"]; ?></td>
+                                <td>
+                                    <?php echo $row["name"]; ?>
+                                    <?php if ((int)$row["status"] == 3) { ?>
+                                        <div class="ui red horizontal label"><?php echo $this->text("BANNED"); ?></div>
+                                    <?php } ?>
+                                </td>
                                 <td class="center aligned">
                                     <div class="ui buttons mini">
                                         <a class="ui button"

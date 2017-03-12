@@ -48,9 +48,14 @@ class Auth
         return ($this->IsLoggedIn()) ? Service::getSession()->get('user_id') : 0;
     }
 
-    public function IsLoggedIn()
+    public function isLoggedIn()
     {
         return (Service::getSession()->get('user_logged_in') ? true : false);
+    }
+
+    public function isBanned()
+    {
+        return (Service::getSession()->get('user_status') == 3);
     }
 
     public function checkSessionConcurrency(){
