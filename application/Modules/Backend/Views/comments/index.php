@@ -27,7 +27,9 @@
                             <div class="column verborder">
                                 <div class="ui info">
                                     <h5 class="ui header">
-                                        USER
+                                        <?php var_dump($row);
+                                        exit;
+                                        ?>
                                         <div class="sub header"><?php echo $this->strDate($row["created_at"]);?></div>
                                     </h5>
                                     <p>
