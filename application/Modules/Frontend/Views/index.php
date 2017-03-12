@@ -1,53 +1,45 @@
+<div class="ui text container main">
+    <div class="ui middle aligned center aligned grid">
+        <div class="column">
+            <h1 class="ui teal image header">
+                Latest Courses
+            </h1>
 
-<div class="ui vertical stripe segment">
-    <div class="ui middle aligned stackable grid container">
-        <div class="row">
-            <div class="eight wide column">
-                <h3 class="ui header">We Help Companies and Companions</h3>
-                <p>We can give your company superpowers to do things that they never thought possible. Let us delight your customers and empower your needs...through pure data analytics.</p>
-                <h3 class="ui header">We Make Bananas That Can Dance</h3>
-                <p>Yes that's right, you thought it was the stuff of dreams, but even bananas can be bioengineered.</p>
+
+            <div class="ui grid">
+
+                <?php if (count($this->get("courses",[]))) { ?>
+                    <?php foreach ($this->get("courses",[]) as $course) { ?>
+                        <div class="four wide column">
+
+                            <div class="ui card">
+                                <a class="image" href="<?php echo $this->route(["controller" => "course" , "action" => "view" , "params" => ["id" => $course['id']]]); ?>">
+                                    <img src="<?php echo $this->uploadedFile($course["featured_image"]); ; ?>">
+                                </a>
+                                <div class="content">
+                                    <a href="<?php echo $this->route(["controller" => "course" , "action" => "view" , "params" => ["id" => $course['id']]]); ?>" class="header"><?php echo $course["title"]; ?></a>
+                                    <div class="meta">
+                                        <span class="date"><?php echo $this->strDate($course["created_at"]); ?></span>
+                                    </div>
+                                </div>
+                                <div class="extra content">
+                                    <a href="<?php echo $this->route(["controller" => "course" , "action" => "view" , "params" => ["id" => $course['id']]]); ?>" class="ui blue button"><?php echo $this->text("START"); ?></a>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
+                <?php }else{ ?>
+                    <p class="aligned center">
+                        <?php echo $this->text("NO_ROWS"); ?>
+                    </p>
+                <?php } ?>
+
             </div>
-            <div class="six wide right floated column">
-                <img src="assets/images/wireframe/white-image.png" class="ui large bordered rounded image">
-            </div>
-        </div>
-        <div class="row">
-            <div class="center aligned column">
-                <a class="ui huge button">Check Them Out</a>
-            </div>
+
         </div>
     </div>
 </div>
 
 
-<div class="ui vertical stripe quote segment">
-    <div class="ui equal width stackable internally celled grid">
-        <div class="center aligned row">
-            <div class="column">
-                <h3>"What a Company"</h3>
-                <p>That is what they all say about us</p>
-            </div>
-            <div class="column">
-                <h3>"I shouldn't have gone with their competitor."</h3>
-                <p>
-                    <img src="assets/images/avatar/nan.jpg" class="ui avatar image"> <b>Nan</b> Chief Fun Officer Acme Toys
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
 
-<div class="ui vertical stripe segment">
-    <div class="ui text container">
-        <h3 class="ui header">Breaking The Grid, Grabs Your Attention</h3>
-        <p>Instead of focusing on content creation and hard work, we have learned how to master the art of doing nothing by providing massive amounts of whitespace and generic content that can seem massive, monolithic and worth your attention.</p>
-        <a class="ui large button">Read More</a>
-        <h4 class="ui horizontal header divider">
-            <a href="#">Case Studies</a>
-        </h4>
-        <h3 class="ui header">Did We Tell You About Our Bananas?</h3>
-        <p>Yes I know you probably disregarded the earlier boasts as non-sequitur filler content, but its really true. It took years of gene splicing and combinatory DNA research, but our bananas can really dance.</p>
-        <a class="ui large button">I'm Still Quite Interested</a>
-    </div>
-</div>
+

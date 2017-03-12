@@ -19,11 +19,15 @@ class BaseModel
         );
     }
 
-    public function getAll()
+    public function getAll($limit = 0,$offset = 0)
     {
-        return Service::getDatabase()->fetchAll(
-            sprintf("SELECT * FROM %s ",$this->table)
-        );
+        $sql = sprintf("SELECT * FROM %s ",$this->table);
+
+        if ($limit > 0) {
+            $sql .= sprintf("LIMIT %d OFFSET %s",$limit,$offset);
+        }
+
+        return Service::getDatabase()->fetchAll($sql);
     }
 
     public function getAllByCond($value,$field = "id")

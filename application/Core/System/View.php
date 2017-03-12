@@ -130,9 +130,9 @@ class View
         }
 
         $route[] = (isset($data["controller"])) ? $data["controller"] : $this->controller;
-        if(isset($data["action"])) {
+        if (isset($data["action"])) {
             $route[] = $data["action"];
-        } 
+        }
 
         if (isset($data["params"])) {
             foreach ((array)$data["params"] as $value) {
@@ -145,7 +145,7 @@ class View
 
     public function selfRoute()
     {
-        return $this->route(["controller" => $this->controller,"action" => $this->action,"params" => $this->params]);
+        return $this->route(["controller" => $this->controller, "action" => $this->action, "params" => $this->params]);
     }
 
     public function encodeHTML($str)
@@ -153,9 +153,16 @@ class View
         return htmlentities($str, ENT_QUOTES, 'UTF-8');
     }
 
-    public function strDate($date,$format = "F j, Y")
+    public function strDate($date, $format = "F j, Y")
     {
-        return date($format,strtotime($date));
+        return date($format, strtotime($date));
+    }
+
+    public function beautifyText($str)
+    {
+        $str = wordwrap($str);
+        $str = nl2br($str);
+        return $str;
     }
 
     public function loadCSSLink($filename)
@@ -173,23 +180,23 @@ class View
         return sprintf("<img src='%s/assets/%s'/>\n", Service::getConfig()->get("URL"), $filename);
     }
 
-    public function renderImage($file,$default = "",$html = true,$attrs = [])
+    public function renderImage($file, $default = "", $html = true, $attrs = [])
     {
         $url = "";
         if (!empty($file)) {
             $url = $this->uploadedFile($file);
-        }else{
+        } else {
             $url = Service::getConfig()->get("URL") . $default;
         }
         $_attrs = [];
         foreach ($attrs as $key => $value) {
-            $_attrs[] = sprintf('%s="%s"',$key,$value);
+            $_attrs[] = sprintf('%s="%s"', $key, $value);
         }
-        return ($html) ? sprintf("<img %s src='%s' />",implode(" ",$_attrs),$url) : $url;
+        return ($html) ? sprintf("<img %s src='%s' />", implode(" ", $_attrs), $url) : $url;
     }
 
     public function uploadedFile($file)
     {
-        return Service::getConfig()->get("URL") . '/uploads/'. $file;
+        return Service::getConfig()->get("URL") . '/uploads/' . $file;
     }
 }

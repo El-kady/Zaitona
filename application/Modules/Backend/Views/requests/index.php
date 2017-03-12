@@ -19,42 +19,31 @@
 
 
             <div class="ui fluid vertical segment">
-                <table class="ui table">
-                    <thead>
-                    <tr>
-                        <th><?php echo $this->text("REQUEST"); ?></th>
-                        <th><?php echo $this->text("RELATED_COURSE"); ?></th>
-                        <th class="center aligned" width="350"><?php echo $this->text("OPTIONS"); ?></th>
-                    </tr>
-                    </thead>
-                    <tbody>
 
-                    <?php if (is_array($this->rows) && count($this->rows)) { ?>
+                <?php if (is_array($this->rows) && count($this->rows)) { ?>
 
-                        <?php foreach ((array)$this->rows as $row) { ?>
-                            <tr>
-                                <td><?php echo $row["request"]; ?></td>
-                                <td><?php echo $row["course_id"]; ?></td>
-                                <td class="center aligned">
-                                    <div class="ui buttons mini">
-                                        <a class="ui button"
-                                           href="<?php echo $this->route(["action" => "delete_confirm", "params" => [$row["id"]]]); ?>"><i
-                                                    class="trash icon"></i> <?php echo $this->text("DELETE"); ?></a>
-                                    </div>
-                                </td>
-                            </tr>
-                        <?php } ?>
-
-                    <?php } else { ?>
-                        <tr>
-                            <td class="center aligned" colspan="2">
-                                <?php echo $this->text("NO_ROWS"); ?>
-                            </td>
-                        </tr>
+                    <?php foreach ($this->rows as $row) { ?>
+                        <div class="ui device two column middle aligned vertical grid segment">
+                            <div class="column verborder">
+                                <div class="ui info">
+                                    <h5 class="ui header">
+                                        USER
+                                        <div class="sub header"><?php echo $this->strDate($row["created_at"]);?></div>
+                                    </h5>
+                                    <p>
+                                        <?php echo $this->beautifyText($row["request"]); ?>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="center aligned column">
+                                <a class="ui mini red button" href="<?php echo $this->route(["action" => "delete_confirm","params" => [$row["id"]]]); ?>" ><i class="trash icon"></i> <?php echo $this->text("DELETE"); ?></a>
+                            </div>
+                        </div>
                     <?php } ?>
 
-                    </tbody>
-                </table>
+                <?php } else { ?>
+                    <p><?php echo $this->text("NO_ROWS"); ?></p>
+                <?php } ?>
 
             </div>
 

@@ -131,7 +131,7 @@
             </p>
 
             <p>
-                <a target="_blank" href="https://plus.google.com/share?url=<?php echo $this->course["title"]; ?>" class="ui fluid mini google plus button">
+                <a target="_blank" href="https://plus.google.com/share?url=<?php echo $this->selfRoute(); ?>" class="ui fluid mini google plus button">
                     <i class="google plus icon"></i>
                     Google Plus
                 </a>

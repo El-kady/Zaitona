@@ -55,8 +55,8 @@
             <?php if ($this->IsLoggedIn()) { ?>
                 <dev class="item">
                     <div class="ui inline labeled icon top right pointing dropdown">
-                        <img class="ui avatar image"
-                             src="<?php echo $this->getConfig("URL"); ?>/assets/backend/images/avatar-default.gif">
+                        <?php echo $this->renderImage($this->getFromSession("user_photo"), "/assets/images/avatar-default.gif", true, ["class" => "ui avatar image"]); ?>
+
                         <?php echo $this->getFromSession("user_name"); ?>
                         <i class="dropdown icon"></i>
                         <div class="menu">
