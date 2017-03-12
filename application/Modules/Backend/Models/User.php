@@ -43,6 +43,7 @@ class User extends BaseModel
 
         if (count(Service::getSession()->get('feedback_negative')) == 0) {
             $record = [
+                "session_id" => "",
                 "name" => $data["name"],
                 "email" => $data["email"],
                 "password" => md5($data["password"]),

@@ -12,8 +12,7 @@ class User extends BaseModel
     public function login($email, $password)
     {
         if (!empty($email) && !empty($password)) {
-            if ($user = $this->getRow($email, "email")) {
-
+            if (($user = $this->getRow($email, "email"))) {
                 if (md5($password) == $user['password']) {
                     if (Service::getAuth()->setLogin($user)) {
                         return true;
