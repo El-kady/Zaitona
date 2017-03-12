@@ -7,17 +7,17 @@ use \Modules\Backend\Models\Request;
 class RequestsController extends BackendController
 {
 
-    private $Request;
+    private $request;
 
     function __construct()
     {
         parent::__construct();
-        $this->Request = new Request();
+        $this->request = new Request();
     }
 
     public function index()
     {
-        $rows = $this->Request->getAll();
+        $rows = $this->request->getAll();
         Service::getView()
             ->setTitle(Service::getText()->get("REQUESTS"))
             ->render("requests/index", ["rows" => $rows]);
@@ -26,7 +26,7 @@ class RequestsController extends BackendController
     public function delete($id)
     {
         if (Service::getRequest()->post("delete")) {
-            $this->Request->delete("id = :id ", [":id" => (int)$id]);
+            $this->request->delete("id = :id ", [":id" => (int)$id]);
         }
         Service::getRedirect()->to("/backend/requests");
     }
