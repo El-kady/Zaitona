@@ -38,6 +38,11 @@
                             class="setting icon"></i><?php echo $this->text("MY_ACCOUNT"); ?></a>
 
                     <a class="item"
+                       href="<?php echo $this->route(["module" => "frontend", "controller" => "home", "action" => "index"]); ?>"><i
+                                class="block layout icon"></i><?php echo $this->text("WEBSITE"); ?></a>
+
+
+                    <a class="item"
                        href="<?php echo $this->route(["module" => "frontend", "controller" => "user", "action" => "logout"]); ?>"><i
                             class="sign out icon"></i><?php echo $this->text("LOGOUT"); ?></a>
 

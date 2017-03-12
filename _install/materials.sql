@@ -1,14 +1,20 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.0
--- http://www.phpmyadmin.net
+-- version 4.6.4deb1
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Mar 10, 2017 at 11:18 PM
--- Server version: 5.5.54-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.21
+-- Host: localhost:3306
+-- Generation Time: Mar 12, 2017 at 03:45 PM
+-- Server version: 5.7.17-0ubuntu0.16.10.1
+-- PHP Version: 7.0.13-0ubuntu0.16.10.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `zaitona`
@@ -41,6 +47,11 @@ CREATE TABLE `materials` (
 -- Dumping data for table `materials`
 --
 
+INSERT INTO `materials` (`id`, `type`, `provider`, `link`, `title`, `section_id`, `course_id`, `user_id`, `file_name`, `file_type`, `file_size`, `hits`, `status`, `created_at`) VALUES
+(6, 2, 'youtube', 'https://www.youtube.com/watch?v=3MZIkY55fS0', 'Learning Java: Part 1: Basic Introduction', 6, 8, 1, NULL, NULL, 0, 0, 1, '2017-03-11 15:59:23'),
+(7, 1, '', '', 'java.pdf', 7, 8, 1, '2017/03/bf27c0db45.pdf', 'application/pdf', 705424, 0, 1, '2017-03-11 19:54:17'),
+(8, 1, '', '', 'JavaScript-level1', 9, 15, 1, '2017/03/75eb968846.pdf', 'application/pdf', 1243563, 0, 1, '2017-03-12 07:44:16');
+
 --
 -- Indexes for dumped tables
 --
@@ -49,7 +60,7 @@ CREATE TABLE `materials` (
 -- Indexes for table `materials`
 --
 ALTER TABLE `materials`
-ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -59,4 +70,7 @@ ADD PRIMARY KEY (`id`);
 -- AUTO_INCREMENT for table `materials`
 --
 ALTER TABLE `materials`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

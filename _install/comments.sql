@@ -23,34 +23,38 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sections`
+-- Table structure for table `comments`
 --
 
-CREATE TABLE `sections` (
-  `id` int(11) NOT NULL,
-  `course_id` int(11) NOT NULL DEFAULT '0',
-  `title` varchar(255) NOT NULL,
+CREATE TABLE `comments` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `material_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `comment` text CHARACTER SET latin1 NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `sections`
+-- Dumping data for table `comments`
 --
 
-INSERT INTO `sections` (`id`, `course_id`, `title`, `created_at`) VALUES
-(6, 8, 'Introduction', '2017-03-10 14:30:59'),
-(7, 8, 'Basic', '2017-03-10 14:30:59'),
-(8, 9, 'Introduction', '2017-03-10 14:36:13'),
-(9, 15, 'Introduction', '2017-03-12 07:43:30');
+INSERT INTO `comments` (`id`, `material_id`, `user_id`, `comment`, `created_at`) VALUES
+(1, 6, 1, 'first comment on java', '2017-03-11 19:31:34'),
+(2, 6, 1, 'second comment', '2017-03-11 22:10:26'),
+(3, 7, 1, 'comment pdf', '2017-03-11 22:14:03'),
+(13, 7, 2, 'new comment', '2017-03-12 09:38:32'),
+(14, 7, 2, 'new comment 2', '2017-03-12 09:38:40'),
+(22, 6, 2, 'java comment 2 modified', '2017-03-12 13:13:43'),
+(21, 6, 2, 'java comment 1', '2017-03-12 13:13:35');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `sections`
+-- Indexes for table `comments`
 --
-ALTER TABLE `sections`
+ALTER TABLE `comments`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -58,10 +62,10 @@ ALTER TABLE `sections`
 --
 
 --
--- AUTO_INCREMENT for table `sections`
+-- AUTO_INCREMENT for table `comments`
 --
-ALTER TABLE `sections`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+ALTER TABLE `comments`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
