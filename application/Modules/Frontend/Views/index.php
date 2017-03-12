@@ -23,7 +23,7 @@
                                     </div>
                                 </div>
                                 <div class="extra content">
-                                    <a href="<?php echo $this->route(["controller" => "course" , "action" => "view" , "params" => ["id" => $course['id']]]); ?>" class="ui blue button"><?php echo $this->text("START"); ?></a>
+                                    <a href="<?php echo $this->route(["controller" => "course" , "action" => "view" , "params" => ["id" => $course['id']]]); ?>" class="ui blue button"><?php echo $this->text("VIEW_COURSE"); ?></a>
                                 </div>
                             </div>
                         </div>
