@@ -61,10 +61,12 @@ return [
     "SUBCATEGORIES" => "Subcategories",
     "SUBCATEGORIES_TITLE" => "Subcategories",
     "COURSES_TITLE" => "Courses",
+    "RELATED_COURSE" => "The Related Course",
     "MATERIAL" => "Material",
     "MATERIAL_TITLE" => "Material",
     "INSTRUCTOR" => "Instructor",
     "DATE" => "Date",
+    "EDIT_ACCOUNTS" => "Edit Accounts",
 
 
     "REGISTER_HINT" => "Have an account?",
@@ -81,6 +83,7 @@ return [
 
     "REQUEST_SENT" => "Request Sent Successfully",
     "REQUEST_TITLE" => "Send Your Request",
+    "REQUEST_MATERIAL" => "Request Material",
 
     "NO_ROWS" => "No data to display right now !",
     "ERROR_PAGE_TITLE" => "That’s an error",

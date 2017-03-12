@@ -25,6 +25,15 @@
                     </div>
                 </div>
                 <div class="step">
+                                    <i class="pointing up icon"></i>
+                                    <div class="content">
+                                        <a href="<?php echo $this->route(["controller" => "course", "action" => "request", "params" => ["id" => $this->course['id']]]); ?>">
+                                        <div class="title"><?php echo $this->text("REQUEST_MATERIAL"); ?>
+                                        </div>
+                                        </a>
+                                    </div>
+                                </div>
+                <div class="step">
                     <i class="calendar icon"></i>
                     <div class="content">
                         <div class="title"><?php echo $this->text("DATE"); ?></div>
