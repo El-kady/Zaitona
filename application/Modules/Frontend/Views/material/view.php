@@ -41,7 +41,6 @@
         <div class="ten wide column">
 
 
-
         <?php if ($this->material['type'] == 2) : ?>
         <div class="row">
             <div class="column">
@@ -66,7 +65,6 @@
             </div>
         </div>
         <?php endif; ?>
-
         <div class="ui divider"></div>
 
         <div class="three column row">
@@ -131,32 +129,6 @@
                             <div class="ui divider"></div>
                             <p>Please <a href="<?php echo $this->route(["controller" => "login"]); ?>">LOGIN</a> to leave a comment</p>
                         <?php endif; ?>
-
-                        <!-- <div class="ui small test modal">
-                            <div class="header">
-                            Edit Comment
-                            </div>
-                            <div class="content">
-                                <form class="ui reply form" method="post" action="<?php echo $this->route(["controller" => "comment" , "action" => "edit"]); ?>" >
-                                    <div class="field">
-                                        <textarea name="comment" class="text"></textarea>
-                                        <input type="hidden" name="user" value="<?php echo $this->getFromSession("user_id"); ?>">
-                                        <input type="hidden" name="material" value="<?php echo $this->material['id']; ?>">
-                                        <input type="hidden" name="back" value="<?php echo $this->selfRoute(); ?>">
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="actions">
-                                <div class="ui negative button">
-                                    No
-                                </div>
-                                <div class="ui positive right labeled icon button">
-                                    Edit
-                                    <i class="checkmark icon"></i>
-                                </div>
-                            </div>
-                        </div> -->
-
                     </div>
                 </div>
             </div>

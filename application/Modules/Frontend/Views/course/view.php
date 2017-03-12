@@ -95,6 +95,7 @@
                         <div class="ui relaxed divided list">
                             <?php if (count($section['materials'])) { ?>
                                 <?php foreach ($section['materials'] as $material) { ?>
+                                <?php if ($material['status'] != 0 ) : ?>
                                     <div class="item">
                                         <i class="large file middle aligned icon"></i>
                                         <div class="content">
@@ -105,6 +106,7 @@
                                             <div class="description"><?php echo $this->strDate($material["created_at"]);?></div>
                                         </div>
                                     </div>
+                                <?php endif; ?>
                                 <?php } ?>
                             <?php }else{ ?>
                                 <?php echo $this->text("NO_ROWS"); ?>
