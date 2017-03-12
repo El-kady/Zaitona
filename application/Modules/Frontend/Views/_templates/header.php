@@ -168,7 +168,7 @@
                             <div class="menu">
                                 <a class="item"
                                    href="<?php echo $this->route(["controller" => "user", "action" => "edit"]); ?>"><i
-                                        class="reply mail icon"></i><?php echo $this->text("MY_ACCOUNT"); ?></a>
+                                        class="setting icon"></i><?php echo $this->text("MY_ACCOUNT"); ?></a>
 
                                 <?php if ($this->getFromSession("user_account_type") == 2) { ?>
                                     <a class="item"
