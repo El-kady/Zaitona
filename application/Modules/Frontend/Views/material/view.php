@@ -86,11 +86,14 @@
                                 <div class="text">
                                     <?php echo $comment['comment']; ?>
                                 </div>
+                                <?php if ($this->getFromSession("user_id") == $comment['user_name']['id']) : ?>
                                 <div class="actions">
-                                    <a class="delete">Delete</a>
+                                    <a class="ui red button delete" href="<?php echo $this->route(["controller" => "comment" , "action" => "delete" , "params" => ["id" => $comment['id'], "material" => $this->material['id']]]); ?>">Delete</a>
                                 </div>
+                                <?php endif; ?>
                             </div>
                         </div>
+                        <div class="ui divider"></div>
                         <?php endforeach; ?>
 
                         <?php if ($this->IsLoggedIn()) : ?>

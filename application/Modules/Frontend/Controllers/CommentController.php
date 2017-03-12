@@ -35,13 +35,27 @@ class CommentController extends FrontendController
         $material = Service::getRequest()->post("material");
 
 
-        if ($this->comment->add($comment,$user,$material)) {
-
+        if ($this->comment->add($comment,$user,$material)) 
+        {
             Service::getRedirect()->absolute(Service::getRequest()->post("back"));
         }else{
             Service::getRedirect()->to("/home");
         }
 
+    }
+
+    public function delete($id, $material)
+    {
+        $row = $this->comment->getRow($id);
+        $user_logged = Service::getSession()->get("user_id");
+        $user_type = Service::getSession()->get("user_account_type");
+        
+        if ($user_logged == $row['user_id'] || $user_type == 2) {
+            $this->comment->delete("id = :id ",[":id" => (int) $id]) ;
+            Service::getRedirect()->to("/material/view/" . $material);
+        }else{
+            Service::getRedirect()->to("/home");
+        }
     }
 
 }
