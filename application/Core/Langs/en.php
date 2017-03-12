@@ -68,7 +68,7 @@ return [
     "INSTRUCTOR" => "Instructor",
     "DATE" => "Date",
     "EDIT_ACCOUNTS" => "Edit Accounts",
-
+    "VIEW_COURSE" => "View Course",
 
     "REGISTER_HINT" => "Have an account?",
     "LOGIN_HINT" => "New to us?",
