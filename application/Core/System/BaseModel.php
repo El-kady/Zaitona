@@ -30,10 +30,10 @@ class BaseModel
         return Service::getDatabase()->fetchAll($sql);
     }
 
-    public function getAllByCond($value,$field = "id")
+    public function getAllByCond($value,$field = "id",$orderby = "",$order = "")
     {
         return Service::getDatabase()->fetchAll(
-            sprintf("SELECT * FROM %s WHERE %s = :value",$this->table,$field),
+            sprintf("SELECT * FROM %s WHERE %s = :value %s %s",$this->table,$field,$orderby,$order),
             array(
                 ":value" => $value
             )
