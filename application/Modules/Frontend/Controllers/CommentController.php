@@ -29,8 +29,7 @@ class CommentController extends FrontendController
 
     public function save()
     {
-        echo hi;
-        exit();
+
         $comment = Service::getRequest()->post("comment");
         $user = Service::getRequest()->post("user");
         $material = Service::getRequest()->post("material");
@@ -38,7 +37,7 @@ class CommentController extends FrontendController
 
         if ($this->comment->add($comment,$user,$material)) {
 
-            // Service::getRedirect()->absolute(Service::getRequest()->post("back"););
+            Service::getRedirect()->absolute(Service::getRequest()->post("back"));
         }else{
             Service::getRedirect()->to("/home");
         }
