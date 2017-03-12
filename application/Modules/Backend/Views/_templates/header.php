@@ -38,11 +38,6 @@
                             class="setting icon"></i><?php echo $this->text("MY_ACCOUNT"); ?></a>
 
                     <a class="item"
-                       href="<?php echo $this->route(["module" => "frontend", "controller" => "home", "action" => "index"]); ?>"><i
-                                class="block layout icon"></i><?php echo $this->text("WEBSITE"); ?></a>
-
-
-                    <a class="item"
                        href="<?php echo $this->route(["module" => "frontend", "controller" => "user", "action" => "logout"]); ?>"><i
                             class="sign out icon"></i><?php echo $this->text("LOGOUT"); ?></a>
 
@@ -53,17 +48,22 @@
 
 
     <div class="ui teal inverted menu fluid">
-        <div class="bigcontainer">
+            <?php foreach (["home" => ["icon" => "block layout", "title" => "DASHBOARD"], "settings" => ["icon" => "settings", "title" => "SETTINGS"], "blog" => ["icon" => "talk", "title" => "BLOG"]] as $controller_key => $menu) { ?>
+                <a class="item <?php if ($controller_key == strtolower($this->controller)) {
+                    echo "active";
+                } ?>" href="<?php echo $this->route(["controller" => $controller_key, "action" => ""]); ?>"><i
+                        class="icon <?php echo $menu["icon"]; ?>"></i> <?php echo $this->text($menu["title"]); ?>
+                </a>
+            <?php } ?>
+
             <div class="right menu">
-                <?php foreach (["home" => ["icon" => "home", "title" => "HOME_PAGE"], "settings" => ["icon" => "settings", "title" => "SETTINGS"], "blog" => ["icon" => "talk", "title" => "BLOG"]] as $controller_key => $menu) { ?>
-                    <a class="item <?php if ($controller_key == strtolower($this->controller)) {
-                        echo "active";
-                    } ?>" href="<?php echo $this->route(["controller" => $controller_key, "action" => ""]); ?>"><i
-                            class="icon <?php echo $menu["icon"]; ?>"></i> <?php echo $this->text($menu["title"]); ?>
-                    </a>
-                <?php } ?>
+                <a class="item"
+                   href="<?php echo $this->route(["module" => "frontend", "controller" => "home", "action" => "index"]); ?>"><i
+                        class="home icon"></i><?php echo $this->text("WEBSITE"); ?></a>
             </div>
-        </div>
+
+
+
     </div>
 
 </div>

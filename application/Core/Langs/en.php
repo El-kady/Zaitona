@@ -1,6 +1,7 @@
 <?php
 return [
     "HOME_PAGE" => "Home Page",
+    "DASHBOARD" => "Dashboard",
     "SETTINGS" => "Settings",
     "CATEGORIES" => "Categories",
     "SECTIONS" => "Sections",
