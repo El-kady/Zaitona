@@ -2,12 +2,12 @@
 namespace Modules\Backend\Controllers;
 
 use \Core\Service\Service;
-use \Modules\Frontend\Models\Category;
-use \Modules\Frontend\Models\Course;
-use \Modules\Frontend\Models\Section;
-use \Modules\Frontend\Models\Material;
-use \Modules\Frontend\Models\Comment;
-use \Modules\Frontend\Models\User;
+use \Modules\Backend\Models\Category;
+use \Modules\Backend\Models\Course;
+use \Modules\Backend\Models\Section;
+use \Modules\Backend\Models\Material;
+use \Modules\Backend\Models\Comment;
+use \Modules\Backend\Models\User;
 
 
 class CommentsController extends BackendController
@@ -74,7 +74,6 @@ class CommentsController extends BackendController
     public function save($id = 0)
     {
         $data = [
-
             "comment" => Service::getRequest()->post("comment")
         ];
 
