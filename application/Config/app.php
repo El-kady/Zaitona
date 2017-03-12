@@ -26,7 +26,7 @@ if ($_SERVER["HTTP_HOST"] == "localhost") {
     $config["DB_USER"] = "zaitona";
     $config["DB_PASS"] = "12345";
 }else{
-    $config["DB_HOST"] = "mysql://b10794dc0f9543:9838df15@us-cdbr-iron-east-03.cleardb.net/heroku_6f7f0b423011b15?reconnect=true";
+    $config["DB_HOST"] = "us-cdbr-iron-east-03.cleardb.net";
     $config["DB_NAME"] = "heroku_6f7f0b423011b15";
     $config["DB_USER"] = "b10794dc0f9543";
     $config["DB_PASS"] = "9838df15";
