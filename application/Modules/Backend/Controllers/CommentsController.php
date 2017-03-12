@@ -2,25 +2,55 @@
 namespace Modules\Backend\Controllers;
 
 use \Core\Service\Service;
-use \Modules\Backend\Models\Comment;
+use \Modules\Frontend\Models\Category;
+use \Modules\Frontend\Models\Course;
+use \Modules\Frontend\Models\Section;
+use \Modules\Frontend\Models\Material;
+use \Modules\Frontend\Models\Comment;
+use \Modules\Frontend\Models\User;
+
 
 class CommentsController extends BackendController
 {
 
-    private $Comment;
+    private $category;
+    private $course;
+    private $section;
+    private $material;
+    private $comment;
+    private $user;
 
     function __construct()
     {
         parent::__construct();
-        $this->Comment = new Comment();
+        $this->comment = new Comment();
+        $this->category = new Category();
+        $this->course = new Course();
+        $this->section = new Section();
+        $this->material = new Material();
+        $this->user = new User();
+    }
+
+    public function view()
+    {
+        $rows = $this->comment->getAll();
+        Service::getView()
+            ->setTitle(Service::getText()->get("COMMENTS"))
+            ->render("comments/index", ["rows" => $rows]);
     }
 
     public function index()
     {
-        $rows = $this->Comment->getAll();
-        Service::getView()
-            ->setTitle(Service::getText()->get("COMMENTS"))
-            ->render("comments/index", ["rows" => $rows]);
+
+        $rows = $this->comment->getAll();
+
+
+        for ($i = 0; $i < count($rows); $i++) {
+            $rows[$i]['user_name'] = $this->user->getRow($rows[$i]['user_id'], 'id');
+        }
+
+        Service::getView()->setTitle(Service::getText()->get("COMMENTS"))->render("comments/index", ["rows" => $rows]);
+
     }
 
     public function delete($id)
@@ -31,8 +61,9 @@ class CommentsController extends BackendController
         Service::getRedirect()->to("/backend/comments");
     }
 
-    public function edit($id){
-        $row = $this->Comment->getRow((int)$id);
+    public function edit($id)
+    {
+        $row = $this->comment->getRow((int)$id);
         Service::getForm()->fillData('comments', $row);
 
         Service::getView()
@@ -47,7 +78,7 @@ class CommentsController extends BackendController
             "comment" => Service::getRequest()->post("comment")
         ];
 
-        if ($this->Comment->saveData($data, (int)$id)) {
+        if ($this->comment->saveData($data, (int)$id)) {
             Service::getRedirect()->to("/backend/comments");
         } else {
             Service::getForm()->fillTmp('comments', $data);
