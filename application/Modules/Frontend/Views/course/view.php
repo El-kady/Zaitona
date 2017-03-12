@@ -25,6 +25,15 @@
                     </div>
                 </div>
                 <div class="step">
+                                    <i class="pointing up icon"></i>
+                                    <div class="content">
+                                        <a href="<?php echo $this->route(["controller" => "course", "action" => "request", "params" => ["id" => $this->course['id']]]); ?>">
+                                        <div class="title"><?php echo $this->text("REQUEST_MATERIAL"); ?>
+                                        </div>
+                                        </a>
+                                    </div>
+                                </div>
+                <div class="step">
                     <i class="calendar icon"></i>
                     <div class="content">
                         <div class="title"><?php echo $this->text("DATE"); ?></div>
@@ -57,22 +66,22 @@
 
             <h4 class="ui header"><?php echo $this->text("DESCRIPTION"); ?></h4>
             <p>
-                <?php echo $this->course["description"]; ?>
+                <?php echo nl2br($this->course["description"]); ?>
             </p>
 
             <h4 class="ui header"><?php echo $this->text("INTRODUCTION"); ?></h4>
             <p>
-                <?php echo $this->course["introduction"]; ?>
+                <?php echo nl2br($this->course["introduction"]); ?>
             </p>
 
             <h4 class="ui header"><?php echo $this->text("REQUIREMENT"); ?></h4>
             <p>
-                <?php echo $this->course["requirement"]; ?>
+                <?php echo nl2br($this->course["requirement"]); ?>
             </p>
 
             <h4 class="ui header"><?php echo $this->text("AUDIENCE"); ?></h4>
             <p>
-                <?php echo $this->course["audience"]; ?>
+                <?php echo nl2br($this->course["audience"]); ?>
             </p>
 
 

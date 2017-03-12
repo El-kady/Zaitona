@@ -28,11 +28,18 @@
             <div class="ui inline labeled icon top right pointing dropdown">
                 <img class="ui avatar image"
                      src="<?php echo $this->getConfig("URL"); ?>/assets/backend/images/avatar-default.gif">
-                欢迎，$用户名
+                     <?php echo $this->getFromSession("user_name"); ?>
                 <i class="dropdown icon"></i>
                 <div class="menu">
-                    <a class="item" href="#"><i class="reply mail icon"></i>返回首页</a>
-                    <a class="item" href="#"><i class="sign out icon"></i>注销登录</a>
+
+                    <a class="item"
+                           href="<?php echo $this->route(["module" => "backend","controller" => "users"]); ?>"><i
+                                    class="setting icon"></i><?php echo $this->text("EDIT_ACCOUNTS"); ?></a>
+
+                    <a class="item"
+                       href="<?php echo $this->route(["module" => "frontend","controller" => "user", "action" => "logout"]); ?>"><i
+                                class="sign out icon"></i><?php echo $this->text("LOGOUT"); ?></a>
+
                 </div>
             </div>
         </div>

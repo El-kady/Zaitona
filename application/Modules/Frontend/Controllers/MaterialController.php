@@ -8,6 +8,9 @@ use \Modules\Frontend\Models\Category;
 use \Modules\Frontend\Models\Course;
 use \Modules\Frontend\Models\Section;
 use \Modules\Frontend\Models\Material;
+use \Modules\Frontend\Models\Comment;
+use \Modules\Frontend\Models\User;
+
 
 class MaterialController extends FrontendController
 {
@@ -15,6 +18,8 @@ class MaterialController extends FrontendController
     private $course;
     private $section;
     private $material;
+    private $comment;
+    private $user;
     function __construct()
     {
         parent::__construct();
@@ -22,6 +27,8 @@ class MaterialController extends FrontendController
         $this->course = new Course();
         $this->section = new Section();
         $this->material = new Material();
+        $this->comment = new Comment();
+        $this->user = new User();
     }
 
     public function index()
@@ -34,12 +41,15 @@ class MaterialController extends FrontendController
         $id = (int)$id;
         if($id > 0){
             $data['material'] = $this->material->getRow($id,'id');
+            $data['instructor'] = $this->user->getRow($data['material']['user_id'],'id');
             $data['section'] = $this->section->getRow($data['material']['section_id'],'id');
             $data['course'] = $this->course->getRow($data['material']['course_id'],'id');
             $data['category'] = $this->category->getRow($data['course']['category_id'],'id');
             $data['category_parent'] = $this->category->getRow($data['category']['parent_id'],'id');
-            
-            
+            $data['comments'] = $this->comment->getAllByCond($id,'material_id');
+            for ($i = 0; $i < count($data['comments']); $i++) {
+                $data['comments'][$i]['user_name'] = $this->user->getRow($data['comments'][$i]['user_id'],'id');
+            }
             Service::getView()->setTitle(Service::getText()->get("COURSES_TITLE"))->render("material/view",$data);            
         }else{
             Service::getRedirect()->to("/home");

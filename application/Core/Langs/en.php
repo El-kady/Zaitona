@@ -8,6 +8,7 @@ return [
     "USERS" => "Users",
     "ABOUT_US" => "About Us",
     "REQUESTS" => "Requests",
+    "REQUEST" => "Request",
     "BLOG" => "Blog",
     "BLOG_TITLE" => "Blog",
     "CONTENT" => "Content",
@@ -31,6 +32,7 @@ return [
     "START" => "Start",
     "SAVE" => "Save",
     "EDIT" => "Edit",
+    "SEND_REQUEST" => "Send Request",
     "DELETE" => "Delete",
     "ACCOUNT_TYPE" => "Account Type",
     "STUDENT" => "Student",
@@ -60,10 +62,12 @@ return [
     "SUBCATEGORIES" => "Subcategories",
     "SUBCATEGORIES_TITLE" => "Subcategories",
     "COURSES_TITLE" => "Courses",
+    "RELATED_COURSE" => "The Related Course",
     "MATERIAL" => "Material",
     "MATERIAL_TITLE" => "Material",
     "INSTRUCTOR" => "Instructor",
     "DATE" => "Date",
+    "EDIT_ACCOUNTS" => "Edit Accounts",
 
 
     "REGISTER_HINT" => "Have an account?",
@@ -78,6 +82,9 @@ return [
     "PASSWORDS_NOT_MATCH" => "Passwords Don't Match",
     "EMAIL_NOT_VALID" => "Email address does not valid",
 
+    "REQUEST_SENT" => "Request Sent Successfully",
+    "REQUEST_TITLE" => "Send Your Request",
+    "REQUEST_MATERIAL" => "Request Material",
 
     "NO_ROWS" => "No data to display right now !",
     "ERROR_PAGE_TITLE" => "That’s an error",
