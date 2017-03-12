@@ -76,6 +76,8 @@ return [
     "REGISTER_HINT" => "Have an account?",
     "LOGIN_HINT" => "New to us?",
     "WEBSITE" => "Website",
+    "COMMENTS" => "Comments",
+    "COMMENT_TITLE" => "Edit The Comment",
 
     "EMAIL_OR_PASSWORD_WRONG" => "The Email or password is incorrect. Please try again.",
     "FILL_ALL_FIELDS" => "Please fill all fields then try again.",

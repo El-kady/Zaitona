@@ -46,10 +46,19 @@ class MaterialController extends FrontendController
             $data['course'] = $this->course->getRow($data['material']['course_id'],'id');
             $data['category'] = $this->category->getRow($data['course']['category_id'],'id');
             $data['category_parent'] = $this->category->getRow($data['category']['parent_id'],'id');
-            $data['comments'] = $this->comment->getAllByCond($id,'material_id');
+            $data['comments'] = $this->comment->getAllByCond($id,'material_id','ORDER BY created_at','DESC');
+
             for ($i = 0; $i < count($data['comments']); $i++) {
                 $data['comments'][$i]['user_name'] = $this->user->getRow($data['comments'][$i]['user_id'],'id');
             }
+
+            if ($data['material']['type'] == 2){
+                $this->material->update(['hits' => (int) $data['material']['hits'] + 1],"id = :id ",[":id" => (int) $data['material']['id']]);            
+            }
+            if ($data['material']['status'] != 1){
+                Service::getView()->errorPage();            
+            }
+
             Service::getView()->setTitle(Service::getText()->get("COURSES_TITLE"))->render("material/view",$data);            
         }else{
             Service::getRedirect()->to("/home");
@@ -73,6 +82,8 @@ class MaterialController extends FrontendController
             header('Content-Transfer-Encoding: binary');
             header('Content-Length: ' . $data['material']['file_size']);
             readfile($filename);
+            
+            $this->material->update(['hits' => (int) $data['material']['hits'] + 1],"id = :id ",[":id" => (int) $data['material']['id']]);
             exit;
             
         }else{
