@@ -20,7 +20,7 @@ class Course extends BaseModel
 
     public function saveData($data, $id = 0)
     {
-        return ($id == 0) ? $this->insertData($data) : $this->updateData($data, $id = 0);
+        return ($id == 0) ? $this->insertData($data) : $this->updateData($data, $id);
     }
 
     private function insertData($data)

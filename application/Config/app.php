@@ -9,8 +9,11 @@ if (ENVIRONMENT == 'development' || ENVIRONMENT == 'dev') {
 
 ini_set('session.cookie_httponly', 1);
 
+$isSecureRequest = ((isset ($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) == 'on') || $_SERVER['SERVER_PORT'] == 443);
+$url_scheme=  $isSecureRequest ? 'https://' : 'http://';
+
 $config = array(
-    'URL' => 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']),
+    'URL' => $url_scheme . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']),
 
     'DB_TYPE' => 'mysql',
     'DB_PORT' => '3306',
