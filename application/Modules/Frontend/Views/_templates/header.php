@@ -18,7 +18,8 @@
 
 <div class="ui large top fixed hidden menu">
     <div class="ui container">
-        <a class="item" href="<?php echo $this->route(["controller" => "home"]); ?>"><?php echo $this->getConfig("site_name"); ?></a>
+        <a class="item"
+           href="<?php echo $this->route(["controller" => "home"]); ?>"><?php echo $this->getConfig("site_name"); ?></a>
 
         <div class="ui dropdown item">
             <?php echo $this->text("CATEGORIES"); ?>
@@ -31,12 +32,14 @@
                             <span class="text"><?php echo $category['title']; ?></span>
                             <div class="menu">
                                 <?php foreach ($category['children'] as $subcategory) : ?>
-                                    <a class="item" href="<?php echo $this->route(["controller" => "category" , "action" => "view" , "params" => ["id" => $subcategory['id']]]); ?>"><?php echo $subcategory['title']; ?></a>
+                                    <a class="item"
+                                       href="<?php echo $this->route(["controller" => "category", "action" => "view", "params" => ["id" => $subcategory['id']]]); ?>"><?php echo $subcategory['title']; ?></a>
                                 <?php endforeach; ?>
                             </div>
                         </div>
-                    <?php }else{ ?>
-                        <a class="item" href="<?php echo $this->route(["controller" => "category" , "action" => "view" , "params" => ["id" => $category['id']]]); ?>"><?php echo $category['title']; ?></a>
+                    <?php } else { ?>
+                        <a class="item"
+                           href="<?php echo $this->route(["controller" => "category", "action" => "view", "params" => ["id" => $category['id']]]); ?>"><?php echo $category['title']; ?></a>
                     <?php } ?>
                 <?php endforeach; ?>
             </div>
@@ -63,7 +66,7 @@
 
                             <?php if ($this->getFromSession("user_account_type") == 2) { ?>
                                 <a class="item"
-                                   href="<?php echo $this->route(["module" => "backend","controller" => "home"]); ?>"><i
+                                   href="<?php echo $this->route(["module" => "backend", "controller" => "home"]); ?>"><i
                                         class="setting icon"></i><?php echo $this->text("ADMIN_PANEL"); ?></a>
                             <?php } ?>
 
@@ -76,10 +79,12 @@
                 </dev>
             <?php } else { ?>
                 <div class="item">
-                    <a class="ui button" href="<?php echo $this->route(["controller" => "login"]); ?>"><?php echo $this->text("LOGIN"); ?></a>
+                    <a class="ui button"
+                       href="<?php echo $this->route(["controller" => "login"]); ?>"><?php echo $this->text("LOGIN"); ?></a>
                 </div>
                 <div class="item">
-                    <a class="ui primary button" href="<?php echo $this->route(["controller" => "register"]); ?>"><?php echo $this->text("REGISTER"); ?></a>
+                    <a class="ui primary button"
+                       href="<?php echo $this->route(["controller" => "register"]); ?>"><?php echo $this->text("REGISTER"); ?></a>
                 </div>
             <?php } ?>
         </div>
@@ -95,10 +100,12 @@
     <?php foreach ($this->categories_tree as $category) : ?>
         <?php if (isset($category['children']) && count($category['children']) > 0) { ?>
             <?php foreach ($category['children'] as $subcategory) : ?>
-                <a class="item" href="<?php echo $this->route(["controller" => "category" , "action" => "view" , "params" => ["id" => $subcategory['id']]]); ?>"><?php echo $subcategory['title']; ?></a>
+                <a class="item"
+                   href="<?php echo $this->route(["controller" => "category", "action" => "view", "params" => ["id" => $subcategory['id']]]); ?>"><?php echo $subcategory['title']; ?></a>
             <?php endforeach; ?>
-        <?php }else{ ?>
-            <a class="item" href="<?php echo $this->route(["controller" => "category" , "action" => "view" , "params" => ["id" => $category['id']]]); ?>"><?php echo $category['title']; ?></a>
+        <?php } else { ?>
+            <a class="item"
+               href="<?php echo $this->route(["controller" => "category", "action" => "view", "params" => ["id" => $category['id']]]); ?>"><?php echo $category['title']; ?></a>
         <?php } ?>
     <?php endforeach; ?>
 
@@ -132,12 +139,14 @@
                                     <span class="text"><?php echo $category['title']; ?></span>
                                     <div class="menu">
                                         <?php foreach ($category['children'] as $subcategory) : ?>
-                                            <a class="item" href="<?php echo $this->route(["controller" => "category" , "action" => "view" , "params" => ["id" => $subcategory['id']]]); ?>"><?php echo $subcategory['title']; ?></a>
+                                            <a class="item"
+                                               href="<?php echo $this->route(["controller" => "category", "action" => "view", "params" => ["id" => $subcategory['id']]]); ?>"><?php echo $subcategory['title']; ?></a>
                                         <?php endforeach; ?>
                                     </div>
                                 </div>
-                            <?php }else{ ?>
-                                <a class="item" href="<?php echo $this->route(["controller" => "category" , "action" => "view" , "params" => ["id" => $category['id']]]); ?>"><?php echo $category['title']; ?></a>
+                            <?php } else { ?>
+                                <a class="item"
+                                   href="<?php echo $this->route(["controller" => "category", "action" => "view", "params" => ["id" => $category['id']]]); ?>"><?php echo $category['title']; ?></a>
                             <?php } ?>
                         <?php endforeach; ?>
                     </div>
@@ -151,9 +160,10 @@
                 <div class="right item">
                     <?php if ($this->IsLoggedIn()) { ?>
                         <div class="ui inline labeled icon top right pointing dropdown">
-                            <img class="ui avatar image"
-                                 src="<?php echo $this->getConfig("URL"); ?>/assets/backend/images/avatar-default.gif">
+                            <?php echo $this->renderImage($this->getFromSession("user_photo"), "images/avatar-default.gif", true, ["class" => "ui avatar image"]); ?>
+
                             <?php echo $this->getFromSession("user_name"); ?>
+
                             <i class="dropdown icon"></i>
                             <div class="menu">
                                 <a class="item"
@@ -162,7 +172,7 @@
 
                                 <?php if ($this->getFromSession("user_account_type") == 2) { ?>
                                     <a class="item"
-                                       href="<?php echo $this->route(["module" => "backend","controller" => "home"]); ?>"><i
+                                       href="<?php echo $this->route(["module" => "backend", "controller" => "home"]); ?>"><i
                                             class="setting icon"></i><?php echo $this->text("ADMIN_PANEL"); ?></a>
                                 <?php } ?>
 

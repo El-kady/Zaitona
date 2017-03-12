@@ -173,6 +173,21 @@ class View
         return sprintf("<img src='%s/assets/%s'/>\n", Service::getConfig()->get("URL"), $filename);
     }
 
+    public function renderImage($file,$default = "",$html = true,$attrs = [])
+    {
+        $url = "";
+        if (!empty($file)) {
+            $url = $this->uploadedFile($file);
+        }else{
+            $url = Service::getConfig()->get("URL") . $default;
+        }
+        $_attrs = [];
+        foreach ($attrs as $key => $value) {
+            $_attrs[] = sprintf('%s="%s"',$key,$value);
+        }
+        return ($html) ? sprintf("<img %s src='%s' />",implode(" ",$_attrs),$url) : $url;
+    }
+
     public function uploadedFile($file)
     {
         return Service::getConfig()->get("URL") . '/uploads/'. $file;

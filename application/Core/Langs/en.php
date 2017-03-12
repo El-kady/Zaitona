@@ -54,6 +54,7 @@ return [
     "PASSWORD" => "Password",
     "RETYPE_PASSWORD" => "Re-type Password",
     "NAME" => "Name",
+    "USER_PHOTO" => "User Photo",
 
 
     "SUBCATEGORIES" => "Subcategories",
