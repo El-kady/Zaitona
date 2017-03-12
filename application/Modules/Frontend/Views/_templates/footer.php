@@ -28,6 +28,14 @@
             $('.ui.sidebar').sidebar('attach events', '.toc.item');
             $('.ui.embed').embed();
         });
+        function showModal($id,$comment){
+        	$('.small.modal').modal('show');
+        	$('.small.modal .text').text($comment);
+        }
+        $('.edit-comment').on('click',function (){
+        	$(this).text($(this).text()=='Edit'?'Cancel':'Edit').toggleClass("red");;
+        	$(this).parent().next().toggle();
+        });
 </script>
 
 </body>
