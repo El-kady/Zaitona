@@ -21,7 +21,7 @@ class Config extends BaseModel
             foreach ($data as $key => $value) {
                 $where = "name = :name";
                 $bind[":name"] = $key;
-                $this->save(["value" => $value], $where, $bind);
+                $this->save(["name" => $key,"value" => $value], $where, $bind);
             }
             return true;
 

@@ -80,16 +80,14 @@
                     </div>
 
                     <div class="field">
-                        <div class="field">
-                            <label><?php echo $this->text("STATUS"); ?></label>
-                            <div class="ui dropdown selection">
-                                <input type="hidden" name="status" value="<?php echo $this->form()->valueOf("status",1); ?>">
-                                <div class="default text"><?php echo $this->text("STATUS"); ?></div>
-                                <i class="dropdown icon"></i>
-                                <div class="menu">
-                                    <div class="item" data-value="1"><?php echo $this->text("ACTIVE"); ?></div>
-                                    <div class="item" data-value="3"><?php echo $this->text("BANNED"); ?></div>
-                                </div>
+                        <label><?php echo $this->text("STATUS"); ?></label>
+                        <div class="ui dropdown selection">
+                            <input type="hidden" name="status" value="<?php echo $this->form()->valueOf("status",1); ?>">
+                            <div class="default text"><?php echo $this->text("STATUS"); ?></div>
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                                <div class="item" data-value="1"><?php echo $this->text("ACTIVE"); ?></div>
+                                <div class="item" data-value="3"><?php echo $this->text("BANNED"); ?></div>
                             </div>
                         </div>
                     </div>

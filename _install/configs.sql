@@ -1,20 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4deb1
--- https://www.phpmyadmin.net/
+-- version 4.6.0
+-- http://www.phpmyadmin.net
 --
--- Host: localhost:3306
--- Generation Time: Mar 05, 2017 at 10:05 PM
--- Server version: 5.7.17-0ubuntu0.16.10.1
--- PHP Version: 7.0.13-0ubuntu0.16.10.1
+-- Host: localhost
+-- Generation Time: Mar 12, 2017 at 09:42 PM
+-- Server version: 5.5.54-0ubuntu0.14.04.1
+-- PHP Version: 5.5.9-1ubuntu4.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `zaitona`
@@ -37,8 +31,15 @@ CREATE TABLE `configs` (
 --
 
 INSERT INTO `configs` (`name`, `value`, `type`) VALUES
-('site_name', 'Zaitona LMS', 'string'),
-('site_lang', 'en', 'string');
+  ('site_name', 'Zaitona', 'string'),
+  ('site_slogan', 'Learning Today ... Leading Tomorrow', 'string'),
+  ('site_lang', 'en', 'string'),
+  ('smtp_server', 'smtp.gmail.com', ''),
+  ('smtp_port', '465', 'int'),
+  ('smtp_email', 'webfairynetwork@gmail.com', ''),
+  ('smtp_password', 'fairynet66', ''),
+  ('site_email', 'zaitona@gmail.com', ''),
+  ('welcome_email_template', 'Welcome [name],\r\nThank you for creating an [site_name] account.\r\nHere you details\r\nName: [name]\r\nEmail: [email]\r\n—[site_name] Team', 'html');
 
 --
 -- Indexes for dumped tables
@@ -48,8 +49,4 @@ INSERT INTO `configs` (`name`, `value`, `type`) VALUES
 -- Indexes for table `configs`
 --
 ALTER TABLE `configs`
-  ADD PRIMARY KEY (`name`);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+ADD PRIMARY KEY (`name`);

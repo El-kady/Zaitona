@@ -79,6 +79,7 @@ class MaterialsController extends BackendController
         $section_id = Service::getRequest()->post("section_id");
         $data = [
             "title" => Service::getRequest()->post("title"),
+            "status" => Service::getRequest()->post("status"),
         ];
 
         if ($this->material->updateData($data)) {

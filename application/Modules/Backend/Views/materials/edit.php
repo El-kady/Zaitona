@@ -28,6 +28,20 @@
                         </div>
                     </div>
 
+                    <div class="field">
+                        <label><?php echo $this->text("STATUS"); ?></label>
+                        <div class="ui dropdown selection">
+                            <input type="hidden" name="status" value="<?php echo $this->form()->valueOf("status",1); ?>">
+                            <div class="default text"><?php echo $this->text("STATUS"); ?></div>
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                                <div class="item" data-value="0"><?php echo $this->text("HIDDEN"); ?></div>
+                                <div class="item" data-value="1"><?php echo $this->text("ACTIVE"); ?></div>
+                                <div class="item" data-value="2"><?php echo $this->text("LOCKED"); ?></div>
+                            </div>
+                        </div>
+                    </div>
+
                     <input type="hidden" name="section_id" value="<?php echo $this->get("section_id", 0); ?>">
 
                     <input type="hidden" name="back"

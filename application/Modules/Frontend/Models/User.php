@@ -57,10 +57,29 @@ class User extends BaseModel
                 "account_type" => 1,
                 "name" => $data["name"],
                 "email" => $data["email"],
+                "country" => $data["country"],
+                "gender" => $data["gender"],
                 "password" => md5($data["password"]),
                 "status" => 1
             ];
             if ($this->insert($record)) {
+
+                $mailer = Service::getMailer();
+                $mailer->setFrom(Service::getConfig()->get("site_email"),Service::getConfig()->get("site_name"));
+                $mailer->addTo($data["email"],$data["name"]);
+                $mailer->setSubject(Service::getConfig()->get("site_name"));
+                $mailer->setMessage(
+                    nl2br(Service::getConfig()->get("welcome_email_template")),
+                    true,
+                    [
+                        "name" => $data["name"],
+                        "email" => $data["email"],
+                        "site_name" => Service::getConfig()->get("site_name"),
+                        "site_email" => Service::getConfig()->get("site_email"),
+                    ]
+                );
+                $mailer->send();
+
                 return true;
             }
         }
@@ -81,6 +100,8 @@ class User extends BaseModel
         $record = [
             "name" => $data["name"],
             "email" => $data["email"],
+            "country" => $data["country"],
+            "gender" => $data["gender"],
         ];
 
         foreach ($required as $field) {

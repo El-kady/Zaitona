@@ -27,7 +27,14 @@ class SettingsController extends BackendController
 
         $data = [
             "site_name" => Service::getRequest()->post("site_name"),
+            "site_lang" => Service::getRequest()->post("site_lang"),
             "site_slogan" => Service::getRequest()->post("site_slogan"),
+            "site_email" => Service::getRequest()->post("site_email"),
+            "smtp_server" => Service::getRequest()->post("smtp_server"),
+            "smtp_port" => Service::getRequest()->post("smtp_port"),
+            "smtp_email" => Service::getRequest()->post("smtp_email"),
+            "smtp_password" => Service::getRequest()->post("smtp_password"),
+            "welcome_email_template" => Service::getRequest()->post("welcome_email_template"),
         ];
 
         if(!$this->config->saveData($data)){

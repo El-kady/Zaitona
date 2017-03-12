@@ -54,6 +54,7 @@ class Material extends BaseModel
         $this->validate($data);
         $record = [
             "title" => $data["title"],
+            "status" => $data["status"],
         ];
 
         if (count(Service::getSession()->get('feedback_negative')) == 0) {

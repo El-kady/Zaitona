@@ -35,6 +35,8 @@ class UserController extends FrontendController
             "password" => Service::getRequest()->post("password"),
             "retype_password" => Service::getRequest()->post("retype_password"),
             "user_photo" => Service::getRequest()->file("user_photo"),
+            "country" => Service::getRequest()->post("country"),
+            "gender" => Service::getRequest()->post("gender"),
         ];
 
         if ($this->user->saveData($data)) {

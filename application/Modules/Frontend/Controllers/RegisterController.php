@@ -33,7 +33,9 @@ class RegisterController extends FrontendController
             "name" => Service::getRequest()->post("name"),
             "email" => Service::getRequest()->post("email"),
             "password" => Service::getRequest()->post("password"),
-            "retype_password" => Service::getRequest()->post("retype_password")
+            "retype_password" => Service::getRequest()->post("retype_password"),
+            "country" => Service::getRequest()->post("country"),
+            "gender" => Service::getRequest()->post("gender"),
         ];
 
 

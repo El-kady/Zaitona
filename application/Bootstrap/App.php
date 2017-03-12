@@ -80,6 +80,7 @@ class App
         Service::defRequest('\Core\Request\Request');
         Service::defRedirect('\Core\Request\Redirect');
         Service::defUploader('\Core\System\Uploader', array($config["PATH_UPLOADS"], 1024 * 1024 * 10));
+        Service::defMailer('\Core\System\Mailer', array(Service::getConfig()->get("smtp_server"),Service::getConfig()->get("smtp_email"),Service::getConfig()->get("smtp_password"),Service::getConfig()->get("smtp_port")));
 
         Service::defView('\Core\System\View', array($this->requestInfo()));
 

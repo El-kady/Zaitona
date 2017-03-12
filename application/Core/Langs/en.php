@@ -39,6 +39,8 @@ return [
     "ADMIN" => "Admin",
     "STATUS" => "Status",
     "ACTIVE" => "Active",
+    "HIDDEN" => "Hidden",
+    "LOCKED" => "Locked",
     "INACTIVE" => "Inactive",
     "BANNED" => "Banned",
     "OPTIONS" => "Options",
@@ -110,4 +112,14 @@ return [
     "UPLOAD_CANT_USE_DIST" => "Unable to move the file to the specified target",
     "UPLOAD_TYPE_NOT_ALLOWED" => "Mime type is not allowed",
     "UPLOAD_MOVE_ERROR" => "Unable to move the file to the specified target",
+
+    "SITE_EMAIL" => "Site Email",
+    "SMTP_SERVER" => "SMTP Server",
+    "SMTP_PORT" => "SMTP Port",
+    "SMTP_EMAIL" => "SMTP Email",
+    "SMTP_PASSWORD" => "SMTP Password",
+    "WELCOME_EMAIL_TEMPLATE" => "Welcome Email Template",
+
+    "COUNTRY" => "Country",
+    "GENDER" => "Gender",
 ];
