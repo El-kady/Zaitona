@@ -62,6 +62,10 @@ class UsersController extends BackendController
 
     public function delete($id)
     {
+        if ($id == Service::getAuth()->getUserId()) {
+            Service::getView()->errorPage();
+        }
+        
         $row = $this->user->getRow($id) OR Service::getView()->errorPage();
         if (Service::getRequest()->post("delete")) {
             $this->user->delete("id = :id ",[":id" => (int) $id]);

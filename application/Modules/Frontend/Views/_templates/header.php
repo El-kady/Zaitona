@@ -160,7 +160,7 @@
                 <div class="right item">
                     <?php if ($this->IsLoggedIn()) { ?>
                         <div class="ui inline labeled icon top right pointing dropdown">
-                            <?php echo $this->renderImage($this->getFromSession("user_photo"), "images/avatar-default.gif", true, ["class" => "ui avatar image"]); ?>
+                            <?php echo $this->renderImage($this->getFromSession("user_photo"), "/assets/images/avatar-default.gif", true, ["class" => "ui avatar image"]); ?>
 
                             <?php echo $this->getFromSession("user_name"); ?>
 
