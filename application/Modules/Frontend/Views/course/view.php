@@ -66,22 +66,22 @@
 
             <h4 class="ui header"><?php echo $this->text("DESCRIPTION"); ?></h4>
             <p>
-                <?php echo $this->course["description"]; ?>
+                <?php echo nl2br($this->course["description"]); ?>
             </p>
 
             <h4 class="ui header"><?php echo $this->text("INTRODUCTION"); ?></h4>
             <p>
-                <?php echo $this->course["introduction"]; ?>
+                <?php echo nl2br($this->course["introduction"]); ?>
             </p>
 
             <h4 class="ui header"><?php echo $this->text("REQUIREMENT"); ?></h4>
             <p>
-                <?php echo $this->course["requirement"]; ?>
+                <?php echo nl2br($this->course["requirement"]); ?>
             </p>
 
             <h4 class="ui header"><?php echo $this->text("AUDIENCE"); ?></h4>
             <p>
-                <?php echo $this->course["audience"]; ?>
+                <?php echo nl2br($this->course["audience"]); ?>
             </p>
 
 
