@@ -8,7 +8,7 @@ use \Modules\Frontend\Models\Category;
 use \Modules\Frontend\Models\Course;
 use \Modules\Frontend\Models\Section;
 use \Modules\Frontend\Models\Material;
-use \Modules\Frontend\Models\Commento;
+use \Modules\Frontend\Models\Comment;
 use \Modules\Frontend\Models\User;
 
 
@@ -27,7 +27,7 @@ class MaterialController extends FrontendController
         $this->course = new Course();
         $this->section = new Section();
         $this->material = new Material();
-        $this->comment = new Commento();
+        $this->comment = new Comment();
         $this->user = new User();
     }
 
@@ -41,6 +41,7 @@ class MaterialController extends FrontendController
         $id = (int)$id;
         if($id > 0){
             $data['material'] = $this->material->getRow($id,'id');
+            $data['instructor'] = $this->user->getRow($data['material']['user_id'],'id');
             $data['section'] = $this->section->getRow($data['material']['section_id'],'id');
             $data['course'] = $this->course->getRow($data['material']['course_id'],'id');
             $data['category'] = $this->category->getRow($data['course']['category_id'],'id');
