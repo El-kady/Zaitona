@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 12, 2017 at 09:42 PM
+-- Generation Time: Mar 12, 2017 at 10:33 PM
 -- Server version: 5.5.54-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.21
 
@@ -35,6 +35,13 @@ CREATE TABLE `users` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `account_type`, `session_id`, `name`, `password`, `email`, `user_photo`, `country`, `gender`, `status`, `created_at`) VALUES
+(1, 2, NULL, 'Admin', '96e79218965eb72c92a549dd5a330112', 'admin@admin.com', NULL, 'eg', 1, 1, '2017-03-12 20:33:38');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -53,4 +60,4 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
